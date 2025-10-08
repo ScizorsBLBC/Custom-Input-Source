@@ -32,9 +32,21 @@ This project provides a working macOS input source that maps QWERTY keys directl
 4. **Select the layout:**
    - Use the input source menu in your menu bar to switch to HiraganaLaser
 
-### **Method 2: Ukelele Bundle (Alternative)**
+### **Method 2: Ukelele Direct Install (Recommended)**
 
-If you prefer a bundle format:
+For the easiest installation using Ukelele's built-in installer:
+
+1. **Download Ukelele** from [software.sil.org/ukelele](https://software.sil.org/ukelele/)
+2. **Open the layout:** File → Open → Select `HiraganaLaser.keylayout`
+3. **Install directly:** File → Install (see screenshot below)
+4. **Restart your Mac** to activate the input source
+5. **Add to Input Sources:** Go to System Preferences > Keyboard > Input Sources and add "HiraganaLaser"
+
+![Ukelele Install Menu](Ukelele_Install_Menu.png)
+
+### **Method 3: Ukelele Bundle (Alternative)**
+
+If you prefer to create a bundle manually:
 
 1. **Download Ukelele** from [software.sil.org/ukelele](https://software.sil.org/ukelele/)
 2. **Open the layout:** File → Open → Select `HiraganaLaser.keylayout`
@@ -45,28 +57,32 @@ If you prefer a bundle format:
 
 ## Key Mapping
 
-### **Number Row (Top Row)**
-| Key | Hiragana | Key | Hiragana | Key | Hiragana | Key | Hiragana | Key | Hiragana |
-|-----|----------|-----|----------|-----|----------|-----|----------|-----|----------|
-| 0 | ち (chi) | 1 | と (to) | 2 | し (shi) | 3 | は (ha) | 4 | く (ku) |
-| 5 | き (ki) | 6 | つ (tsu) | 7 | さ (sa) | 8 | そ (so) | 9 | ひ (hi) |
-
-### **Main Letter Rows**
+### **Working Key Mapping (Left to Right, Top to Bottom)**
 
 #### **Top Row (Q-P)**
 | Q | W | E | R | T | Y | U | I | O | P |
 |---|----|----|----|----|----|----|----|----|----|
-| こ (ko) | て (te) | あ (a) | ら (ra) | た (ta) | や (ya) | う (u) | い (i) | お (o) | ん (n) |
+| ろ (ro) | ぬ (nu) | ふ (fu) | あ (a) | う (u) | え (e) | お (o) | や (ya) | ゆ (yu) | よ (yo) |
 
 #### **Home Row (A-L)**
 | A | S | D | F | G | H | J | K | L |
 |---|----|----|----|----|----|----|----|----|
-| あ (a) | す (su) | で (de) | ふ (fu) | が (ga) | は (ha) | ま (ma) | か (ka) | る (ru) |
+| わ (wa) | ほ (ho) | へ (he) | た (ta) | て (te) | い (i) | す (su) | ん (n) | か (ka) | な (na) |
 
 #### **Bottom Row (Z-M)**
 | Z | X | C | V | B | N | M |
 |---|----|----|----|----|----|----|
-| ざ (za) | く (ku) | せ (se) | べ (be) | ば (ba) | な (na) | も (mo) |
+| に (ni) | ら (ra) | せ (se) | ゛ (dakuten) | ゜ (handakuten) | ち (chi) | と (to) |
+
+#### **Second Bottom Row (Numbers)**
+| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 |
+|---|----|----|----|----|----|----|----|----|----|
+| し (shi) | は (ha) | き (ki) | く (ku) | ま (ma) | の (no) | り (ri) | れ (re) | け (ke) | つ (tsu) |
+
+#### **Third Bottom Row (Additional)**
+| - | = | [ | ] | \ | ; | ' | , | . | / |
+|---|----|----|----|----|----|----|----|----|----|
+| さ (sa) | そ (so) | ひ (hi) | こ (ko) | み (mi) | も (mo) | ね (ne) | る (ru) | め (me) | ？ (?) |
 
 ### **Special Keys**
 - **Space**: Space (unchanged)
