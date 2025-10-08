@@ -1,31 +1,59 @@
 ---
-description: Enforce comprehensive documentation standards
-globs: ["**/*.md", "**/*.keylayout"]
+description: Enterprise-grade documentation standards for all project files
+globs: ["**/*.md", "**/*.keylayout", "**/*.xml", "**/*.plist", "**/*.mdc"]
 alwaysApply: true
 ---
 
-# Documentation Standards for Custom Input Source Project
+# Enterprise Documentation Standards
 
-## Inline Documentation
-- Add comprehensive XML comments to .keylayout files
-- Document every key mapping with QWERTY->Hiragana explanation
-- Include technical specifications and implementation details
-- Follow industry standards for XML documentation
+## **Inline Documentation Requirements**
 
-## README Documentation
-- Always update README.md when adding new features
-- Include installation instructions and troubleshooting
-- Document known issues and workarounds
-- Maintain comprehensive file listing
+### **XML Files (.keylayout, .xml)**
+- **Comprehensive Headers**: Project overview, technical specifications, development history
+- **Section Documentation**: Detailed explanations for each mapping section
+- **Character Frequency Analysis**: Document character selection rationale
+- **Technical Specifications**: Include all technical details and compatibility notes
+- **Security Considerations**: Document security and compliance requirements
 
-## Project Documentation
-- Create PROJECT_HISTORY.md for development timeline
-- Add DIAGNOSTIC_REPORT.md for technical analysis
-- Include TROUBLESHOOTING.md for common issues
-- Document all approaches tried and decisions made
+### **Markdown Files (.md)**
+- **Project Overview**: Clear project description and key features
+- **Technical Specifications**: Detailed technical requirements and system specs
+- **Installation Instructions**: Step-by-step installation for all approaches
+- **Troubleshooting**: Comprehensive problem-solving guides
+- **Development Standards**: Code quality and maintenance standards
 
-## Code Comments
-- Explain "why" not "what" in comments
-- Document complex logic and business rules
-- Include technical decision rationale
-- Maintain consistency across all files
+### **Configuration Files (.plist, .mdc)**
+- **Purpose Documentation**: Clear explanation of file purpose and usage
+- **Configuration Details**: Document all configuration options and settings
+- **Dependencies**: List all dependencies and requirements
+- **Usage Examples**: Provide clear usage examples and best practices
+
+## **Documentation Quality Standards**
+
+### **Enterprise-Grade Requirements**
+- **Comprehensive Coverage**: Document all aspects of functionality
+- **Technical Depth**: Include detailed technical specifications
+- **Decision Rationale**: Explain why decisions were made
+- **Maintenance History**: Track all changes and modifications
+- **Security Documentation**: Include security considerations and compliance
+
+### **Content Standards**
+- **Clear Structure**: Use consistent formatting and organization
+- **Technical Accuracy**: Ensure all technical information is correct
+- **User-Friendly**: Make documentation accessible to all skill levels
+- **Up-to-Date**: Keep documentation current with code changes
+- **Searchable**: Use clear headings and keywords for easy navigation
+
+## **Documentation Maintenance**
+
+### **Update Requirements**
+- **Code Changes**: Update documentation with every code change
+- **Feature Additions**: Document new features immediately
+- **Bug Fixes**: Update troubleshooting sections with new solutions
+- **Version Updates**: Maintain version history and changelog
+
+### **Quality Assurance**
+- **Review Process**: Self-review all documentation before committing
+- **Accuracy Verification**: Verify all technical information is correct
+- **Completeness Check**: Ensure all aspects are documented
+- **Consistency Review**: Maintain consistent style and format
