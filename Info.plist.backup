@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
+    <key>CFBundleExecutable</key>
+    <string>HiraganaLaser</string>
+    <key>CFBundleIdentifier</key>
+    <string>com.scizors.hiraganalaser</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleName</key>
+    <string>HiraganaLaser</string>
+    <key>CFBundleShortVersionString</key>
+    <string>1.0</string>
+    <key>CFBundleVersion</key>
+    <string>1.0</string>
+    <key>InputMethodKind</key>
+    <string>Keyboard</string>
+    <key>InputMethodLanguage</key>
+    <string>ja</string>
+    <key>InputMethodName</key>
+    <string>HiraganaLaser</string>
+    <key>InputMethodNameLocalized</key>
+    <dict>
+        <key>ja</key>
+        <string>ひらがなレーザー</string>
+    </dict>
+    <key>InputMethodType</key>
+    <string>Keyboard</string>
+    <key>KeyboardLayoutName</key>
+    <string>HiraganaLaser</string>
+    <key>KeyboardLayoutNameLocalized</key>
+    <dict>
+        <key>ja</key>
+        <string>ひらがなレーザー</string>
+    </dict>
+</dict>
+</plist>
