@@ -201,8 +201,6 @@
                  - Diacritical marks: ゜ (handakuten), ゛ (dakuten) for character modification
                  - Character frequency: Complete set for comprehensive input
                  ============================================================================= -->
-            <key code="30" output="゚"/>
-            <!-- QWERTY: ] -> Handakuten: ゚ (combining handakuten) - No spacing, combines with previous character -->
             <key code="6" output="つ"/>
             <!-- QWERTY: Z -> Hiragana: つ (tsu) - Character frequency: High -->
             <key code="7" output="さ"/>
