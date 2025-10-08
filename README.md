@@ -43,21 +43,30 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 
 ### ⚠️ **Known Installation Issues**
 
-**Issue**: Layout may not appear in Input Sources list
-**Root Cause**: File format validation issues detected
-**Status**: Under investigation
+**🚨 CRITICAL ISSUE**: Gatekeeper Security Blocking
+**Root Cause**: macOS Gatekeeper rejecting unsigned keyboard layout file
+**Status**: **PRIMARY BLOCKING ISSUE**
 
 **Diagnostic Findings:**
 - ✅ File exists in correct location with proper permissions
 - ✅ XML structure is valid
+- 🚨 **Gatekeeper blocking**: `rejected - source=no usable signature`
 - ⚠️ Property list validation fails (macOS expects specific format)
 - ⚠️ Layout not automatically enabled in system
 
-**Workarounds:**
-1. **Manual Activation**: Manually add layout in System Preferences
-2. **System Restart**: Full restart may be required
-3. **Alternative Location**: Try `/Library/Keyboard Layouts/` (system-wide)
-4. **Format Conversion**: May need proper .keylayout format conversion
+**Immediate Workarounds:**
+1. **🚨 Bypass Gatekeeper**: 
+   ```bash
+   xattr -d com.apple.quarantine ~/Library/Keyboard\ Layouts/HiraganaLaser.keylayout
+   ```
+2. **Right-click → Open**: Bypasses Gatekeeper for single use
+3. **Manual Activation**: Manually add layout in System Preferences
+4. **System Restart**: Full restart may be required
+
+**Long-term Solutions:**
+- **Code Signing**: Sign the .keylayout file with developer certificate
+- **Format Conversion**: Convert to proper macOS keyboard layout format
+- **Alternative Location**: Try `/Library/Keyboard Layouts/` (system-wide)
 
 **See [DIAGNOSTIC_REPORT.md](DIAGNOSTIC_REPORT.md)** for complete technical analysis.
 

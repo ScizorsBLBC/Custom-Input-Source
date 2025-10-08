@@ -18,7 +18,16 @@
 
 ### ⚠️ **Potential Issues Identified**
 
-#### 1. **Property List Validation Failure**
+#### 1. **🚨 CRITICAL: Gatekeeper Security Blocking**
+```
+/Users/scizors/Library/Keyboard Layouts/HiraganaLaser.keylayout: rejected
+source=no usable signature
+```
+**Impact**: Gatekeeper is blocking the unsigned keyboard layout file
+**Cause**: File lacks code signature required by macOS security
+**Status**: **PRIMARY BLOCKING ISSUE**
+
+#### 2. **Property List Validation Failure**
 ```
 Error: Encountered unknown tag keyboard on line 17
 Property list validation failed
@@ -26,42 +35,73 @@ Property list validation failed
 **Impact**: macOS may not recognize the file as a valid keyboard layout
 **Cause**: The file is XML but macOS expects a specific property list format
 
-#### 2. **Input Source Not Enabled**
+#### 3. **Input Source Not Enabled**
 ```
 HiraganaLaser not found in enabled input sources
 ```
 **Impact**: Layout exists but not activated in system
 **Cause**: Manual activation required in System Preferences
 
-#### 3. **System Integration Issues**
+#### 4. **System Integration Issues**
 - **Layout ID**: 9999 (custom) - may conflict with system layouts
 - **Group**: 0 (standard) - should be compatible
 - **DTD Reference**: Points to system DTD (should be valid)
 
 ## Root Cause Analysis
 
-### **Primary Issue: File Format Mismatch**
+### **🚨 PRIMARY ISSUE: Gatekeeper Security Blocking**
+**Root Cause**: macOS Gatekeeper is rejecting the unsigned keyboard layout file
+- **Security Status**: `assessments enabled` (Gatekeeper active)
+- **File Status**: `rejected - source=no usable signature`
+- **Impact**: File cannot be loaded by system due to security restrictions
+
+### **Secondary Issue: File Format Mismatch**
 The `.keylayout` file is valid XML but macOS keyboard layouts need to be in a specific property list format, not raw XML.
 
-### **Secondary Issue: Manual Activation Required**
+### **Tertiary Issue: Manual Activation Required**
 Even if the file format is correct, the layout must be manually added to Input Sources in System Preferences.
 
 ## Recommended Solutions
 
-### **Solution 1: File Format Conversion**
+### **🚨 Solution 1: Bypass Gatekeeper Security (IMMEDIATE)**
+**Primary Solution**: Remove Gatekeeper quarantine and security restrictions
+
+1. **Remove quarantine attribute**:
+   ```bash
+   xattr -d com.apple.quarantine ~/Library/Keyboard\ Layouts/HiraganaLaser.keylayout
+   ```
+
+2. **Allow unsigned file execution**:
+   ```bash
+   spctl --master-disable
+   # Use layout, then re-enable security:
+   spctl --master-enable
+   ```
+
+3. **Alternative: Right-click → Open** (bypasses Gatekeeper for single use)
+
+### **Solution 2: Code Signing (PROFESSIONAL)**
+**Long-term Solution**: Sign the keyboard layout file
+
+1. **Developer Certificate**: Obtain Apple Developer certificate
+2. **Code Signing**: Sign the .keylayout file
+3. **Notarization**: Submit to Apple for notarization
+4. **Distribution**: Distribute signed, notarized file
+
+### **Solution 3: File Format Conversion**
 Convert the XML file to proper macOS keyboard layout format:
 
 1. **Use Ukelele**: macOS keyboard layout editor
 2. **Export as .keylayout**: Proper property list format
 3. **Test installation**: Verify system recognition
 
-### **Solution 2: Manual System Integration**
+### **Solution 4: Manual System Integration**
 1. **System Preferences** → **Keyboard** → **Input Sources**
 2. **Click "+"** to add new input source
 3. **Select "HiraganaLaser"** from the list
 4. **Restart or logout/login** to activate
 
-### **Solution 3: Alternative Installation Method**
+### **Solution 5: Alternative Installation Method**
 1. **Copy to system location**: `/Library/Keyboard Layouts/`
 2. **Set proper permissions**: `chmod 644`
 3. **Clear system caches**: `sudo rm -rf /System/Library/Caches/com.apple.IntlDataCache*`
