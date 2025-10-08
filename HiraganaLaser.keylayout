@@ -412,28 +412,6 @@
             <!-- CONTROL KEYS - Preserve functionality -->
             <key code="36" output="&#x000D;"/>
             <!-- Shift+Enter -> Control: Carriage Return (preserved functionality) -->
-            <key code="37" output="り"/>
-            <!-- Shift+N -> り (ri) - Keep as is (no small variant needed) -->
-            <key code="38" output="ま"/>
-            <!-- Shift+M -> ま (ma) - Keep as is (no small variant needed) -->
-            <key code="39" output="け"/>
-            <!-- Shift+, -> け (ke) - Keep as is (no small variant needed) -->
-            <key code="40" output="の"/>
-            <!-- Shift+. -> の (no) - Keep as is (no small variant needed) -->
-            <key code="41" output="れ"/>
-            <!-- Shift+/ -> れ (re) - Keep as is (no small variant needed) -->
-            <key code="42" output="む"/>
-            <!-- Shift+Shift -> む (mu) - Keep as is (no small variant needed) -->
-            <key code="43" output="ね"/>
-            <!-- Shift+; -> ね (ne) - Keep as is (no small variant needed) -->
-            <key code="44" output="め"/>
-            <!-- Shift+' -> め (me) - Keep as is (no small variant needed) -->
-            <key code="45" output="み"/>
-            <!-- Shift+\ -> み (mi) - Keep as is (no small variant needed) -->
-            <key code="46" output="も"/>
-            <!-- Shift+Shift -> も (mo) - Keep as is (no small variant needed) -->
-            <key code="47" output="る"/>
-            <!-- Shift+/ -> る (ru) - Keep as is (no small variant needed) -->
             
             <!-- ESSENTIAL CONTROL KEYS - Preserve functionality -->
             <key code="48" output="&#x0009;"/>
