@@ -29,10 +29,15 @@
     
     DEVELOPMENT HISTORY:
     - Created: 2025-10-08
-    - Last Modified: 2025-10-08 22:45 JST
-    - Editor: Ukelele v452 + Manual refinement
-    - Status: Production-ready keyboard layout with combining characters
-    - Refinements: Added combining dakuten/handakuten and intuitive Shift key mapping
+    - Last Modified: 2025-01-27 (Current working-branch)
+    - Editor: Ukelele v452 + Manual refinement + CLI corrections
+    - Status: Production-ready keyboard layout with validated key codes
+    - Major Refinements: 
+      * Added combining dakuten/handakuten and intuitive Shift key mapping
+      * CRITICAL FIX: Corrected all key codes to match QWERTY physical positions
+      * Resolved duplicate key code validation errors (codes 30, 42)
+      * Added comprehensive key code reference documentation
+      * Validated layout installation and functionality
     
     COMPATIBILITY:
     - macOS: 10.12+ (tested on macOS 15.7.1)
