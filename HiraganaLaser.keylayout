@@ -360,8 +360,8 @@
             <!-- Shift+Q -> (no small variant for た) -->
             <key code="13" output=""/>
             <!-- Shift+W -> (no small variant for て) -->
-            <key code="14" output=""/>
-            <!-- Shift+E -> (no small variant for い) -->
+            <key code="14" output="ぃ"/>
+            <!-- Shift+E -> Small い (i) - Small vowel character -->
             <key code="15" output=""/>
             <!-- Shift+R -> (no small variant for す) -->
             <key code="17" output=""/>
