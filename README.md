@@ -27,6 +27,9 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 
 - `HiraganaLaser.keylayout` - The main keyboard layout file
 - `README.md` - This documentation file
+- `PROJECT_HISTORY.md` - Complete development history and technical details
+- `TROUBLESHOOTING.md` - Troubleshooting guide for common issues
+- `LICENSE` - CC0-1.0 license file
 
 ## Installation
 
@@ -104,6 +107,11 @@ The layout uses standard macOS keyboard layout XML format with:
 ## License
 
 This project is released under the CC0-1.0 license (Public Domain).
+
+## Documentation
+
+- **[PROJECT_HISTORY.md](PROJECT_HISTORY.md)** - Complete development history, approaches tried, and technical decisions
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions for installation and usage
 
 ## Contributing
 
