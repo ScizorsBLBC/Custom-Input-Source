@@ -1,5 +1,5 @@
 ---
-description: Security best practices for keyboard layouts
+description: Security best practices for macOS keyboard layouts
 globs: ["**/*.keylayout", "**/*.md"]
 alwaysApply: true
 ---
@@ -8,24 +8,34 @@ alwaysApply: true
 
 ## Gatekeeper Considerations
 - Always check for quarantine attributes: `xattr -l filename`
-- Document Gatekeeper bypass methods
-- Include code signing requirements
-- Plan for notarization process
+- Document Gatekeeper bypass methods: `xattr -d com.apple.quarantine filename`
+- Include code signing requirements for distribution
+- Plan for Apple notarization process
+- Document "Right-click → Open" bypass method
 
 ## File Security
 - Verify file permissions (644 for .keylayout files)
-- Check for extended attributes
+- Check for extended attributes and provenance
 - Document security analysis in diagnostic reports
 - Include security troubleshooting steps
+- Ensure files are in correct system directories
 
 ## Installation Security
 - Provide secure installation methods
-- Document security workarounds
-- Include verification steps
-- Address system integrity protection (SIP)
+- Document security workarounds for unsigned files
+- Include verification steps for successful installation
+- Address System Integrity Protection (SIP) implications
+- Document alternative installation locations
 
-## Code Signing
-- Document developer certificate requirements
-- Include signing process instructions
-- Plan for Apple notarization
-- Address distribution security
+## Code Signing Requirements
+- Document Apple Developer certificate requirements
+- Include signing process instructions: `codesign -s "Developer ID" filename`
+- Plan for Apple notarization: `xcrun notarytool submit`
+- Address distribution security considerations
+- Document temporary security disable methods: `spctl --master-disable`
+
+## Security Validation
+- Test Gatekeeper acceptance: `spctl -a -v filename`
+- Verify quarantine removal effectiveness
+- Test installation in different security contexts
+- Document security status verification methods

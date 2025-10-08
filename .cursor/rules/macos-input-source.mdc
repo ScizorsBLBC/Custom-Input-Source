@@ -1,0 +1,49 @@
+---
+description: macOS input source development best practices
+globs: ["**/*.keylayout", "**/*.md"]
+alwaysApply: true
+---
+
+# macOS Input Source Best Practices
+
+## File Format Requirements
+- Use proper .keylayout file format (not raw XML)
+- Ensure valid property list structure for macOS recognition
+- Include proper DOCTYPE declaration: `<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">`
+- Use UTF-8 encoding for international characters
+
+## Installation Requirements
+- Place files in `~/Library/Keyboard Layouts/` for user-specific installation
+- Use `/Library/Keyboard Layouts/` for system-wide installation
+- Ensure proper file permissions (644)
+- Restart or logout/login after installation
+
+## System Integration
+- Use unique layout ID to avoid conflicts (9999 recommended)
+- Set appropriate group attribute (0 for standard keyboards)
+- Include proper modifier map structure
+- Test with System Preferences > Keyboard > Input Sources
+
+## Character Encoding
+- Use UTF-8 encoding for Japanese characters
+- Include proper Unicode escape sequences for special characters
+- Test character output in multiple applications
+- Verify encoding with `file` command
+
+## Security Compliance
+- Address Gatekeeper security requirements
+- Document quarantine attribute handling
+- Include code signing considerations
+- Plan for Apple notarization for distribution
+
+## Testing Requirements
+- Test in multiple applications (TextEdit, Terminal, Browser)
+- Verify input source switching functionality
+- Test with different keyboard types
+- Validate system integration after restart
+
+## Documentation Standards
+- Include comprehensive installation instructions
+- Document troubleshooting steps
+- Provide diagnostic information
+- Include security workarounds

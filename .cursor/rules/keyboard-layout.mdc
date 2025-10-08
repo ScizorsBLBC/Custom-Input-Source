@@ -8,24 +8,35 @@ alwaysApply: true
 
 ## XML Structure
 - Follow Apple's keyboard layout DTD requirements
-- Use proper XML comment syntax
-- Include comprehensive file headers
-- Document all key mappings
+- Use proper XML comment syntax with <!-- --> format
+- Include comprehensive file headers with project metadata
+- Document all key mappings with QWERTY->Hiragana explanations
+- Ensure valid XML 1.0 document structure
 
 ## Character Mapping
 - Map all QWERTY keys to appropriate Hiragana characters
-- Include number row (0-9) mappings
-- Document special characters and control keys
-- Maintain logical character placement
+- Include number row (0-9) mappings with clear documentation
+- Document special characters and control keys (Enter, Tab, Backspace)
+- Maintain logical character placement for user familiarity
+- Include Japanese quotation marks 「」for bracket keys
 
 ## Technical Requirements
 - Use UTF-8 encoding for Japanese characters
-- Set unique layout ID (9999) to avoid conflicts
-- Follow ANSI layout standards
+- Set unique layout ID (9999) to avoid system conflicts
+- Follow ANSI layout standards for US keyboards
 - Include proper modifier map structure
+- Use group="0" for standard keyboard group
+- Set maxout="1" for single character output
+
+## Key Code Standards
+- Use standard macOS key codes (0-53 range)
+- Map control keys properly (Enter=36, Tab=48, Space=49, Backspace=51)
+- Include proper escape sequences for special characters
+- Document key code to QWERTY key relationships
 
 ## Security Considerations
 - Address Gatekeeper security requirements
-- Document code signing needs
+- Document code signing needs for distribution
 - Include quarantine removal instructions
-- Plan for notarization requirements
+- Plan for Apple notarization requirements
+- Consider System Integrity Protection (SIP) implications

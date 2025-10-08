@@ -1,5 +1,5 @@
 ---
-description: Testing and validation standards
+description: Testing and validation standards for macOS input sources
 globs: ["**/*.keylayout", "**/*.md"]
 alwaysApply: false
 ---
@@ -9,23 +9,34 @@ alwaysApply: false
 ## File Validation
 - Validate XML structure: `xmllint --noout filename`
 - Check property list format: `plutil -lint filename`
-- Verify file encoding: `file filename`
+- Verify file encoding: `file filename` (should show UTF-8)
 - Test Gatekeeper compatibility: `spctl -a -v filename`
+- Check extended attributes: `xattr -l filename`
+- Verify file permissions: `ls -la filename` (should be 644)
 
 ## Installation Testing
-- Test in multiple applications (TextEdit, Terminal, Browser)
-- Verify character output accuracy
-- Test input source switching
-- Validate system integration
+- Test in multiple applications (TextEdit, Terminal, Browser, Word)
+- Verify character output accuracy for all mapped keys
+- Test input source switching between layouts
+- Validate system integration after restart
+- Test with different keyboard types (built-in, external, wireless)
+
+## Security Testing
+- Test Gatekeeper bypass methods
+- Verify quarantine attribute removal
+- Test code signing if implemented
+- Validate security settings don't interfere
 
 ## Documentation Testing
 - Verify all links work correctly
-- Test installation instructions
+- Test installation instructions step-by-step
 - Validate troubleshooting steps
-- Check code examples
+- Check code examples for accuracy
+- Test diagnostic commands
 
 ## System Compatibility
-- Test on different macOS versions
+- Test on different macOS versions (minimum macOS 10.15)
 - Verify with different keyboard types
-- Test with various applications
-- Validate security settings
+- Test with various applications (native and third-party)
+- Validate security settings (SIP, Gatekeeper)
+- Test with different user accounts
