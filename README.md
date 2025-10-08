@@ -75,6 +75,84 @@ If you prefer to create a bundle manually:
 
 ## Key Mapping
 
+### **macOS Key Code Reference**
+
+**Important**: In macOS keyboard layouts, key codes correspond to **physical key positions** on a US QWERTY keyboard, not the characters they produce. This reference table shows the correct key codes for each physical key position.
+
+#### **Complete Key Code Mapping Table**
+
+| Physical Key | Key Code | Hiragana Output | Notes |
+|--------------|----------|-----------------|-------|
+| **Number Row** | | | |
+| ` | 50 | ろ (ro) | Backtick key |
+| 1 | 18 | ぬ (nu) | |
+| 2 | 19 | ふ (fu) | |
+| 3 | 20 | あ (a) | |
+| 4 | 21 | う (u) | |
+| 5 | 23 | え (e) | |
+| 6 | 22 | お (o) | |
+| 7 | 26 | や (ya) | |
+| 8 | 28 | ゆ (yu) | |
+| 9 | 25 | よ (yo) | |
+| 0 | 29 | わ (wa) | |
+| - | 27 | ほ (ho) | |
+| = | 24 | へ (he) | |
+| **Top Row** | | | |
+| Q | 12 | た (ta) | |
+| W | 13 | て (te) | |
+| E | 14 | い (i) | |
+| R | 15 | す (su) | |
+| T | 17 | か (ka) | |
+| Y | 16 | ん (n) | |
+| U | 32 | な (na) | |
+| I | 34 | に (ni) | |
+| O | 31 | ら (ra) | |
+| P | 35 | せ (se) | |
+| [ | 33 | ゙ (dakuten) | Combining character |
+| ] | 30 | ゚ (handakuten) | Combining character |
+| \ | 42 | む (mu) | |
+| **Home Row** | | | |
+| A | 0 | ち (chi) | |
+| S | 1 | と (to) | |
+| D | 2 | し (shi) | |
+| F | 3 | は (ha) | |
+| G | 5 | き (ki) | |
+| H | 4 | く (ku) | |
+| J | 38 | ま (ma) | |
+| K | 40 | の (no) | |
+| L | 37 | り (ri) | |
+| ; | 41 | れ (re) | |
+| ' | 39 | け (ke) | |
+| **Bottom Row** | | | |
+| Z | 6 | つ (tsu) | |
+| X | 7 | さ (sa) | |
+| C | 8 | そ (so) | |
+| V | 9 | ひ (hi) | |
+| B | 11 | こ (ko) | |
+| N | 45 | み (mi) | |
+| M | 46 | も (mo) | |
+| , | 43 | ね (ne) | |
+| . | 47 | る (ru) | |
+| / | 44 | め (me) | |
+| **Control Keys** | | | |
+| Tab | 48 | Tab character | Preserved functionality |
+| Space | 49 | Space character | Preserved functionality |
+| Backspace | 51 | Backspace character | Preserved functionality |
+| Enter | 36 | Carriage Return | Preserved functionality |
+| Escape | 53 | Escape character | Preserved functionality |
+
+#### **Shift Key Mappings (Small Characters)**
+
+| Physical Key | Key Code | Shift+Output | Notes |
+|--------------|----------|--------------|-------|
+| **Number Row** | | | |
+| 0 | 29 | を (wo) | Object particle |
+| 1-8 | 18-25 | ぁぃぅぇぉゃゅょ | Small vowel characters |
+| 9 | 25 | っ (small tsu) | Essential for double consonants |
+| **All Other Keys** | Various | っ (small tsu) | Small tsu for double consonants |
+
+**Note**: Most Shift+key combinations produce small つ (tsu) for double consonants, with special mappings for number row small characters and the を (wo) particle.
+
 ### **Working Key Mapping (Left to Right, Top to Bottom)**
 
 #### **Number Row**
