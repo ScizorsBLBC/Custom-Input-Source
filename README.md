@@ -36,11 +36,36 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 
 ## Installation
 
+### **Method 1: Direct Installation (Current)**
 1. Copy `HiraganaLaser.keylayout` to `~/Library/Keyboard Layouts/`
 2. Restart your Mac or log out and back in
 3. Go to System Preferences > Keyboard > Input Sources
 4. Click the "+" button and add "HiraganaLaser" from the list
 5. Select the layout from the input source menu
+
+### **Method 2: Ukelele Bundle Creation (Recommended)**
+For proper macOS integration, use Ukelele to create a bundle:
+
+#### **Step 1: Download and Install Ukelele**
+1. Download Ukelele from [software.sil.org/ukelele](https://software.sil.org/ukelele/)
+2. Install the application in your Applications folder
+
+#### **Step 2: Create Bundle from Existing Layout**
+1. **Open Ukelele**
+2. **File → Open** → Select `HiraganaLaser.keylayout`
+3. **File → Set Keyboard Name** → Enter "HiraganaLaser"
+4. **File → Save As Bundle** → Save as `HiraganaLaser.bundle`
+
+#### **Step 3: Install the Bundle**
+1. Copy `HiraganaLaser.bundle` to `~/Library/Keyboard Layouts/`
+2. Restart your Mac
+3. Go to System Preferences > Keyboard > Input Sources
+4. Click "+" → Find "HiraganaLaser" → Add
+
+#### **Step 4: Verify Installation**
+- Check Input Sources list for "HiraganaLaser"
+- Test character output in TextEdit
+- Verify all key mappings work correctly
 
 ### ⚠️ **Known Installation Issues**
 
@@ -70,6 +95,29 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 - **Alternative Location**: Try `/Library/Keyboard Layouts/` (system-wide)
 
 **See [DIAGNOSTIC_REPORT.md](DIAGNOSTIC_REPORT.md)** for complete technical analysis.
+
+### **Ukelele Troubleshooting**
+
+**Issue**: Bundle doesn't appear in Input Sources
+**Solutions**:
+1. **Verify Bundle Creation**: Ensure Ukelele saved as `.bundle` format
+2. **Check File Location**: Bundle must be in `~/Library/Keyboard Layouts/`
+3. **Restart Required**: Full system restart after installation
+4. **Permissions**: Ensure bundle has proper read permissions
+
+**Issue**: Ukelele can't open .keylayout file
+**Solutions**:
+1. **File Format**: Ensure file is valid XML with proper DOCTYPE
+2. **Encoding**: Check UTF-8 encoding is correct
+3. **Structure**: Verify XML structure follows Apple DTD
+4. **Alternative**: Create new layout in Ukelele and copy mappings
+
+**Issue**: Characters not displaying correctly
+**Solutions**:
+1. **Font Support**: Ensure application supports Japanese characters
+2. **Input Source**: Verify correct layout is selected
+3. **Application Testing**: Test in TextEdit, Terminal, Browser
+4. **System Restart**: May require restart for full integration
 
 ## Key Mapping
 

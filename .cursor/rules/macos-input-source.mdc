@@ -11,12 +11,15 @@ alwaysApply: true
 - Ensure valid property list structure for macOS recognition
 - Include proper DOCTYPE declaration: `<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">`
 - Use UTF-8 encoding for international characters
+- **Recommended**: Use Ukelele to create .bundle format for better integration
 
 ## Installation Requirements
 - Place files in `~/Library/Keyboard Layouts/` for user-specific installation
 - Use `/Library/Keyboard Layouts/` for system-wide installation
 - Ensure proper file permissions (644)
 - Restart or logout/login after installation
+- **Ukelele Workflow**: Use Ukelele to create .bundle format for proper integration
+- **Bundle Creation**: File → Save As Bundle in Ukelele for best compatibility
 
 ## System Integration
 - Use unique layout ID to avoid conflicts (9999 recommended)
