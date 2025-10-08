@@ -1,16 +1,15 @@
-# HiraganaLaser - Enterprise-Grade Custom Japanese Input Source
+# HiraganaLaser - Custom Japanese Input Source for macOS
 
 ## **Project Overview**
 
-HiraganaLaser is a production-ready macOS keyboard layout that enables direct typing of Hiragana characters on QWERTY keyboards, designed for Japanese language learning and efficient text input. This enterprise-grade solution provides comprehensive Hiragana character coverage with optimized key mapping strategies.
+HiraganaLaser is a production-ready macOS keyboard layout that enables direct typing of Hiragana characters on QWERTY keyboards, designed for Japanese language learning and efficient text input. This solution provides comprehensive Hiragana character coverage with intuitive key mapping strategies.
 
 ### **Key Features**
 - **Complete Hiragana Set**: All 46 basic Hiragana characters mapped
 - **Intuitive Shift Mappings**: Small characters on same keys as large counterparts
 - **Complete Small Character Set**: All essential small hiragana (ぁぃぅぇぉゃゅょっ)
+- **Combining Characters**: Dakuten (゙) and handakuten (゚) for voiced/semi-voiced sounds
 - **Direct Input Method**: No IME conversion required
-- **Enterprise Documentation**: Comprehensive technical specifications
-- **Dual Implementation**: Simple keyboard layout + advanced input method bundle
 - **Learning Optimized**: Character frequency-based mapping for efficient learning
 
 ### **Target Hardware**
@@ -18,21 +17,9 @@ Designed for custom mechanical keyboards with Hiragana legends, specifically the
 
 ![DROP x MiTo Laser R2 Kobe Hiragana set](DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png)
 
-## Overview
+## **Installation**
 
-This project is designed to aid in learning Japanese Hiragana characters by using a direct typing input method instead of traditional Romaji or Kana IME conversion input methods. It provides a working macOS input source that maps QWERTY keys directly to Hiragana characters, enabling direct Japanese text input without IME conversion.
-
-## Features
-
-✅ **Complete Hiragana Character Set** - All 46 basic Hiragana characters mapped  
-✅ **Number Row Support** - Numbers 0-9 mapped to Hiragana characters  
-✅ **ANSI Keyboard Layout** - Correct functionality for all other ANSI keys  
-✅ **macOS Integration** - Works with System Preferences Input Sources  
-✅ **UTF-8 Encoding** - Proper Japanese character support  
-
-## Installation (3 Options)
-
-### **Install Method 1: Direct Installation (1st Recommended Option)**
+### **Method 1: Direct Installation (Recommended)**
 
 1. **Download the layout file:**
    - Copy `HiraganaLaser.keylayout` to `~/Library/Keyboard Layouts/`
@@ -41,16 +28,15 @@ This project is designed to aid in learning Japanese Hiragana characters by usin
    - Log out and back in, or restart completely
 
 3. **Add to Input Sources:**
-   - Go to System Preferences > Keyboard > Input Sources
+   - Go to **System Settings** > **Keyboard** > **Input Sources** (macOS 13+)
+   - Or **System Preferences** > **Keyboard** > **Input Sources** (macOS 12 and earlier)
    - Click the "+" button
    - Find "HiraganaLaser" in the list and add it
 
 4. **Select the layout:**
    - Use the input source menu in your menu bar to switch to HiraganaLaser
 
-## **-OR-**
-
-### **Install Method 2: Ukelele Direct Install (2nd Recommended Option)**
+### **Method 2: Ukelele Installation**
 
 For the easiest installation using Ukelele's built-in installer:
 
@@ -58,28 +44,43 @@ For the easiest installation using Ukelele's built-in installer:
 2. **Open the layout:** File → Open → Select `HiraganaLaser.keylayout`
 3. **Install directly:** File → Install (see screenshot below)
 4. **Restart your Mac** to activate the input source
-5. **Add to Input Sources:** Go to System Preferences > Keyboard > Input Sources and add "HiraganaLaser"
+5. **Add to Input Sources:** Go to System Settings/Preferences > Keyboard > Input Sources and add "HiraganaLaser"
 
 ![Ukelele Install Menu](Ukelele_Install_Menu.png)
 
-## **-OR-**
+## **How to Use**
 
-### **Install Method 3: Ukelele Bundle (Alternative)**
+### **Basic Characters**
+Type normally for basic Hiragana characters. All 46 basic Hiragana characters are mapped to QWERTY keys.
 
-If you prefer to create a bundle manually:
+### **Small Characters**
+Use Shift+key combinations for small characters:
+- **Shift+0**: を (wo) - Object particle
+- **Shift+3**: ぁ (small あ)
+- **Shift+4**: ぅ (small う) 
+- **Shift+5**: ぇ (small え)
+- **Shift+6**: ぉ (small お)
+- **Shift+7**: ゃ (small や)
+- **Shift+8**: ゅ (small ゆ)
+- **Shift+9**: ょ (small よ)
+- **Shift+E**: ぃ (small い)
+- **Shift+Z**: っ (small つ) - Essential for double consonants
 
-1. **Download Ukelele** from [software.sil.org/ukelele](https://software.sil.org/ukelele/)
-2. **Open the layout:** File → Open → Select `HiraganaLaser.keylayout`
-3. **Set keyboard name:** File → Set Keyboard Name → "HiraganaLaser"
-4. **Save as bundle:** File → Save As Bundle → Save as `HiraganaLaser.bundle`
-5. **Install:** Copy the bundle to `~/Library/Keyboard Layouts/`
-6. **Restart** and add to Input Sources as above
+### **Combining Characters**
+Use the combining characters to create voiced and semi-voiced sounds:
+- **Type base character + ゙ (dakuten)**: か + ゙ = が (ga)
+- **Type base character + ゚ (handakuten)**: は + ゚ = ぱ (pa)
 
-## Key Mapping
+**Examples:**
+- ひらがな (hiragana): Type ひ + ら + が + な
+- こんにちは (konnichiwa): Type こ + ん + に + ち + は
+- がっこう (gakkou): Type が + っ + こ + う
+
+## **Key Mapping Reference**
 
 ### **macOS Key Code Reference**
 
-**Important**: In macOS keyboard layouts, key codes correspond to **physical key positions** on a US QWERTY keyboard, not the characters they produce. This reference table shows the correct key codes for each physical key position.
+**Important**: In macOS keyboard layouts, key codes correspond to **physical key positions** on a US QWERTY keyboard, not the characters they produce.
 
 #### **Complete Key Code Mapping Table**
 
@@ -161,44 +162,19 @@ If you prefer to create a bundle manually:
 | **Bottom Row** | | | |
 | Z | 6 | っ (small つ) | Small tsu for double consonants |
 
-**Note**: Small characters are placed on the same keys as their large counterparts for intuitive access. Only essential small characters are mapped, avoiding duplicate or confusing mappings.
+**Note**: Small characters are placed on the same keys as their large counterparts for intuitive access.
 
-### **Working Key Mapping (Left to Right, Top to Bottom)**
-
-#### **Number Row**
-|    `    |    1    |    2   |    3   |   4   |   5    |    6   |    7   |    8    |    9    |    0   |    -    |    =    |
-|---------|---------|--------|--------|-------|--------|--------|--------|---------|---------|--------|---------|---------|
-| ろ (ro) | ぬ (nu) | ふ (fu) | あ (a) | う (u) | え (e) | お (o) | や (ya) | ゆ (yu) | よ (yo) | わ (wa) | ほ (ho) | へ (he) |
-
-#### **Top Row**
-|    q    |    w    |   e    |    r   |   t   |   y    |    u    |    i   |    o    |    p    |    [   |    ]     |    \    |
-|---------|---------|--------|--------|-------|--------|---------|--------|---------|---------|--------|----------|---------|
-| た (ta) | て (te) | い (i)  | す (su)| か (a) | ん (n) | な (na) | に (ni) | ら (ra) | せ (se) | ゛(dkt) | ゜ (hdk) | む (mu) |
-
-
-
-#### **Home Row**
-|    a     |    s    |    d    |    f    |    g   |    h    |     j   |    k   |    l    |    ;    |    '   |
-|----------|---------|---------|---------|--------|---------|---------|--------|---------|---------|--------|
-| ち (chi) | と (to) | し (shi) | は (ha) | き (ki) | く (ku) | ま (ma) | の (no) | り (ri) | れ (re) | け (ke) |
-
-
-#### **Bottom Row**
-|     z    |    x    |   c    |     v   |    b   |    n    |    m    |    ,   |    .    |    /    |
-|----------|---------|--------|---------|--------|---------|---------|--------|---------|---------|
-| つ (tsu) | さ (sa) | そ (so) | ひ (hi) | こ (ko) | み (mi) | も (mo) | ね (ne) | る (ru) | め (me) |
-
-## Keyboard Layout
+## **Visual Layout Reference**
 
 ![HiraganaLaser Keyboard Layout](hiragana_laser_keymap.png)
 
-## Troubleshooting
+## **Troubleshooting**
 
 ### **Input Source Not Appearing**
 1. **Check file location:** Ensure `HiraganaLaser.keylayout` is in `~/Library/Keyboard Layouts/`
 2. **Restart required:** Log out and back in, or restart your Mac
 3. **Check permissions:** File should be readable (644 permissions)
-4. **Manual activation:** Go to System Preferences > Keyboard > Input Sources to add manually
+4. **Manual activation:** Go to System Settings/Preferences > Keyboard > Input Sources to add manually
 
 ### **Characters Not Typing**
 1. **Select correct input source:** Use the input source menu in your menu bar
@@ -227,10 +203,11 @@ If you prefer to create a bundle manually:
 
 ### **Character Mapping Strategy**
 - **Direct Mapping**: QWERTY → Hiragana (no Romaji conversion)
-- **Complete Coverage**: All 46 basic Hiragana characters
+- **Complete Coverage**: All 46 basic Hiragana characters + small characters
 - **Frequency Optimization**: High-frequency characters on easily accessible keys
 - **Learning Progression**: Arranged for beginner-friendly learning
 - **Control Preservation**: Essential keys (Enter, Tab, Backspace, Space) maintain functionality
+- **Intuitive Shift Mappings**: Small characters on same keys as large counterparts
 
 ### **System Requirements**
 - **macOS**: 10.12+ (tested on macOS 15.7.1)
@@ -244,71 +221,22 @@ If you prefer to create a bundle manually:
 - **Apple DTD Compliance**: Follows official keyboard layout standards
 - **Gatekeeper Compatible**: Works with macOS security features
 
-## **Development Standards**
+## **Character Coverage**
 
-### **Enterprise-Grade Documentation**
-- **Comprehensive Inline Comments**: Detailed XML documentation with technical specifications
-- **Character Frequency Analysis**: Documented mapping strategies and frequency optimization
-- **Technical Decision Rationale**: Clear explanations for architectural choices
-- **Development History**: Complete change tracking and modification history
+### **Complete Hiragana Set**
+- **Basic Characters**: All 46 basic Hiragana characters
+- **Small Characters**: ぁぃぅぇぉゃゅょっ (8 essential small characters)
+- **Combining Characters**: ゙ (dakuten), ゚ (handakuten) for voiced/semi-voiced sounds
+- **Special Characters**: を (wo) for object particle
+- **Total Coverage**: 100% of essential Hiragana characters for modern Japanese
 
-### **Code Quality Standards**
-- **Apple DTD Compliance**: Full compliance with KeyboardLayout.dtd v1.0
-- **UTF-8 Encoding**: Proper international character support
-- **XML Structure**: Valid XML 1.1 document structure
-- **Key Mapping Documentation**: Complete QWERTY→Hiragana mapping documentation
+### **Input Method**
+- **Direct Input**: No IME conversion required
+- **Combining Characters**: Use ゙ and ゚ to create voiced/semi-voiced sounds
+- **UTF-8 Encoding**: Full Japanese character support
+- **ANSI Layout**: Standard US keyboard compatibility
 
-### **Testing & Validation**
-- **Multi-Application Testing**: Validated across TextEdit, Terminal, Browser, Word
-- **Character Accuracy**: Verified output for all 46 Hiragana characters
-- **System Integration**: Tested input source switching and system compatibility
-- **Security Validation**: Gatekeeper and security feature compatibility
-
-### **Maintenance & Support**
-- **Version Control**: Git-based development with branch protection
-- **Documentation Updates**: Continuous documentation maintenance
-- **Issue Tracking**: GitHub-based issue and feature tracking
-- **Community Support**: Open-source development with community contributions
-
-## License
-
-This project is released under the CC0-1.0 license (Public Domain). See `LICENSE` file for details.
-
-## File Structures
-
-### **Simple Keyboard Layout (Working)**
-```
-~/Library/Keyboard Layouts/
-└── HiraganaLaser.keylayout          # Direct keyboard layout file
-```
-
-**Installation:** Copy to `~/Library/Keyboard Layouts/` and restart
-**Status:** ✅ **Working** - Ready for use and sharing
-**Features:** Direct Hiragana input, basic functionality
-
-### **Advanced Input Method Bundle (In Development)**
-```
-/Library/Input Methods/HiraganaLaser.app/
-├── Contents/
-│   ├── Info.plist                   # Main app configuration
-│   ├── MacOS/
-│   │   └── HiraganaLaser           # Main executable
-│   └── PlugIns/
-│       └── HiraganaLaser_Extension.appex/
-│           └── Contents/
-│               ├── Info.plist       # Extension config (Caps Lock support)
-│               ├── MacOS/
-│               │   └── HiraganaLaser_Extension
-│               └── Resources/
-│                   ├── HiraganaLaser.keylayout  # Keyboard layout
-│                   └── Hiragana.tiff            # Icon
-```
-
-**Installation:** System-level bundle (requires admin privileges)
-**Status:** 🔄 **In Development** - Caps Lock toggle not yet working
-**Features:** Advanced input method, Caps Lock toggle (planned), system integration
-
-## Files
+## **Files**
 
 - `HiraganaLaser.keylayout` - Main keyboard layout file
 - `README.md` - This documentation
@@ -316,12 +244,10 @@ This project is released under the CC0-1.0 license (Public Domain). See `LICENSE
 - `DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png` - Visual layout reference
 - `Ukelele_Install_Menu.png` - Installation guide screenshot
 
+## **License**
+
+This project is released under the CC0-1.0 license (Public Domain). See `LICENSE` file for details.
+
 ---
 
-**Status:** 
-- ✅ **Simple Keyboard Layout** - Production ready with validated key codes and intuitive Shift mappings
-- ✅ **Key Code Validation** - All duplicate key codes resolved, layout validates successfully
-- ✅ **Intuitive Shift Mappings** - Small characters on same keys as large counterparts
-- ✅ **Complete Small Character Set** - All essential small hiragana characters (ぁぃぅぇぉゃゅょっ)
-- ✅ **Enterprise Documentation** - Complete key code reference and technical specifications
-- 🔄 **Advanced Input Method Bundle** - In development (Caps Lock functionality not yet working)
+**Status**: ✅ **Production Ready** - Complete Hiragana character coverage with intuitive Shift key mappings
