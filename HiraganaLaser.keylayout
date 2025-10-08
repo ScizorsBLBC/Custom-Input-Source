@@ -31,11 +31,14 @@
     - Created: 2025-10-08
     - Last Modified: 2025-01-27 (Current working-branch)
     - Editor: Ukelele v452 + Manual refinement + CLI corrections
-    - Status: Production-ready keyboard layout with validated key codes
+    - Status: Production-ready keyboard layout with validated key codes and intuitive Shift mappings
     - Major Refinements: 
       * Added combining dakuten/handakuten and intuitive Shift key mapping
       * CRITICAL FIX: Corrected all key codes to match QWERTY physical positions
-      * Resolved duplicate key code validation errors (codes 30, 42)
+      * Resolved duplicate key code validation errors (codes 30, 42, 37)
+      * Implemented intuitive Shift key character placement (small chars on same keys as large)
+      * Added complete small hiragana character set (ぁぃぅぇぉゃゅょっ)
+      * Placed を (wo) on Shift+0 for logical access
       * Added comprehensive key code reference documentation
       * Validated layout installation and functionality
     
@@ -323,10 +326,11 @@
                  This provides access to small characters commonly used in Japanese text.
                  
                  MAPPING STRATEGY:
-                 - Small characters: っ, ゃ, ゅ, ょ, ぁ, ぃ, ぅ, ぇ, ぉ
-                 - Dakuten variants: が, ぎ, ぐ, げ, ご, ざ, じ, ず, ぜ, ぞ
-                 - Handakuten variants: ぱ, ぴ, ぷ, ぺ, ぽ
-                 - Character selection: Most commonly used small and modified characters
+                 - Small characters: ぁぃぅぇぉゃゅょっ (complete essential set)
+                 - Intuitive placement: Small characters on same keys as large counterparts
+                 - Special placement: を (wo) on Shift+0 (same key as わ)
+                 - Small つ (っ): Only on Shift+Z (same key as つ) for double consonants
+                 - Clean mapping: No duplicate characters, logical key relationships
                  
                  TECHNICAL NOTES:
                  - Shift modifier: Provides access to secondary character set

@@ -6,6 +6,8 @@ HiraganaLaser is a production-ready macOS keyboard layout that enables direct ty
 
 ### **Key Features**
 - **Complete Hiragana Set**: All 46 basic Hiragana characters mapped
+- **Intuitive Shift Mappings**: Small characters on same keys as large counterparts
+- **Complete Small Character Set**: All essential small hiragana (ぁぃぅぇぉゃゅょっ)
 - **Direct Input Method**: No IME conversion required
 - **Enterprise Documentation**: Comprehensive technical specifications
 - **Dual Implementation**: Simple keyboard layout + advanced input method bundle
@@ -146,12 +148,20 @@ If you prefer to create a bundle manually:
 | Physical Key | Key Code | Shift+Output | Notes |
 |--------------|----------|--------------|-------|
 | **Number Row** | | | |
-| 0 | 29 | を (wo) | Object particle |
-| 1-8 | 18-25 | ぁぃぅぇぉゃゅょ | Small vowel characters |
-| 9 | 25 | っ (small tsu) | Essential for double consonants |
-| **All Other Keys** | Various | っ (small tsu) | Small tsu for double consonants |
+| 0 | 29 | を (wo) | Object particle (on same key as わ) |
+| 3 | 20 | ぁ (small あ) | Small vowel character |
+| 4 | 21 | ぅ (small う) | Small vowel character |
+| 5 | 23 | ぇ (small え) | Small vowel character |
+| 6 | 22 | ぉ (small お) | Small vowel character |
+| 7 | 26 | ゃ (small や) | Small ya character |
+| 8 | 28 | ゅ (small ゆ) | Small yu character |
+| 9 | 25 | ょ (small よ) | Small yo character |
+| **Top Row** | | | |
+| E | 14 | ぃ (small い) | Small vowel character |
+| **Bottom Row** | | | |
+| Z | 6 | っ (small つ) | Small tsu for double consonants |
 
-**Note**: Most Shift+key combinations produce small つ (tsu) for double consonants, with special mappings for number row small characters and the を (wo) particle.
+**Note**: Small characters are placed on the same keys as their large counterparts for intuitive access. Only essential small characters are mapped, avoiding duplicate or confusing mappings.
 
 ### **Working Key Mapping (Left to Right, Top to Bottom)**
 
@@ -309,7 +319,9 @@ This project is released under the CC0-1.0 license (Public Domain). See `LICENSE
 ---
 
 **Status:** 
-- ✅ **Simple Keyboard Layout** - Production ready with corrected key codes
+- ✅ **Simple Keyboard Layout** - Production ready with validated key codes and intuitive Shift mappings
 - ✅ **Key Code Validation** - All duplicate key codes resolved, layout validates successfully
+- ✅ **Intuitive Shift Mappings** - Small characters on same keys as large counterparts
+- ✅ **Complete Small Character Set** - All essential small hiragana characters (ぁぃぅぇぉゃゅょっ)
 - ✅ **Enterprise Documentation** - Complete key code reference and technical specifications
 - 🔄 **Advanced Input Method Bundle** - In development (Caps Lock functionality not yet working)
