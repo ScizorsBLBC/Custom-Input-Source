@@ -1,0 +1,31 @@
+---
+description: Security best practices for keyboard layouts
+globs: ["**/*.keylayout", "**/*.md"]
+alwaysApply: true
+---
+
+# Security Best Practices
+
+## Gatekeeper Considerations
+- Always check for quarantine attributes: `xattr -l filename`
+- Document Gatekeeper bypass methods
+- Include code signing requirements
+- Plan for notarization process
+
+## File Security
+- Verify file permissions (644 for .keylayout files)
+- Check for extended attributes
+- Document security analysis in diagnostic reports
+- Include security troubleshooting steps
+
+## Installation Security
+- Provide secure installation methods
+- Document security workarounds
+- Include verification steps
+- Address system integrity protection (SIP)
+
+## Code Signing
+- Document developer certificate requirements
+- Include signing process instructions
+- Plan for Apple notarization
+- Address distribution security

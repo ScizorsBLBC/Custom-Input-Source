@@ -1,0 +1,31 @@
+---
+description: Enforce comprehensive documentation standards
+globs: ["**/*.md", "**/*.keylayout"]
+alwaysApply: true
+---
+
+# Documentation Standards for Custom Input Source Project
+
+## Inline Documentation
+- Add comprehensive XML comments to .keylayout files
+- Document every key mapping with QWERTY->Hiragana explanation
+- Include technical specifications and implementation details
+- Follow industry standards for XML documentation
+
+## README Documentation
+- Always update README.md when adding new features
+- Include installation instructions and troubleshooting
+- Document known issues and workarounds
+- Maintain comprehensive file listing
+
+## Project Documentation
+- Create PROJECT_HISTORY.md for development timeline
+- Add DIAGNOSTIC_REPORT.md for technical analysis
+- Include TROUBLESHOOTING.md for common issues
+- Document all approaches tried and decisions made
+
+## Code Comments
+- Explain "why" not "what" in comments
+- Document complex logic and business rules
+- Include technical decision rationale
+- Maintain consistency across all files

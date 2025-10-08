@@ -1,0 +1,31 @@
+---
+description: Testing and validation standards
+globs: ["**/*.keylayout", "**/*.md"]
+alwaysApply: false
+---
+
+# Testing and Validation Standards
+
+## File Validation
+- Validate XML structure: `xmllint --noout filename`
+- Check property list format: `plutil -lint filename`
+- Verify file encoding: `file filename`
+- Test Gatekeeper compatibility: `spctl -a -v filename`
+
+## Installation Testing
+- Test in multiple applications (TextEdit, Terminal, Browser)
+- Verify character output accuracy
+- Test input source switching
+- Validate system integration
+
+## Documentation Testing
+- Verify all links work correctly
+- Test installation instructions
+- Validate troubleshooting steps
+- Check code examples
+
+## System Compatibility
+- Test on different macOS versions
+- Verify with different keyboard types
+- Test with various applications
+- Validate security settings

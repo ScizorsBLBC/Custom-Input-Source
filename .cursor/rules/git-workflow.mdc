@@ -1,0 +1,31 @@
+---
+description: Git workflow and version control standards
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# Git Workflow Standards
+
+## Commit Messages
+- Use descriptive commit messages
+- Include scope and impact information
+- Reference issues and features
+- Follow conventional commit format
+
+## Branch Management
+- Use main branch for stable releases
+- Create feature branches for development
+- Include pull request descriptions
+- Maintain clean commit history
+
+## File Organization
+- Keep documentation files organized
+- Maintain consistent naming conventions
+- Include proper .gitignore rules
+- Version control all project files
+
+## Documentation Updates
+- Update README.md with each significant change
+- Maintain PROJECT_HISTORY.md
+- Update troubleshooting guides
+- Keep diagnostic reports current

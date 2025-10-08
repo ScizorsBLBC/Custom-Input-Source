@@ -1,0 +1,31 @@
+---
+description: macOS keyboard layout development standards
+globs: ["**/*.keylayout", "**/*.xml"]
+alwaysApply: true
+---
+
+# Keyboard Layout Development Standards
+
+## XML Structure
+- Follow Apple's keyboard layout DTD requirements
+- Use proper XML comment syntax
+- Include comprehensive file headers
+- Document all key mappings
+
+## Character Mapping
+- Map all QWERTY keys to appropriate Hiragana characters
+- Include number row (0-9) mappings
+- Document special characters and control keys
+- Maintain logical character placement
+
+## Technical Requirements
+- Use UTF-8 encoding for Japanese characters
+- Set unique layout ID (9999) to avoid conflicts
+- Follow ANSI layout standards
+- Include proper modifier map structure
+
+## Security Considerations
+- Address Gatekeeper security requirements
+- Document code signing needs
+- Include quarantine removal instructions
+- Plan for notarization requirements
