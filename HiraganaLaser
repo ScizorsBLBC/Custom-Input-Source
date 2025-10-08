@@ -1,5 +1,0 @@
-#!/bin/bash
-# HiraganaLaser Input Method Executable
-# This is a minimal executable for the input method bundle
-echo "HiraganaLaser Input Method Active"
-exit 0

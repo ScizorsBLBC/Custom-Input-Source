@@ -1,4 +1,0 @@
-#!/bin/bash
-# HiraganaLaser Extension
-echo "HiraganaLaser Input Method Extension"
-exit 0
