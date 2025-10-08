@@ -1,0 +1,78 @@
+# Colorful Keycaps Input Method
+# Maps standard keyboard input to hiragana characters shown on colorful keycaps
+# Created for custom Das Keyboard layout
+
+METHOD: TABLE
+
+ENCODE: Unicode
+
+PROMPT: Colorful_Keycaps
+
+DELIMITER: ,
+
+VERSION: 1.0
+
+MAXINPUTCODE: 1
+
+VALIDINPUTKEY: 0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`~!@#$%^&*()-_=+[{]}\|;:'",./<>?
+
+BEGINCHARACTER
+# Number row (mostly standard)
+` ｀
+1 １
+2 ２
+3 ３
+4 ４
+5 ５
+6 ６
+7 ７
+8 ８
+9 ９
+0 ０
+- －
+= ＝
+
+# QWERTY row - hiragana characters
+q た
+w て
+e い
+r す
+t か
+y ん
+u な
+i に
+o ら
+p せ
+[ 「
+] 」
+
+# ASDF row - hiragana characters
+a ち
+s と
+d し
+f は
+g き
+h く
+j ま
+k の
+l り
+; れ
+' け
+
+# ZXCV row - hiragana characters
+z つ
+x さ
+c そ
+v ひ
+b こ
+n み
+m も
+, ね
+. る
+/ め
+
+# Special keys and modifiers
+# These are handled differently in macOS input methods
+# The actual modifier key behavior is handled by the keyboard hardware/firmware
+
+ENDCHARACTER
