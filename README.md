@@ -123,6 +123,10 @@ For proper macOS integration, use Ukelele to create a bundle:
 
 The layout maps QWERTY keys to Hiragana characters as follows:
 
+![HiraganaLaser Keyboard Layout](https://github.com/ScizorsBLBC/Custom-Input-Source/blob/main/keyboard-layout-preview.png)
+
+*Visual representation of the HiraganaLaser keyboard layout showing direct Hiragana character mappings*
+
 ### Number Row (Top Row)
 | QWERTY Key | Hiragana | QWERTY Key | Hiragana |
 |------------|----------|------------|----------|
