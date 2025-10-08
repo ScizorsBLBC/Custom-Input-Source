@@ -1,0 +1,4 @@
+#!/bin/bash
+# HiraganaLaser Main Application
+echo "HiraganaLaser Input Method Container"
+exit 0
