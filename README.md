@@ -66,7 +66,7 @@ If you prefer to create a bundle manually:
 ### **Working Key Mapping (Left to Right, Top to Bottom)**
 
 #### **Number Row**
-|    `    |    1    |   2    |    3   |   4   |   5    |    6   |    7   |    8    |    9    |    0   |    -    |    =    |
+|    `    |    1    |    2   |    3   |   4   |   5    |    6   |    7   |    8    |    9    |    0   |    -    |    =    |
 |---------|---------|--------|--------|-------|--------|--------|--------|---------|---------|--------|---------|---------|
 | ろ (ro) | ぬ (nu) | ふ (fu) | あ (a) | う (u) | え (e) | お (o) | や (ya) | ゆ (yu) | よ (yo) | わ (wa) | ほ (ho) | へ (he) |
 
@@ -90,7 +90,7 @@ If you prefer to create a bundle manually:
 
 ## Keyboard Layout
 
-![HiraganaLaser Keyboard Layout](Laser%20Keymap%20Image.png)
+![HiraganaLaser Keyboard Layout](hiragana_laser_keymap.png)
 
 ## Troubleshooting
 
