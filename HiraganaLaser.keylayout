@@ -239,18 +239,6 @@
             <!-- QWERTY: . -> Hiragana: る (ru) - Character frequency: High -->
             <key code="44" output="め"/>
             <!-- QWERTY: / -> Hiragana: め (me) - Character frequency: High -->
-            <key code="42" output="む"/>
-            <!-- QWERTY: Shift -> Hiragana: む (mu) - Character frequency: Medium -->
-            <key code="43" output="ね"/>
-            <!-- QWERTY: ; -> Hiragana: ね (ne) - Character frequency: High -->
-            <key code="44" output="め"/>
-            <!-- QWERTY: ' -> Hiragana: め (me) - Character frequency: High -->
-            <key code="45" output="み"/>
-            <!-- QWERTY: \ -> Hiragana: み (mi) - Character frequency: High -->
-            <key code="46" output="も"/>
-            <!-- QWERTY: Shift -> Hiragana: も (mo) - Character frequency: High -->
-            <key code="47" output="る"/>
-            <!-- QWERTY: / -> Hiragana: る (ru) - Character frequency: High -->
             <!-- =============================================================================
                  ESSENTIAL CONTROL KEYS (Key Codes 48-53)
                  =============================================================================
