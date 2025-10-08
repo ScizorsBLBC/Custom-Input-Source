@@ -125,13 +125,50 @@ This project uses industry-standard practices:
 
 This project is released under the CC0-1.0 license (Public Domain). See `LICENSE` file for details.
 
+## File Structures
+
+### **Simple Keyboard Layout (Working)**
+```
+~/Library/Keyboard Layouts/
+└── HiraganaLaser.keylayout          # Direct keyboard layout file
+```
+
+**Installation:** Copy to `~/Library/Keyboard Layouts/` and restart
+**Status:** ✅ **Working** - Ready for use and sharing
+**Features:** Direct Hiragana input, basic functionality
+
+### **Advanced Input Method Bundle (In Development)**
+```
+/Library/Input Methods/HiraganaLaser.app/
+├── Contents/
+│   ├── Info.plist                   # Main app configuration
+│   ├── MacOS/
+│   │   └── HiraganaLaser           # Main executable
+│   └── PlugIns/
+│       └── HiraganaLaser_Extension.appex/
+│           └── Contents/
+│               ├── Info.plist       # Extension config (Caps Lock support)
+│               ├── MacOS/
+│               │   └── HiraganaLaser_Extension
+│               └── Resources/
+│                   ├── HiraganaLaser.keylayout  # Keyboard layout
+│                   └── Hiragana.tiff            # Icon
+```
+
+**Installation:** System-level bundle (requires admin privileges)
+**Status:** 🔄 **In Development** - Caps Lock toggle not yet working
+**Features:** Advanced input method, Caps Lock toggle (planned), system integration
+
 ## Files
 
 - `HiraganaLaser.keylayout` - Main keyboard layout file
 - `README.md` - This documentation
 - `LICENSE` - CC0-1.0 license
-- `Laser Keymap Image.png` - Visual layout reference
+- `DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png` - Visual layout reference
+- `Ukelele_Install_Menu.png` - Installation guide screenshot
 
 ---
 
-**Status:** ✅ **Working** - Ready for use and sharing
+**Status:** 
+- ✅ **Simple Keyboard Layout** - Working and ready for use
+- 🔄 **Advanced Input Method Bundle** - In development (Caps Lock functionality not yet working)
