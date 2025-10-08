@@ -40,6 +40,16 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 
 The layout maps QWERTY keys to Hiragana characters as follows:
 
+### Number Row (Top Row)
+| QWERTY Key | Hiragana | QWERTY Key | Hiragana |
+|------------|----------|------------|----------|
+| 0 | ち (chi) | 5 | き (ki) |
+| 1 | と (to) | 6 | つ (tsu) |
+| 2 | し (shi) | 7 | さ (sa) |
+| 3 | は (ha) | 8 | そ (so) |
+| 4 | く (ku) | 9 | ひ (hi) |
+
+### Main Letter Rows
 | QWERTY Key | Hiragana | QWERTY Key | Hiragana |
 |------------|----------|------------|----------|
 | Q | ち (chi) | A | あ (a) |
