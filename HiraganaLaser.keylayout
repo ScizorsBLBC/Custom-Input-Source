@@ -14,8 +14,8 @@
     - Encoding: UTF-8 for Japanese character support
     - Structure: ANSI layout for standard US keyboards
 -->
-<!--Last edited by Ukelele version 452 on 2025-10-08 at 17:00 (JST)-->
-<keyboard group="0" id="9999" name="HiraganaLaser" maxout="2">
+<!--Last edited by Ukelele version 452 on 2025-10-08 at 18:47 (JST)-->
+<keyboard group="1" id="16396" name="HiraganaLaser" maxout="2">
     <!-- Layout configuration for ANSI keyboards -->
     <layouts>
         <!-- Modifier map: Basic implementation (no shift/option combinations yet) -->
@@ -61,9 +61,9 @@
             <!-- R -> い (i) -->
             <key code="15" output="す"/>
             <!-- T -> す (su) -->
-            <key code="16" output="か"/>
+            <key code="16" output="ん"/>
             <!-- Y -> か (ka) -->
-            <key code="17" output="ん"/>
+            <key code="17" output="か"/>
             <!-- U -> ん (n) -->
             <key code="18" output="ぬ"/>
             <!-- I -> ぬ (nu) -->

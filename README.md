@@ -1,22 +1,24 @@
 # HiraganaLaser - Custom Japanese Input Source
 
-A custom macOS keyboard layout that enables direct typing of Hiragana characters on a QWERTY keyboard, designed for use with custom mechanical keyboards.
+A custom macOS keyboard layout that enables direct typing of Hiragana characters on a QWERTY keyboard, designed for use with custom mechanical keyboards. It uses the DROP x MiTo Laser R2 GMK 'Kobe' Hiragana legends keycaps or another set that has the same layout.
+
+![DROP x MiTo Laser R2 Kobe Hiragana set](DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png)
 
 ## Overview
 
-This project provides a working macOS input source that maps QWERTY keys directly to Hiragana characters, enabling efficient Japanese text input without IME conversion.
+This project is designed to aid in learning Japanese Hiragana characters by using a direct typing input method instead of traditional Romaji or Kana IME conversion input methods. It provides a working macOS input source that maps QWERTY keys directly to Hiragana characters, enabling direct Japanese text input without IME conversion.
 
 ## Features
 
 ✅ **Complete Hiragana Character Set** - All 46 basic Hiragana characters mapped  
 ✅ **Number Row Support** - Numbers 0-9 mapped to Hiragana characters  
-✅ **Proper Backspace** - Correct backspace functionality  
+✅ **ANSI Keyboard Layout** - Correct functionality for all other ANSI keys  
 ✅ **macOS Integration** - Works with System Preferences Input Sources  
 ✅ **UTF-8 Encoding** - Proper Japanese character support  
 
-## Installation
+## Installation (3 Options)
 
-### **Method 1: Direct Installation (Recommended)**
+### **Install Method 1: Direct Installation (1st Recommended Option)**
 
 1. **Download the layout file:**
    - Copy `HiraganaLaser.keylayout` to `~/Library/Keyboard Layouts/`
@@ -32,7 +34,9 @@ This project provides a working macOS input source that maps QWERTY keys directl
 4. **Select the layout:**
    - Use the input source menu in your menu bar to switch to HiraganaLaser
 
-### **Method 2: Ukelele Direct Install (Recommended)**
+## **-OR-**
+
+### **Install Method 2: Ukelele Direct Install (2nd Recommended Option)**
 
 For the easiest installation using Ukelele's built-in installer:
 
@@ -44,7 +48,9 @@ For the easiest installation using Ukelele's built-in installer:
 
 ![Ukelele Install Menu](Ukelele_Install_Menu.png)
 
-### **Method 3: Ukelele Bundle (Alternative)**
+## **-OR-**
+
+### **Install Method 3: Ukelele Bundle (Alternative)**
 
 If you prefer to create a bundle manually:
 
@@ -59,39 +65,30 @@ If you prefer to create a bundle manually:
 
 ### **Working Key Mapping (Left to Right, Top to Bottom)**
 
-#### **Top Row (Q-P)**
-| Q | W | E | R | T | Y | U | I | O | P |
-|---|----|----|----|----|----|----|----|----|----|
-| ろ (ro) | ぬ (nu) | ふ (fu) | あ (a) | う (u) | え (e) | お (o) | や (ya) | ゆ (yu) | よ (yo) |
+#### **Number Row**
+|    `    |    1    |   2    |    3   |   4   |   5    |    6   |    7   |    8    |    9    |    0   |    -    |    =    |
+|---------|---------|--------|--------|-------|--------|--------|--------|---------|---------|--------|---------|---------|
+| ろ (ro) | ぬ (nu) | ふ (fu) | あ (a) | う (u) | え (e) | お (o) | や (ya) | ゆ (yu) | よ (yo) | わ (wa) | ほ (ho) | へ (he) |
 
-#### **Home Row (A-L)**
-| A | S | D | F | G | H | J | K | L |
-|---|----|----|----|----|----|----|----|----|
-| わ (wa) | ほ (ho) | へ (he) | た (ta) | て (te) | い (i) | す (su) | ん (n) | か (ka) | な (na) |
+#### **Top Row**
+|    q    |    w    |   e    |    r   |   t   |   y    |    u    |    i   |    o    |    p    |    [   |    ]     |    \    |
+|---------|---------|--------|--------|-------|--------|---------|--------|---------|---------|--------|----------|---------|
+| た (ta) | て (te) | い (i)  | す (su)| か (a) | ん (n) | な (na) | に (ni) | ら (ra) | せ (se) | ゛(dkt) | ゜ (hdk) | む (mu) |
 
-#### **Bottom Row (Z-M)**
-| Z | X | C | V | B | N | M |
-|---|----|----|----|----|----|----|
-| に (ni) | ら (ra) | せ (se) | ゛ (dakuten) | ゜ (handakuten) | ち (chi) | と (to) |
 
-#### **Second Bottom Row (Numbers)**
-| 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 0 |
-|---|----|----|----|----|----|----|----|----|----|
-| し (shi) | は (ha) | き (ki) | く (ku) | ま (ma) | の (no) | り (ri) | れ (re) | け (ke) | つ (tsu) |
 
-#### **Third Bottom Row (Additional)**
-| - | = | [ | ] | \ | ; | ' | , | . | / |
-|---|----|----|----|----|----|----|----|----|----|
-| さ (sa) | そ (so) | ひ (hi) | こ (ko) | み (mi) | も (mo) | ね (ne) | る (ru) | め (me) | ？ (?) |
+#### **Home Row**
+|    a     |    s    |    d    |    f    |    g   |    h    |     j   |    k   |    l    |    ;    |    '   |
+|----------|---------|---------|---------|--------|---------|---------|--------|---------|---------|--------|
+| ち (chi) | と (to) | し (shi) | は (ha) | き (ki) | く (ku) | ま (ma) | の (no) | り (ri) | れ (re) | け (ke) |
 
-### **Special Keys**
-- **Space**: Space (unchanged)
-- **Enter**: Enter (unchanged)  
-- **Backspace**: Backspace (unchanged)
-- **Tab**: Tab (unchanged)
-- **Brackets**: 「」 (Japanese quotation marks)
 
-## Visual Layout
+#### **Bottom Row**
+|     z    |    x    |   c    |     v   |    b   |    n    |    m    |    ,   |    .    |    /    |
+|----------|---------|--------|---------|--------|---------|---------|--------|---------|---------|
+| つ (tsu) | さ (sa) | そ (so) | ひ (hi) | こ (ko) | み (mi) | も (mo) | ね (ne) | る (ru) | め (me) |
+
+## Keyboard Layout
 
 ![HiraganaLaser Keyboard Layout](Laser%20Keymap%20Image.png)
 
@@ -107,10 +104,6 @@ If you prefer to create a bundle manually:
 1. **Select correct input source:** Use the input source menu in your menu bar
 2. **Test in different apps:** Try TextEdit, Terminal, or a web browser
 3. **Check encoding:** Ensure the application supports UTF-8
-
-### **Backspace Issues**
-- The current version has fixed backspace functionality
-- If issues persist, reinstall the layout file
 
 ## Technical Details
 
