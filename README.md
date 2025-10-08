@@ -31,6 +31,7 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 - `TROUBLESHOOTING.md` - Troubleshooting guide for common issues
 - `DIAGNOSTIC_REPORT.md` - Technical analysis of installation issues
 - `DOCUMENTATION_STANDARDS.md` - Inline documentation standards
+- `CURSOR_AI_RULES.md` - Cursor AI agent configuration and best practices
 - `LICENSE` - CC0-1.0 license file
 
 ## Installation
@@ -143,6 +144,35 @@ This project is released under the CC0-1.0 license (Public Domain).
 
 - **[PROJECT_HISTORY.md](PROJECT_HISTORY.md)** - Complete development history, approaches tried, and technical decisions
 - **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Common issues and solutions for installation and usage
+- **[CURSOR_AI_RULES.md](CURSOR_AI_RULES.md)** - Cursor AI agent configuration and best practices
+
+## Cursor AI Agent Configuration
+
+This project includes comprehensive `.cursor/rules` configuration to help Cursor AI agents work more effectively:
+
+### **Rule Categories**
+- **Documentation Standards**: Comprehensive inline documentation requirements
+- **Keyboard Layout Development**: macOS keyboard layout best practices
+- **Security Best Practices**: Gatekeeper and code signing considerations
+- **Testing Standards**: File validation and installation testing
+- **Git Workflow**: Version control and commit standards
+
+### **Implementation**
+```bash
+# Create Cursor rules directory
+mkdir -p .cursor/rules
+
+# Add rule files (see CURSOR_AI_RULES.md for complete setup)
+# Each rule file should be .mdc format with frontmatter metadata
+```
+
+### **Benefits**
+- ✅ **Consistent Documentation**: AI agents follow project documentation standards
+- ✅ **Security Awareness**: Automatic consideration of Gatekeeper and security issues
+- ✅ **Quality Standards**: Enforced testing and validation practices
+- ✅ **Project Context**: AI agents understand custom input source requirements
+
+**See [CURSOR_AI_RULES.md](CURSOR_AI_RULES.md)** for complete configuration guide.
 
 ## Contributing
 
