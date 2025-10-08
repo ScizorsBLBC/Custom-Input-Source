@@ -1,0 +1,171 @@
+---
+description: GitHub best practices and repository management standards
+globs: ["**/*"]
+alwaysApply: true
+---
+
+# GitHub Best Practices & Repository Management
+
+## **CRITICAL RULES - NEVER VIOLATE**
+
+### **NEVER WORK ON MAIN BRANCH**
+- **Main branch is SACRED** - only for stable, tested releases
+- **All development MUST happen on working branches**
+- **Main serves as clean checkpoint** for reverting if needed
+- **Violation of this rule breaks the entire workflow**
+
+### **ALWAYS CREATE WORKING BRANCHES**
+- **Before any development**: `git checkout -b working-branch` or `feature-name`
+- **Before any changes**: Ensure you're on a working branch
+- **Check branch status**: `git branch` before starting work
+- **If accidentally on main**: Create branch immediately, don't commit
+
+## Repository Structure Standards
+
+### **Branch Organization**
+- **main**: Stable releases, clean checkpoints only
+- **working-branch**: Current development work
+- **feature-***: Specific feature development
+- **bugfix-***: Bug fixes and patches
+- **experiment-***: Experimental features and testing
+
+### **File Organization**
+- **Keep root clean**: Only essential files in root directory
+- **Organize by type**: Group related files in subdirectories
+- **Documentation**: Keep all docs in logical structure
+- **Cleanup regularly**: Remove temporary and backup files
+
+## GitHub Workflow Best Practices
+
+### **Pull Request Process**
+- **Create PRs for ALL changes** to main branch
+- **Use descriptive PR titles** and detailed descriptions
+- **Link to issues** using `#issue-number` in PR descriptions
+- **Use draft PRs** for work in progress
+- **Request reviews** before merging to main
+
+### **Issue Management**
+- **Create issues** for all features and bugs
+- **Use labels** to categorize issues (bug, enhancement, documentation)
+- **Link commits** to issues using `#issue-number`
+- **Close issues** when PRs are merged
+- **Use templates** for consistent issue reporting
+
+### **Commit Standards**
+- **Format**: `type(scope): description`
+- **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- **Examples**:
+  - `feat(input-source): add Caps Lock toggle support`
+  - `fix(keyboard-layout): correct backspace key mapping`
+  - `docs(readme): update installation instructions`
+- **Keep commits atomic**: One logical change per commit
+- **Write clear descriptions**: Explain what and why
+
+## Branch Lifecycle Management
+
+### **Creating Branches**
+- **From main**: Always create from clean main branch
+- **Naming**: Use descriptive names (`feature-caps-lock`, `bugfix-backspace`)
+- **Checkout**: `git checkout -b branch-name`
+- **Push immediately**: `git push -u origin branch-name`
+
+### **Development Process**
+- **Work on branch**: All changes on working branch
+- **Commit frequently**: Small, logical commits
+- **Push regularly**: Keep remote branch updated
+- **Test thoroughly**: Before creating PR
+
+### **Merging Process**
+- **Create PR**: From working branch to main
+- **Review changes**: Self-review before requesting review
+- **Test final version**: Ensure everything works
+- **Merge to main**: Only after approval and testing
+- **Delete branch**: Clean up after successful merge
+
+### **Cleanup Process**
+- **Delete local branches**: `git branch -d branch-name`
+- **Delete remote branches**: `git push origin --delete branch-name`
+- **Update main**: `git checkout main && git pull origin main`
+- **Clean working directory**: Remove temporary files
+
+## Security & Permissions
+
+### **Never Commit Sensitive Data**
+- **No passwords**: Never commit passwords or API keys
+- **No personal info**: Avoid committing personal information
+- **Use .gitignore**: Exclude sensitive files
+- **Environment variables**: Use env vars for configuration
+
+### **File Permissions**
+- **Review permissions**: Check file permissions before committing
+- **User ownership**: Ensure proper ownership for user files
+- **System files**: Use sudo only when necessary
+- **Document permissions**: Include permission requirements in docs
+
+## Documentation Standards
+
+### **README Management**
+- **Keep updated**: Update README with each significant change
+- **Status indicators**: Clear working vs in-development status
+- **Installation instructions**: Step-by-step for all approaches
+- **Troubleshooting**: Common issues and solutions
+
+### **Code Documentation**
+- **Inline comments**: Comprehensive comments in code
+- **Technical specs**: Include all technical details
+- **Change history**: Track modifications and decisions
+- **API documentation**: Document any APIs or interfaces
+
+## Quality Assurance
+
+### **Pre-commit Checklist**
+- [ ] Working on correct branch (not main)
+- [ ] All changes tested
+- [ ] Documentation updated
+- [ ] No sensitive data committed
+- [ ] File permissions correct
+- [ ] Commit message follows standards
+
+### **Pre-merge Checklist**
+- [ ] All tests passing
+- [ ] Documentation complete
+- [ ] No breaking changes (or documented)
+- [ ] Branch is up to date
+- [ ] Ready for production
+
+### **Post-merge Checklist**
+- [ ] Main branch updated
+- [ ] Working branch deleted
+- [ ] Remote branches cleaned up
+- [ ] Documentation reflects current state
+- [ ] Ready for next development cycle
+
+## Emergency Procedures
+
+### **If Accidentally Working on Main**
+1. **Stop immediately**: Don't commit anything
+2. **Create branch**: `git checkout -b working-branch`
+3. **Move changes**: `git stash` then `git stash pop`
+4. **Continue on branch**: Resume work on working branch
+5. **Document mistake**: Note what happened for future reference
+
+### **If Main Branch Gets Corrupted**
+1. **Don't panic**: Main branch is protected
+2. **Revert to last good commit**: `git reset --hard last-good-commit`
+3. **Force push**: `git push --force-with-lease origin main`
+4. **Document incident**: Record what happened and how it was fixed
+5. **Review process**: Identify how to prevent recurrence
+
+## Repository Maintenance
+
+### **Regular Cleanup**
+- **Monthly**: Review and delete stale branches
+- **Quarterly**: Review and update documentation
+- **Annually**: Review and update dependencies
+- **As needed**: Clean up temporary files and backups
+
+### **Monitoring**
+- **Watch for issues**: Monitor GitHub notifications
+- **Review PRs**: Check all incoming pull requests
+- **Update dependencies**: Keep dependencies current
+- **Security updates**: Apply security patches promptly

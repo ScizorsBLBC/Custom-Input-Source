@@ -1,52 +1,136 @@
 ---
-description: macOS input source development best practices
-globs: ["**/*.keylayout", "**/*.md"]
+description: macOS input source development best practices based on real-world experience
+globs: ["**/*.keylayout", "**/*.md", "**/*.plist", "**/*.app"]
 alwaysApply: true
 ---
 
-# macOS Input Source Best Practices
+# macOS Input Source Development Best Practices
+
+## **Two Implementation Approaches**
+
+### **Simple Keyboard Layout (Recommended for Basic Use)**
+- **File**: Single `.keylayout` file
+- **Location**: `~/Library/Keyboard Layouts/`
+- **Pros**: Simple, works immediately, easy to share
+- **Cons**: Limited features, no Caps Lock toggle
+- **Use Case**: Direct Hiragana input, learning, basic functionality
+
+### **Advanced Input Method Bundle (For Full Features)**
+- **Structure**: `.app` bundle with `.appex` extension
+- **Location**: `/Library/Input Methods/`
+- **Pros**: Full system integration, Caps Lock toggle, advanced features
+- **Cons**: Complex setup, requires admin privileges, harder to debug
+- **Use Case**: Production use, advanced features, system integration
 
 ## File Format Requirements
+
+### **Keyboard Layout Files (.keylayout)**
 - Use proper .keylayout file format (not raw XML)
-- Ensure valid property list structure for macOS recognition
-- Include proper DOCTYPE declaration: `<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">`
+- Include proper DOCTYPE: `<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">`
 - Use UTF-8 encoding for international characters
-- **Recommended**: Use Ukelele to create .bundle format for better integration
+- **Ukelele Recommended**: Use Ukelele for creation and editing
+- **XML Version**: Use 1.1 for Ukelele compatibility
+
+### **Input Method Bundles (.app)**
+- **Main App**: Container with basic Info.plist
+- **Extension**: `.appex` with input method configuration
+- **Structure**: Follow Apple's input method bundle conventions
+- **Bundle ID**: Use reverse domain notation (e.g., `com.scizors.inputmethod.HiraganaLaser`)
 
 ## Installation Requirements
-- Place files in `~/Library/Keyboard Layouts/` for user-specific installation
-- Use `/Library/Keyboard Layouts/` for system-wide installation
+
+### **Simple Installation (User Level)**
+- Place files in `~/Library/Keyboard Layouts/`
 - Ensure proper file permissions (644)
 - Restart or logout/login after installation
-- **Ukelele Workflow**: Use Ukelele to create .bundle format for proper integration
-- **Bundle Creation**: File → Save As Bundle in Ukelele for best compatibility
+- Add to Input Sources in System Settings
+
+### **Advanced Installation (System Level)**
+- Place bundles in `/Library/Input Methods/`
+- Requires admin privileges (`sudo`)
+- Set proper ownership (`chown user:staff`)
+- Restart input method services
+- Add to enabled input sources via `defaults write`
 
 ## System Integration
-- Use unique layout ID to avoid conflicts (9999 recommended)
-- Set appropriate group attribute (0 for standard keyboards)
-- Include proper modifier map structure
-- Test with System Preferences > Keyboard > Input Sources
 
-## Character Encoding
+### **Keyboard Layout Integration**
+- Use unique layout ID (Ukelele generates these automatically)
+- Set appropriate group attribute (1 for Ukelele-generated layouts)
+- Include proper modifier map structure
+- Test with System Settings > Keyboard > Input Sources
+
+### **Input Method Bundle Integration**
+- **TICapsLockLanguageSwitchCapable**: `true` for Caps Lock toggle
+- **ComponentInputModeDict**: Define input modes (Hiragana, Katakana, etc.)
+- **NSExtension**: Configure input method services
+- **Bundle Type**: `APPL` for main app, `XPC!` for extension
+
+## Character Encoding & Mapping
+
+### **Character Encoding**
 - Use UTF-8 encoding for Japanese characters
 - Include proper Unicode escape sequences for special characters
 - Test character output in multiple applications
 - Verify encoding with `file` command
 
+### **Key Mapping Strategy**
+- **Direct Mapping**: QWERTY → Hiragana (no conversion)
+- **Character Frequency**: Optimize for common Japanese text
+- **Learning Progression**: Arrange for beginner-friendly learning
+- **Control Keys**: Preserve Enter, Tab, Backspace, Space functionality
+
 ## Security Compliance
-- Address Gatekeeper security requirements
-- Document quarantine attribute handling
-- Include code signing considerations
-- Plan for Apple notarization for distribution
+
+### **Gatekeeper Considerations**
+- **Quarantine Attributes**: Check with `xattr -l filename`
+- **Bypass Methods**: `xattr -d com.apple.quarantine filename`
+- **Code Signing**: Required for distribution
+- **Notarization**: Plan for Apple notarization process
+
+### **File Security**
+- **Permissions**: 644 for .keylayout files, 755 for executables
+- **Ownership**: Set proper user ownership for user-level files
+- **System Files**: Use sudo for system-level installations
 
 ## Testing Requirements
-- Test in multiple applications (TextEdit, Terminal, Browser)
-- Verify input source switching functionality
-- Test with different keyboard types
+
+### **Basic Testing**
+- Test in multiple applications (TextEdit, Terminal, Browser, Word)
+- Verify character output accuracy for all mapped keys
+- Test input source switching between layouts
 - Validate system integration after restart
 
+### **Advanced Testing**
+- Test Caps Lock toggle functionality (if implemented)
+- Verify input method bundle recognition
+- Test with different keyboard types (built-in, external, wireless)
+- Validate security settings don't interfere
+
 ## Documentation Standards
-- Include comprehensive installation instructions
-- Document troubleshooting steps
-- Provide diagnostic information
-- Include security workarounds
+
+### **Inline Documentation**
+- **Enterprise-Grade Comments**: Comprehensive XML comments
+- **Technical Specifications**: Include all technical details
+- **Character Mapping**: Document QWERTY→Hiragana relationships
+- **Development History**: Track changes and modifications
+
+### **README Documentation**
+- **Dual Structure**: Document both simple and advanced approaches
+- **Installation Instructions**: Step-by-step for both methods
+- **Troubleshooting**: Common issues and solutions
+- **Status Indicators**: Clear working vs in-development status
+
+## Development Workflow
+
+### **Branch Strategy**
+- **Main Branch**: Stable releases only
+- **Working Branches**: All development work
+- **Feature Branches**: Specific feature development
+- **Never work directly on main**
+
+### **Testing Strategy**
+- **Test on working branches** before merging
+- **Validate both approaches** (simple and advanced)
+- **Document test results** and findings
+- **Clean up after development** (delete branches, clean files)

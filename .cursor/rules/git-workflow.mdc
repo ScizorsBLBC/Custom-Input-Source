@@ -1,31 +1,68 @@
 ---
-description: Git workflow and version control standards
+description: Git workflow and version control standards with GitHub best practices
 globs: ["**/*"]
 alwaysApply: true
 ---
 
-# Git Workflow Standards
+# Git Workflow Standards & GitHub Best Practices
 
-## Commit Messages
-- Use descriptive commit messages
-- Include scope and impact information
-- Reference issues and features
-- Follow conventional commit format
+## **CRITICAL: NEVER WORK ON MAIN BRANCH**
+- **Main branch is PROTECTED** - only for stable, tested releases
+- **Always create feature branches** for any development work
+- **Main branch serves as clean checkpoint** for reverting if needed
+- **All development happens on working branches**
 
-## Branch Management
-- Use main branch for stable releases
-- Create feature branches for development
-- Include pull request descriptions
-- Maintain clean commit history
+## Branch Management Strategy
+- **Main Branch**: Stable releases only, clean checkpoints
+- **Working Branches**: All development work (e.g., `working-branch`, `feature-caps-lock`)
+- **Branch Naming**: Use descriptive names (`feature-*`, `bugfix-*`, `experiment-*`)
+- **Branch Lifecycle**: Create → Develop → Test → Merge → Delete
+
+## GitHub Workflow Best Practices
+- **Create Pull Requests** for all changes to main
+- **Use GitHub Issues** to track features and bugs
+- **Protect main branch** with branch protection rules
+- **Require reviews** for main branch changes
+- **Use draft PRs** for work in progress
+- **Link commits to issues** using `#issue-number`
+
+## Commit Message Standards
+- **Format**: `type(scope): description`
+- **Types**: `feat`, `fix`, `docs`, `style`, `refactor`, `test`, `chore`
+- **Examples**:
+  - `feat(input-source): add Caps Lock toggle support`
+  - `fix(keyboard-layout): correct backspace key mapping`
+  - `docs(readme): update installation instructions`
+- **Include impact information** and reference issues
+
+## Branch Cleanup Process
+- **After merging**: Delete feature branches locally and on GitHub
+- **Before starting new work**: Ensure clean working directory
+- **Regular cleanup**: Remove stale branches monthly
+- **Documentation**: Update README with current branch status
 
 ## File Organization
-- Keep documentation files organized
-- Maintain consistent naming conventions
-- Include proper .gitignore rules
-- Version control all project files
+- **Keep documentation files organized** in logical structure
+- **Maintain consistent naming conventions** across all files
+- **Include proper .gitignore rules** for system files
+- **Version control all project files** (except system-generated)
 
 ## Documentation Updates
-- Update README.md with each significant change
-- Maintain PROJECT_HISTORY.md
-- Update troubleshooting guides
-- Keep diagnostic reports current
+- **Update README.md** with each significant change
+- **Maintain changelog** for version history
+- **Update troubleshooting guides** when issues are discovered
+- **Keep diagnostic reports current** with latest findings
+- **Document branch status** and development progress
+
+## Security & Permissions
+- **Never commit passwords** or sensitive information
+- **Use environment variables** for configuration
+- **Review file permissions** before committing
+- **Test on clean branches** before merging to main
+
+## Code Review Process
+- **Self-review** before creating PR
+- **Test all changes** on working branch first
+- **Document breaking changes** clearly
+- **Update tests** when adding new features
+- **Verify documentation** matches implementation
