@@ -149,7 +149,7 @@ This document captures the complete development journey of the Custom Japanese I
 **Known Limitations:**
 - No Dakuon/Han-dakuon support (が, ざ, だ, ば, ぱ)
 - No small character support (っ, ゃ, ゅ, ょ)
-- No Katakana layout
+- No Katakana layout (There will be a katakana keyboard input added as well for learning purposes on a custom keyboard siilar to this in the future)
 - Basic modifier key support only
 - No installation automation
 

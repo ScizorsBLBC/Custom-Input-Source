@@ -29,6 +29,8 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 - `README.md` - This documentation file
 - `PROJECT_HISTORY.md` - Complete development history and technical details
 - `TROUBLESHOOTING.md` - Troubleshooting guide for common issues
+- `DIAGNOSTIC_REPORT.md` - Technical analysis of installation issues
+- `DOCUMENTATION_STANDARDS.md` - Inline documentation standards
 - `LICENSE` - CC0-1.0 license file
 
 ## Installation
@@ -38,6 +40,26 @@ This project creates a custom input source for macOS that maps QWERTY keys direc
 3. Go to System Preferences > Keyboard > Input Sources
 4. Click the "+" button and add "HiraganaLaser" from the list
 5. Select the layout from the input source menu
+
+### ⚠️ **Known Installation Issues**
+
+**Issue**: Layout may not appear in Input Sources list
+**Root Cause**: File format validation issues detected
+**Status**: Under investigation
+
+**Diagnostic Findings:**
+- ✅ File exists in correct location with proper permissions
+- ✅ XML structure is valid
+- ⚠️ Property list validation fails (macOS expects specific format)
+- ⚠️ Layout not automatically enabled in system
+
+**Workarounds:**
+1. **Manual Activation**: Manually add layout in System Preferences
+2. **System Restart**: Full restart may be required
+3. **Alternative Location**: Try `/Library/Keyboard Layouts/` (system-wide)
+4. **Format Conversion**: May need proper .keylayout format conversion
+
+**See [DIAGNOSTIC_REPORT.md](DIAGNOSTIC_REPORT.md)** for complete technical analysis.
 
 ## Key Mapping
 
