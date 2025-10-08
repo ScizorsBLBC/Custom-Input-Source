@@ -13,6 +13,9 @@ Thumbs.db
 *.swp
 *.swo
 
+# Cursor AI
+.cursor/
+
 # Temporary files
 *.tmp
 *.temp
