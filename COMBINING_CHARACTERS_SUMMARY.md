@@ -1,4 +1,4 @@
-# HiraganaLaser - Combining Characters Implementation
+# ひらがな - Combining Characters Implementation
 
 ## **Branch: `refine-keyboard-layout`**
 

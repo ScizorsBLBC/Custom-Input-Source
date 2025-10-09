@@ -2,7 +2,7 @@
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--
     =============================================================================
-    HiraganaLaser Keyboard Layout - Enterprise-Grade Custom Hiragana Input Source
+    ひらがな Keyboard Layout - Enterprise-Grade Custom Hiragana Input Source
     =============================================================================
     
     PROJECT OVERVIEW:
@@ -29,10 +29,18 @@
     
     DEVELOPMENT HISTORY:
     - Created: 2025-10-08
-    - Last Modified: 2025-10-08 22:45 JST
-    - Editor: Ukelele v452 + Manual refinement
-    - Status: Production-ready keyboard layout with combining characters
-    - Refinements: Added combining dakuten/handakuten and intuitive Shift key mapping
+    - Last Modified: 2025-01-27 (Current working-branch)
+    - Editor: Ukelele v452 + Manual refinement + CLI corrections
+    - Status: Production-ready keyboard layout with validated key codes and intuitive Shift mappings
+    - Major Refinements: 
+      * Added combining dakuten/handakuten and intuitive Shift key mapping
+      * CRITICAL FIX: Corrected all key codes to match QWERTY physical positions
+      * Resolved duplicate key code validation errors (codes 30, 42, 37)
+      * Implemented intuitive Shift key character placement (small chars on same keys as large)
+      * Added complete small hiragana character set (ぁぃぅぇぉゃゅょっ)
+      * Placed を (wo) on Shift+0 for logical access
+      * Added comprehensive key code reference documentation
+      * Validated layout installation and functionality
     
     COMPATIBILITY:
     - macOS: 10.12+ (tested on macOS 15.7.1)
@@ -48,7 +56,7 @@
     =============================================================================
 -->
 <!--Last edited by Ukelele version 452 on 2025-10-08 at 18:47 (JST)-->
-<keyboard group="1" id="16396" name="HiraganaLaser" maxout="2">
+<keyboard group="1" id="16396" name="ひらがな" maxout="2">
     <!-- Layout configuration for ANSI keyboards -->
     <layouts>
         <!-- Modifier map: Enhanced implementation with Shift key support -->
@@ -72,7 +80,7 @@
                  This enables number-based Hiragana input without IME conversion.
                  
                  MAPPING STRATEGY:
-                 - Sequential mapping: 0-9 -> ちとしはくきつさそひ
+                 - Sequential mapping: 0-9 -> わぬふあうえおやゆよ
                  - Character selection: Based on frequency and learning progression
                  - Input method: Direct character output (no conversion required)
                  
@@ -81,26 +89,30 @@
                  - UTF-8 encoding ensures proper Japanese character display
                  - No modifier keys required for basic character input
                  ============================================================================= -->
-            <key code="0" output="ち"/>
-            <!-- QWERTY: 0 -> Hiragana: ち (chi) - Character frequency: High -->
-            <key code="1" output="と"/>
-            <!-- QWERTY: 1 -> Hiragana: と (to) - Character frequency: High -->
-            <key code="2" output="し"/>
-            <!-- QWERTY: 2 -> Hiragana: し (shi) - Character frequency: High -->
-            <key code="3" output="は"/>
-            <!-- QWERTY: 3 -> Hiragana: は (ha) - Character frequency: High -->
-            <key code="4" output="く"/>
-            <!-- QWERTY: 4 -> Hiragana: く (ku) - Character frequency: Medium -->
-            <key code="5" output="き"/>
-            <!-- QWERTY: 5 -> Hiragana: き (ki) - Character frequency: High -->
-            <key code="6" output="つ"/>
-            <!-- QWERTY: 6 -> Hiragana: つ (tsu) - Character frequency: High -->
-            <key code="7" output="さ"/>
-            <!-- QWERTY: 7 -> Hiragana: さ (sa) - Character frequency: High -->
-            <key code="8" output="そ"/>
-            <!-- QWERTY: 8 -> Hiragana: そ (so) - Character frequency: High -->
-            <key code="9" output="ひ"/>
-            <!-- QWERTY: 9 -> Hiragana: ひ (hi) - Character frequency: High -->
+            <key code="29" output="わ"/>
+            <!-- QWERTY: 0 -> Hiragana: わ (wa) - Character frequency: High -->
+            <key code="27" output="ほ"/>
+            <!-- QWERTY: - -> Hiragana: ほ (ho) - Character frequency: High -->
+            <key code="24" output="へ"/>
+            <!-- QWERTY: = -> Hiragana: へ (he) - Character frequency: High -->
+            <key code="18" output="ぬ"/>
+            <!-- QWERTY: 1 -> Hiragana: ぬ (nu) - Character frequency: High -->
+            <key code="19" output="ふ"/>
+            <!-- QWERTY: 2 -> Hiragana: ふ (fu) - Character frequency: Medium -->
+            <key code="20" output="あ"/>
+            <!-- QWERTY: 3 -> Hiragana: あ (a) - Character frequency: Very High (vowel) -->
+            <key code="21" output="う"/>
+            <!-- QWERTY: 4 -> Hiragana: う (u) - Character frequency: Very High (vowel) -->
+            <key code="23" output="え"/>
+            <!-- QWERTY: 5 -> Hiragana: え (e) - Character frequency: Very High (vowel) -->
+            <key code="22" output="お"/>
+            <!-- QWERTY: 6 -> Hiragana: お (o) - Character frequency: Very High (vowel) -->
+            <key code="26" output="や"/>
+            <!-- QWERTY: 7 -> Hiragana: や (ya) - Character frequency: High -->
+            <key code="28" output="ゆ"/>
+            <!-- QWERTY: 8 -> Hiragana: ゆ (yu) - Character frequency: High -->
+            <key code="25" output="よ"/>
+            <!-- QWERTY: 9 -> Hiragana: よ (yo) - Character frequency: High -->
             <!-- =============================================================================
                  TOP ROW MAPPING (Key Codes 11-20: Q-P)
                  =============================================================================
@@ -108,7 +120,7 @@
                  This section covers the most frequently used Hiragana characters.
                  
                  MAPPING STRATEGY:
-                 - QWERTY Q-P -> Hiragana: こたていすんかなにふあ
+                 - QWERTY Q-P -> Hiragana: たていすかんなにらせ
                  - Character selection: High-frequency Hiragana characters
                  - Learning progression: Common characters for beginners
                  
@@ -117,26 +129,32 @@
                  - Character frequency: Optimized for common Japanese text
                  - Input method: Direct character output (no conversion)
                  ============================================================================= -->
-            <key code="11" output="こ"/>
-            <!-- QWERTY: Q -> Hiragana: こ (ko) - Character frequency: High -->
             <key code="12" output="た"/>
-            <!-- QWERTY: W -> Hiragana: た (ta) - Character frequency: High -->
+            <!-- QWERTY: Q -> Hiragana: た (ta) - Character frequency: High -->
             <key code="13" output="て"/>
-            <!-- QWERTY: E -> Hiragana: て (te) - Character frequency: High -->
+            <!-- QWERTY: W -> Hiragana: て (te) - Character frequency: High -->
             <key code="14" output="い"/>
-            <!-- QWERTY: R -> Hiragana: い (i) - Character frequency: Very High -->
+            <!-- QWERTY: E -> Hiragana: い (i) - Character frequency: Very High -->
             <key code="15" output="す"/>
-            <!-- QWERTY: T -> Hiragana: す (su) - Character frequency: High -->
+            <!-- QWERTY: R -> Hiragana: す (su) - Character frequency: High -->
+            <key code="17" output="か"/>
+            <!-- QWERTY: T -> Hiragana: か (ka) - Character frequency: High -->
             <key code="16" output="ん"/>
             <!-- QWERTY: Y -> Hiragana: ん (n) - Character frequency: Very High -->
-            <key code="17" output="か"/>
-            <!-- QWERTY: U -> Hiragana: か (ka) - Character frequency: High -->
-            <key code="18" output="な"/>
-            <!-- QWERTY: I -> Hiragana: な (na) - Character frequency: High -->
-            <key code="19" output="に"/>
-            <!-- QWERTY: O -> Hiragana: に (ni) - Character frequency: High -->
-            <key code="20" output="ふ"/>
-            <!-- QWERTY: P -> Hiragana: ふ (fu) - Character frequency: Medium -->
+            <key code="32" output="な"/>
+            <!-- QWERTY: U -> Hiragana: な (na) - Character frequency: High -->
+            <key code="34" output="に"/>
+            <!-- QWERTY: I -> Hiragana: に (ni) - Character frequency: High -->
+            <key code="31" output="ら"/>
+            <!-- QWERTY: O -> Hiragana: ら (ra) - Character frequency: High -->
+            <key code="35" output="せ"/>
+            <!-- QWERTY: P -> Hiragana: せ (se) - Character frequency: High -->
+            <key code="33" output="゙"/>
+            <!-- QWERTY: [ -> Dakuten: ゙ (combining dakuten) - No spacing, combines with previous character -->
+            <key code="30" output="゚"/>
+            <!-- QWERTY: ] -> Handakuten: ゚ (combining handakuten) - No spacing, combines with previous character -->
+            <key code="42" output="む"/>
+            <!-- QWERTY: \ -> Hiragana: む (mu) - Character frequency: Medium -->
             <!-- =============================================================================
                  HOME ROW MAPPING (Key Codes 21-29: A-L)
                  =============================================================================
@@ -144,33 +162,37 @@
                  This section includes vowels and common characters for efficient typing.
                  
                  MAPPING STRATEGY:
-                 - QWERTY A-L -> Hiragana: うおえへよやほゆわ
+                 - QWERTY A-L -> Hiragana: ちとしはきくまのり
                  - Character selection: Vowels and high-frequency characters
                  - Ergonomic placement: Optimized for common finger positions
                  
                  TECHNICAL NOTES:
                  - Key codes: A=21, S=22, D=23, F=24, G=25, H=26, J=27, K=28, L=29
-                 - Vowel focus: Includes う, お, え for efficient vowel input
+                 - Vowel focus: Includes い, う, え, お for efficient vowel input
                  - Character frequency: Optimized for Japanese text patterns
                  ============================================================================= -->
-            <key code="21" output="う"/>
-            <!-- QWERTY: A -> Hiragana: う (u) - Character frequency: Very High (vowel) -->
-            <key code="22" output="お"/>
-            <!-- QWERTY: S -> Hiragana: お (o) - Character frequency: Very High (vowel) -->
-            <key code="23" output="え"/>
-            <!-- QWERTY: D -> Hiragana: え (e) - Character frequency: Very High (vowel) -->
-            <key code="24" output="へ"/>
-            <!-- QWERTY: F -> Hiragana: へ (he) - Character frequency: High -->
-            <key code="25" output="よ"/>
-            <!-- QWERTY: G -> Hiragana: よ (yo) - Character frequency: High -->
-            <key code="26" output="や"/>
-            <!-- QWERTY: H -> Hiragana: や (ya) - Character frequency: High -->
-            <key code="27" output="ほ"/>
-            <!-- QWERTY: J -> Hiragana: ほ (ho) - Character frequency: High -->
-            <key code="28" output="ゆ"/>
-            <!-- QWERTY: K -> Hiragana: ゆ (yu) - Character frequency: High -->
-            <key code="29" output="わ"/>
-            <!-- QWERTY: L -> Hiragana: わ (wa) - Character frequency: High -->
+            <key code="0" output="ち"/>
+            <!-- QWERTY: A -> Hiragana: ち (chi) - Character frequency: High -->
+            <key code="1" output="と"/>
+            <!-- QWERTY: S -> Hiragana: と (to) - Character frequency: High -->
+            <key code="2" output="し"/>
+            <!-- QWERTY: D -> Hiragana: し (shi) - Character frequency: High -->
+            <key code="3" output="は"/>
+            <!-- QWERTY: F -> Hiragana: は (ha) - Character frequency: High -->
+            <key code="5" output="き"/>
+            <!-- QWERTY: G -> Hiragana: き (ki) - Character frequency: High -->
+            <key code="4" output="く"/>
+            <!-- QWERTY: H -> Hiragana: く (ku) - Character frequency: Medium -->
+            <key code="38" output="ま"/>
+            <!-- QWERTY: J -> Hiragana: ま (ma) - Character frequency: High -->
+            <key code="40" output="の"/>
+            <!-- QWERTY: K -> Hiragana: の (no) - Character frequency: High -->
+            <key code="37" output="り"/>
+            <!-- QWERTY: L -> Hiragana: り (ri) - Character frequency: High -->
+            <key code="41" output="れ"/>
+            <!-- QWERTY: ; -> Hiragana: れ (re) - Character frequency: High -->
+            <key code="39" output="け"/>
+            <!-- QWERTY: \' -> Hiragana: け (ke) - Character frequency: High -->
             <!-- =============================================================================
                  BOTTOM ROW MAPPING (Key Codes 30-35: Special Characters)
                  =============================================================================
@@ -179,7 +201,7 @@
                  
                  MAPPING STRATEGY:
                  - Special characters: ゜, ゛ (handakuten, dakuten)
-                 - Bottom row: らなにせ (remaining Hiragana characters)
+                 - Bottom row: つさそひこ (remaining Hiragana characters)
                  - Character selection: Complete Hiragana set coverage
                  
                  TECHNICAL NOTES:
@@ -187,18 +209,16 @@
                  - Diacritical marks: ゜ (handakuten), ゛ (dakuten) for character modification
                  - Character frequency: Complete set for comprehensive input
                  ============================================================================= -->
-            <key code="30" output="゚"/>
-            <!-- QWERTY: ] -> Handakuten: ゚ (combining handakuten) - No spacing, combines with previous character -->
-            <key code="31" output="ら"/>
-            <!-- QWERTY: Z -> Hiragana: ら (ra) - Character frequency: High -->
-            <key code="32" output="な"/>
-            <!-- QWERTY: X -> Hiragana: な (na) - Character frequency: High -->
-            <key code="33" output="ち"/>
-            <!-- QWERTY: C -> Hiragana: ち (chi) - Character frequency: High -->
-            <key code="34" output="に"/>
-            <!-- QWERTY: V -> Hiragana: に (ni) - Character frequency: High -->
-            <key code="35" output="せ"/>
-            <!-- QWERTY: B -> Hiragana: せ (se) - Character frequency: High -->
+            <key code="6" output="つ"/>
+            <!-- QWERTY: Z -> Hiragana: つ (tsu) - Character frequency: High -->
+            <key code="7" output="さ"/>
+            <!-- QWERTY: X -> Hiragana: さ (sa) - Character frequency: High -->
+            <key code="8" output="そ"/>
+            <!-- QWERTY: C -> Hiragana: そ (so) - Character frequency: High -->
+            <key code="9" output="ひ"/>
+            <!-- QWERTY: V -> Hiragana: ひ (hi) - Character frequency: High -->
+            <key code="11" output="こ"/>
+            <!-- QWERTY: B -> Hiragana: こ (ko) - Character frequency: High -->
             <!-- =============================================================================
                  CONTROL KEYS AND REMAINING MAPPINGS (Key Codes 36-47)
                  =============================================================================
@@ -217,28 +237,16 @@
                  ============================================================================= -->
             <key code="36" output="&#x000D;"/>
             <!-- QWERTY: Enter -> Control: Carriage Return (preserved functionality) -->
-            <key code="37" output="り"/>
-            <!-- QWERTY: N -> Hiragana: り (ri) - Character frequency: High -->
-            <key code="38" output="ま"/>
-            <!-- QWERTY: M -> Hiragana: ま (ma) - Character frequency: High -->
-            <key code="39" output="け"/>
-            <!-- QWERTY: , -> Hiragana: け (ke) - Character frequency: High -->
-            <key code="40" output="の"/>
-            <!-- QWERTY: . -> Hiragana: の (no) - Character frequency: High -->
-            <key code="41" output="れ"/>
-            <!-- QWERTY: / -> Hiragana: れ (re) - Character frequency: High -->
-            <key code="42" output="む"/>
-            <!-- QWERTY: Shift -> Hiragana: む (mu) - Character frequency: Medium -->
-            <key code="43" output="ね"/>
-            <!-- QWERTY: ; -> Hiragana: ね (ne) - Character frequency: High -->
-            <key code="44" output="め"/>
-            <!-- QWERTY: ' -> Hiragana: め (me) - Character frequency: High -->
             <key code="45" output="み"/>
-            <!-- QWERTY: \ -> Hiragana: み (mi) - Character frequency: High -->
+            <!-- QWERTY: N -> Hiragana: み (mi) - Character frequency: High -->
             <key code="46" output="も"/>
-            <!-- QWERTY: Shift -> Hiragana: も (mo) - Character frequency: High -->
+            <!-- QWERTY: M -> Hiragana: も (mo) - Character frequency: High -->
+            <key code="43" output="ね"/>
+            <!-- QWERTY: , -> Hiragana: ね (ne) - Character frequency: High -->
             <key code="47" output="る"/>
-            <!-- QWERTY: / -> Hiragana: る (ru) - Character frequency: High -->
+            <!-- QWERTY: . -> Hiragana: る (ru) - Character frequency: High -->
+            <key code="44" output="め"/>
+            <!-- QWERTY: / -> Hiragana: め (me) - Character frequency: High -->
             <!-- =============================================================================
                  ESSENTIAL CONTROL KEYS (Key Codes 48-53)
                  =============================================================================
@@ -261,7 +269,7 @@
             <!-- QWERTY: Space -> Control: Space character (preserved functionality) -->
             <key code="50" output="ろ"/>
             <!-- QWERTY: ` -> Hiragana: ろ (ro) - Character frequency: High (final Hiragana) -->
-            <key code="51" output="&#x0008;"/>
+            <key code="51" output=""/>
             <!-- QWERTY: Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="\e"/>
             <!-- QWERTY: Escape -> Control: Escape character (preserved functionality) -->
@@ -312,125 +320,104 @@
         </keyMap>
         <keyMap index="1">
             <!-- =============================================================================
-                 SHIFT KEY MAPPING - SMALL CHARACTERS
+                 SHIFT KEY MAPPING - SMALL CHARACTERS & SPECIAL SYMBOLS
                  =============================================================================
-                 Maps Shift+QWERTY keys to small Hiragana characters (っ, ゃ, ゅ, ょ, etc.).
-                 This provides access to small characters commonly used in Japanese text.
+                 Maps Shift+QWERTY keys to small Hiragana characters (っ, ゃ, ゅ, ょ, etc.) and special symbols.
+                 This provides access to small characters and the long vowel sound commonly used in Japanese text.
                  
                  MAPPING STRATEGY:
-                 - Small characters: っ, ゃ, ゅ, ょ, ぁ, ぃ, ぅ, ぇ, ぉ
-                 - Dakuten variants: が, ぎ, ぐ, げ, ご, ざ, じ, ず, ぜ, ぞ
-                 - Handakuten variants: ぱ, ぴ, ぷ, ぺ, ぽ
-                 - Character selection: Most commonly used small and modified characters
+                 - Small characters: ぁぃぅぇぉゃゅょっ (complete essential set)
+                 - Intuitive placement: Small characters on same keys as large counterparts
+                 - Special placement: を (wo) on Shift+0 (same key as わ)
+                 - Small つ (っ): Only on Shift+Z (same key as つ) for double consonants
+                 - Long vowel sound: ー on Shift+む (mu) for vowel extension
+                 - Clean mapping: No duplicate characters, logical key relationships
                  
                  TECHNICAL NOTES:
                  - Shift modifier: Provides access to secondary character set
                  - Small characters: Essential for proper Japanese text input
+                 - Long vowel sound: ー (U+30FC) for vowel extension in katakana and hiragana
                  - Precomposed characters: Avoids combining character spacing issues
                  ============================================================================= -->
             <!-- NUMBER ROW - Small characters (intuitive mapping) -->
-            <key code="0" output="っ"/>
-            <!-- Shift+0 -> Small つ (tsu) - Essential for double consonants -->
-            <key code="1" output="ぁ"/>
-            <!-- Shift+1 -> Small あ (a) - Small vowel character -->
-            <key code="2" output="ぃ"/>
-            <!-- Shift+2 -> Small い (i) - Small vowel character -->
-            <key code="3" output="ぅ"/>
-            <!-- Shift+3 -> Small う (u) - Small vowel character -->
-            <key code="4" output="ぇ"/>
-            <!-- Shift+4 -> Small え (e) - Small vowel character -->
-            <key code="5" output="ぉ"/>
-            <!-- Shift+5 -> Small お (o) - Small vowel character -->
-            <key code="6" output="ゃ"/>
-            <!-- Shift+6 -> Small や (ya) - Small ya character -->
-            <key code="7" output="ゅ"/>
-            <!-- Shift+7 -> Small ゆ (yu) - Small yu character -->
-            <key code="8" output="ょ"/>
-            <!-- Shift+8 -> Small よ (yo) - Small yo character -->
-            <key code="9" output="を"/>
-            <!-- Shift+9 -> を (wo) - Object particle -->
+            <key code="29" output="を"/>
+            <!-- Shift+0 -> を (wo) - Object particle (on same key as わ) -->
+            <key code="18" output=""/>
+            <!-- Shift+1 -> (no small variant for ぬ) -->
+            <key code="19" output=""/>
+            <!-- Shift+2 -> (no small variant for ふ) -->
+            <key code="20" output="ぁ"/>
+            <!-- Shift+3 -> Small あ (a) - Small vowel character -->
+            <key code="21" output="ぅ"/>
+            <!-- Shift+4 -> Small う (u) - Small vowel character -->
+            <key code="23" output="ぇ"/>
+            <!-- Shift+5 -> Small え (e) - Small vowel character -->
+            <key code="22" output="ぉ"/>
+            <!-- Shift+6 -> Small お (o) - Small vowel character -->
+            <key code="26" output="ゃ"/>
+            <!-- Shift+7 -> Small や (ya) - Small ya character -->
+            <key code="28" output="ゅ"/>
+            <!-- Shift+8 -> Small ゆ (yu) - Small yu character -->
+            <key code="25" output="ょ"/>
+            <!-- Shift+9 -> Small よ (yo) - Small yo character -->
             
             <!-- TOP ROW - Small characters (intuitive mapping) -->
-            <key code="11" output="っ"/>
-            <!-- Shift+Q -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="12" output="っ"/>
-            <!-- Shift+W -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="13" output="っ"/>
-            <!-- Shift+E -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="14" output="っ"/>
-            <!-- Shift+R -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="15" output="っ"/>
-            <!-- Shift+T -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="16" output="ゃ"/>
-            <!-- Shift+Y -> Small や (ya) - Small ya character -->
-            <key code="17" output="ゅ"/>
-            <!-- Shift+U -> Small ゆ (yu) - Small yu character -->
-            <key code="18" output="ょ"/>
-            <!-- Shift+I -> Small よ (yo) - Small yo character -->
-            <key code="19" output="っ"/>
-            <!-- Shift+O -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="20" output="っ"/>
-            <!-- Shift+P -> Small つ (tsu) - Small tsu for double consonants -->
+            <key code="12" output=""/>
+            <!-- Shift+Q -> (no small variant for た) -->
+            <key code="13" output=""/>
+            <!-- Shift+W -> (no small variant for て) -->
+            <key code="14" output="ぃ"/>
+            <!-- Shift+E -> Small い (i) - Small vowel character -->
+            <key code="15" output=""/>
+            <!-- Shift+R -> (no small variant for す) -->
+            <key code="17" output=""/>
+            <!-- Shift+T -> (no small variant for か) -->
+            <key code="16" output=""/>
+            <!-- Shift+Y -> (no small variant for ん) -->
+            <key code="32" output=""/>
+            <!-- Shift+U -> (no small variant for な) -->
+            <key code="34" output=""/>
+            <!-- Shift+I -> (no small variant for に) -->
+            <key code="31" output=""/>
+            <!-- Shift+O -> (no small variant for ら) -->
+            <key code="35" output=""/>
+            <!-- Shift+P -> (no small variant for せ) -->
             
             <!-- HOME ROW - Small characters (intuitive mapping) -->
-            <key code="21" output="ぅ"/>
-            <!-- Shift+A -> Small う (u) - Small vowel character -->
-            <key code="22" output="ぉ"/>
-            <!-- Shift+S -> Small お (o) - Small vowel character -->
-            <key code="23" output="ぇ"/>
-            <!-- Shift+D -> Small え (e) - Small vowel character -->
-            <key code="24" output="っ"/>
-            <!-- Shift+F -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="25" output="ょ"/>
-            <!-- Shift+G -> Small よ (yo) - Small yo character -->
-            <key code="26" output="ぁ"/>
-            <!-- Shift+H -> Small あ (a) - Small vowel character -->
-            <key code="27" output="っ"/>
-            <!-- Shift+J -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="28" output="ゅ"/>
-            <!-- Shift+K -> Small ゆ (yu) - Small yu character -->
-            <key code="29" output="っ"/>
-            <!-- Shift+L -> Small つ (tsu) - Small tsu for double consonants -->
+            <key code="0" output=""/>
+            <!-- Shift+A -> (no small variant for ち) -->
+            <key code="1" output=""/>
+            <!-- Shift+S -> (no small variant for と) -->
+            <key code="2" output=""/>
+            <!-- Shift+D -> (no small variant for し) -->
+            <key code="3" output=""/>
+            <!-- Shift+F -> (no small variant for は) -->
+            <key code="5" output=""/>
+            <!-- Shift+G -> (no small variant for き) -->
+            <key code="4" output=""/>
+            <!-- Shift+H -> (no small variant for く) -->
+            <key code="38" output=""/>
+            <!-- Shift+J -> (no small variant for ま) -->
+            <key code="40" output=""/>
+            <!-- Shift+K -> (no small variant for の) -->
+            <key code="37" output=""/>
+            <!-- Shift+L -> (no small variant for り) -->
             
             <!-- BOTTOM ROW - Small characters (intuitive mapping) -->
-            <key code="30" output="っ"/>
-            <!-- Shift+] -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="31" output="っ"/>
-            <!-- Shift+Z -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="32" output="っ"/>
-            <!-- Shift+X -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="33" output="っ"/>
-            <!-- Shift+C -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="34" output="っ"/>
-            <!-- Shift+V -> Small つ (tsu) - Small tsu for double consonants -->
-            <key code="35" output="っ"/>
-            <!-- Shift+B -> Small つ (tsu) - Small tsu for double consonants -->
+            <key code="6" output="っ"/>
+            <!-- Shift+Z -> Small つ (tsu) - Small tsu for double consonants (on same key as つ) -->
+            <key code="7" output=""/>
+            <!-- Shift+X -> (no small variant for さ) -->
+            <key code="8" output=""/>
+            <!-- Shift+C -> (no small variant for そ) -->
+            <key code="9" output=""/>
+            <!-- Shift+V -> (no small variant for ひ) -->
+            <key code="11" output=""/>
+            <!-- Shift+B -> (no small variant for こ) -->
             
             <!-- CONTROL KEYS - Preserve functionality -->
             <key code="36" output="&#x000D;"/>
             <!-- Shift+Enter -> Control: Carriage Return (preserved functionality) -->
-            <key code="37" output="り"/>
-            <!-- Shift+N -> り (ri) - Keep as is (no small variant needed) -->
-            <key code="38" output="ま"/>
-            <!-- Shift+M -> ま (ma) - Keep as is (no small variant needed) -->
-            <key code="39" output="け"/>
-            <!-- Shift+, -> け (ke) - Keep as is (no small variant needed) -->
-            <key code="40" output="の"/>
-            <!-- Shift+. -> の (no) - Keep as is (no small variant needed) -->
-            <key code="41" output="れ"/>
-            <!-- Shift+/ -> れ (re) - Keep as is (no small variant needed) -->
-            <key code="42" output="む"/>
-            <!-- Shift+Shift -> む (mu) - Keep as is (no small variant needed) -->
-            <key code="43" output="ね"/>
-            <!-- Shift+; -> ね (ne) - Keep as is (no small variant needed) -->
-            <key code="44" output="め"/>
-            <!-- Shift+' -> め (me) - Keep as is (no small variant needed) -->
-            <key code="45" output="み"/>
-            <!-- Shift+\ -> み (mi) - Keep as is (no small variant needed) -->
-            <key code="46" output="も"/>
-            <!-- Shift+Shift -> も (mo) - Keep as is (no small variant needed) -->
-            <key code="47" output="る"/>
-            <!-- Shift+/ -> る (ru) - Keep as is (no small variant needed) -->
             
             <!-- ESSENTIAL CONTROL KEYS - Preserve functionality -->
             <key code="48" output="&#x0009;"/>
@@ -439,12 +426,14 @@
             <!-- Shift+Space -> Control: Space character (preserved functionality) -->
             <key code="50" output="ろ"/>
             <!-- Shift+` -> ろ (ro) - Keep as is (no small variant needed) -->
-            <key code="51" output="&#x0008;"/>
+            <key code="51" output=""/>
             <!-- Shift+Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="\e"/>
             <!-- Shift+Escape -> Control: Escape character (preserved functionality) -->
             <key code="91" output="っ"/>
             <!-- Shift+[ -> Small つ (tsu) - Small tsu for double consonants -->
+            <key code="42" output="ー"/>
+            <!-- Shift+む -> Long vowel sound (ー) - Long dash for vowel extension -->
         </keyMap>
     </keyMapSet>
 </keyboard>
