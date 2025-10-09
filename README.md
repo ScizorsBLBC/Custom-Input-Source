@@ -1,8 +1,8 @@
-# ひらがな - Custom Japanese Hiragana Learning Direct Input Source for macOS
+# ひらがな-カタカナ - Custom Japanese Hiragana/Katakana Learning Direct Input Source for macOS
 
 ## **Project Overview**
 
-ひらがな is an open source keyboard layout for Hiragana characters on QWERTY keyboards, designed for Japanese language learning.
+ひらがな is an open source keyboard layout for Hiragana and Katakana characters on QWERTY keyboards, designed for Japanese language learning.
 
 
 # **Important Note** 
@@ -10,6 +10,25 @@
 - This is not for normal use, you cannot write in normal Japanese with al Hiragana, Katakana, and Kanji combined. 
 - It is only to learn how to recognize Hiragana characters it does not work to type Katakana and Kanji and it does not use Romaji or Kana style text replacement features. 
 - This solution only provides Hiragana character coverage with direct key mapping.
+
+# **⚠️ CRITICAL WARNING - KNOWN ISSUE**
+
+**🚨 NUMPAD 4 KEY CRASH BUG**
+
+There is a **critical bug** that causes application crashes when using the numpad 4 key while Caps Lock is active (Katakana mode). This affects Chrome and potentially other applications.
+
+**What happens**: Pressing numpad 4 with Caps Lock ON causes immediate application crash with `EXC_BREAKPOINT` error.
+
+**Workaround**: 
+- **DO NOT** use numpad 4 key when Caps Lock is active
+- Use the main keyboard's `=` key instead for equals operations
+- Switch to ABC input source if you need to use numpad 4
+
+**Status**: This is a known issue being investigated. See `DEVELOPMENT_README.md` for technical details.
+
+**Affected Keys**: Numpad 4 (key code 86) only
+**Affected Mode**: Caps Lock ON (Katakana mode) only
+**Safe Mode**: Caps Lock OFF (Hiragana mode) works normally
 
 ## **Key Features**
 - **Complete Hiragana Set**: All 46 basic Hiragana characters mapped
@@ -178,7 +197,7 @@ Use the combining characters to create voiced and semi-voiced sounds:
 
 ## **Visual Layout Reference**
 
-![HiraganaLaser Keyboard Layout](hiragana_laser_keymap.png)
+![ひらがな-カタカナ Keyboard Layout](hiragana-katakana(all_layers).png)
 
 ## **Troubleshooting**
 
