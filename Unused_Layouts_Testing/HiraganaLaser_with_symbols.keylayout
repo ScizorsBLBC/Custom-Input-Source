@@ -1,0 +1,241 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<!--
+    =============================================================================
+    HiraganaLaser Keyboard Layout - WITH SYMBOL MAPPINGS
+    =============================================================================
+    
+    This version includes both Hiragana mappings AND the symbol mappings
+    that were originally handled by Karabiner Elements.
+    
+    F1-F12 keys are mapped to their symbol equivalents:
+    F1 -> `, F2 -> 1, F3 -> 2, etc.
+    
+    This eliminates the need for Karabiner Elements remappings.
+    =============================================================================
+-->
+<keyboard group="1" id="16396" name="HiraganaLaser666+" maxout="2">
+    <layouts>
+        <layout first="0" last="1" mapSet="ANSI" modifiers="modifierMap0"/>
+    </layouts>
+    <modifierMap id="modifierMap0" defaultIndex="0">
+        <keyMapSelect mapIndex="0">
+            <modifier keys=""/>
+        </keyMapSelect>
+        <keyMapSelect mapIndex="1">
+            <modifier keys="shift"/>
+        </keyMapSelect>
+    </modifierMap>
+    <keyMapSet id="ANSI">
+        <keyMap index="0">
+            <!-- F1-F12 Symbol Mappings -->
+            <key code="122" output="`"/>
+            <!-- F1 -> ` (backtick) -->
+            <key code="120" output="1"/>
+            <!-- F2 -> 1 -->
+            <key code="99" output="2"/>
+            <!-- F3 -> 2 -->
+            <key code="118" output="3"/>
+            <!-- F4 -> 3 -->
+            <key code="96" output="4"/>
+            <!-- F5 -> 4 -->
+            <key code="97" output="5"/>
+            <!-- F6 -> 5 -->
+            <key code="98" output="6"/>
+            <!-- F7 -> 6 -->
+            <key code="100" output="7"/>
+            <!-- F8 -> 7 -->
+            <key code="101" output="8"/>
+            <!-- F9 -> 8 -->
+            <key code="109" output="9"/>
+            <!-- F10 -> 9 -->
+            <key code="103" output="0"/>
+            <!-- F11 -> 0 -->
+            <key code="111" output="\"/>
+            <!-- F12 -> \ (backslash) -->
+            
+            <!-- Navigation Cluster Symbol Mappings -->
+            <key code="105" output="-"/>
+            <!-- Print Screen -> - (hyphen) -->
+            <key code="107" output="="/>
+            <!-- Scroll Lock -> = (equal) -->
+            <key code="113" output="["/>
+            <!-- Pause -> [ (open bracket) -->
+            <key code="114" output=";"/>
+            <!-- Insert -> ; (semicolon) -->
+            <key code="115" output="'"/>
+            <!-- Home -> ' (quote) -->
+            <key code="116" output="]"/>
+            <!-- Page Up -> ] (close bracket) -->
+            <key code="117" output=","/>
+            <!-- Delete Forward -> , (comma) -->
+            <key code="119" output="."/>
+            <!-- End -> . (period) -->
+            <key code="121" output="/"/>
+            <!-- Page Down -> / (slash) -->
+            
+            <!-- Original Hiragana Mappings -->
+            <key code="29" output="わ"/>
+            <key code="27" output="ほ"/>
+            <key code="24" output="へ"/>
+            <key code="18" output="ぬ"/>
+            <key code="19" output="ふ"/>
+            <key code="20" output="あ"/>
+            <key code="21" output="う"/>
+            <key code="23" output="え"/>
+            <key code="22" output="お"/>
+            <key code="26" output="や"/>
+            <key code="28" output="ゆ"/>
+            <key code="25" output="よ"/>
+            <key code="12" output="た"/>
+            <key code="13" output="て"/>
+            <key code="14" output="い"/>
+            <key code="15" output="す"/>
+            <key code="17" output="か"/>
+            <key code="16" output="ん"/>
+            <key code="32" output="な"/>
+            <key code="34" output="に"/>
+            <key code="31" output="ら"/>
+            <key code="35" output="せ"/>
+            <key code="33" output="゙"/>
+            <key code="30" output="゚"/>
+            <key code="42" output="む"/>
+            <key code="0" output="ち"/>
+            <key code="1" output="と"/>
+            <key code="2" output="し"/>
+            <key code="3" output="は"/>
+            <key code="5" output="き"/>
+            <key code="4" output="く"/>
+            <key code="38" output="ま"/>
+            <key code="40" output="の"/>
+            <key code="37" output="り"/>
+            <key code="41" output="れ"/>
+            <key code="39" output="け"/>
+            <key code="6" output="つ"/>
+            <key code="7" output="さ"/>
+            <key code="8" output="そ"/>
+            <key code="9" output="ひ"/>
+            <key code="11" output="こ"/>
+            <key code="36" output="&#x000D;"/>
+            <key code="45" output="み"/>
+            <key code="46" output="も"/>
+            <key code="43" output="ね"/>
+            <key code="47" output="る"/>
+            <key code="44" output="め"/>
+            <key code="48" output="&#x0009;"/>
+            <key code="49" output=" "/>
+            <key code="50" output="ろ"/>
+            <key code="51" output=""/>
+            <key code="53" output="\e"/>
+            <key code="65" output=""/>
+            <key code="67" output=""/>
+            <key code="69" output=""/>
+            <key code="71" output=""/>
+            <key code="75" output=""/>
+            <key code="76" output=""/>
+            <key code="78" output=""/>
+            <key code="81" output=""/>
+            <key code="82" output=""/>
+            <key code="83" output=""/>
+            <key code="84" output=""/>
+            <key code="85" output=""/>
+            <key code="86" output=""/>
+            <key code="87" output=""/>
+            <key code="88" output=""/>
+            <key code="89" output=""/>
+            <key code="91" output="゙"/>
+            <key code="92" output=""/>
+        </keyMap>
+        <keyMap index="1">
+            <!-- F1-F12 Shift Symbol Mappings -->
+            <key code="122" output="~"/>
+            <!-- Shift+F1 -> ~ (shifted backtick) -->
+            <key code="120" output="!"/>
+            <!-- Shift+F2 -> ! (shifted 1) -->
+            <key code="99" output="@"/>
+            <!-- Shift+F3 -> @ (shifted 2) -->
+            <key code="118" output="#"/>
+            <!-- Shift+F4 -> # (shifted 3) -->
+            <key code="96" output="$"/>
+            <!-- Shift+F5 -> $ (shifted 4) -->
+            <key code="97" output="%"/>
+            <!-- Shift+F6 -> % (shifted 5) -->
+            <key code="98" output="^"/>
+            <!-- Shift+F7 -> ^ (shifted 6) -->
+            <key code="100" output="&amp;"/>
+            <!-- Shift+F8 -> & (shifted 7) -->
+            <key code="101" output="*"/>
+            <!-- Shift+F9 -> * (shifted 8) -->
+            <key code="109" output="("/>
+            <!-- Shift+F10 -> ( (shifted 9) -->
+            <key code="103" output=")"/>
+            <!-- Shift+F11 -> ) (shifted 0) -->
+            <key code="111" output="|"/>
+            <!-- Shift+F12 -> | (shifted backslash) -->
+            
+            <!-- Navigation Cluster Shift Symbol Mappings -->
+            <key code="105" output="_"/>
+            <!-- Shift+Print Screen -> _ (shifted hyphen) -->
+            <key code="107" output="+"/>
+            <!-- Shift+Scroll Lock -> + (shifted equal) -->
+            <key code="113" output="{"/>
+            <!-- Shift+Pause -> { (shifted open bracket) -->
+            <key code="114" output=":"/>
+            <!-- Shift+Insert -> : (shifted semicolon) -->
+            <key code="115" output="&quot;"/>
+            <!-- Shift+Home -> " (shifted quote) -->
+            <key code="116" output="}"/>
+            <!-- Shift+Page Up -> } (shifted close bracket) -->
+            <key code="117" output="&lt;"/>
+            <!-- Shift+Delete Forward -> < (shifted comma) -->
+            <key code="119" output="&gt;"/>
+            <!-- Shift+End -> > (shifted period) -->
+            <key code="121" output="?"/>
+            <!-- Shift+Page Down -> ? (shifted slash) -->
+            
+            <!-- Original Hiragana Shift Mappings -->
+            <key code="29" output="を"/>
+            <key code="18" output=""/>
+            <key code="19" output=""/>
+            <key code="20" output="ぁ"/>
+            <key code="21" output="ぅ"/>
+            <key code="23" output="ぇ"/>
+            <key code="22" output="ぉ"/>
+            <key code="26" output="ゃ"/>
+            <key code="28" output="ゅ"/>
+            <key code="25" output="ょ"/>
+            <key code="12" output=""/>
+            <key code="13" output=""/>
+            <key code="14" output="ぃ"/>
+            <key code="15" output=""/>
+            <key code="17" output=""/>
+            <key code="16" output=""/>
+            <key code="32" output=""/>
+            <key code="34" output=""/>
+            <key code="31" output=""/>
+            <key code="35" output=""/>
+            <key code="0" output=""/>
+            <key code="1" output=""/>
+            <key code="2" output=""/>
+            <key code="3" output=""/>
+            <key code="5" output=""/>
+            <key code="4" output=""/>
+            <key code="38" output=""/>
+            <key code="40" output=""/>
+            <key code="37" output=""/>
+            <key code="6" output="っ"/>
+            <key code="7" output=""/>
+            <key code="8" output=""/>
+            <key code="9" output=""/>
+            <key code="11" output=""/>
+            <key code="36" output="&#x000D;"/>
+            <key code="48" output="&#x0009;"/>
+            <key code="49" output=" "/>
+            <key code="50" output="ろ"/>
+            <key code="51" output=""/>
+            <key code="53" output="\e"/>
+            <key code="91" output="っ"/>
+            <key code="42" output="ー"/>
+        </keyMap>
+    </keyMapSet>
+</keyboard>

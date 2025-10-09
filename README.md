@@ -2,24 +2,32 @@
 
 ## **Project Overview**
 
-HiraganaLaser is a production-ready macOS keyboard layout that enables direct typing of Hiragana characters on QWERTY keyboards, designed for Japanese language learning and efficient text input. This solution provides comprehensive Hiragana character coverage with intuitive key mapping strategies.
+HiraganaLaser is an open source keyboard layout for Hiragana characters on QWERTY keyboards, designed for Japanese language learning.
 
-### **Key Features**
+
+# **Important Note** 
+
+- This is not for normal use, you cannot write in normal Japanese with al Hiragana, Katakana, and Kanji combined. 
+- It is only to learn how to recognize Hiragana characters it does not work to type Katakana and Kanji and it does not use Romaji or Kana style text replacement features. 
+- This solution only provides Hiragana character coverage with direct key mapping.
+
+## **Key Features**
 - **Complete Hiragana Set**: All 46 basic Hiragana characters mapped
 - **Intuitive Shift Mappings**: Small characters on same keys as large counterparts
 - **Complete Small Character Set**: All essential small hiragana (ぁぃぅぇぉゃゅょっ)
-- **Combining Characters**: Dakuten (゙) and handakuten (゚) for voiced/semi-voiced sounds
+- **Combining Characters**: Combining Dakuten (゙) and Combining Handakuten (゚) for voiced/semi-voiced sounds
+- **を (wo)**: typed with shift plus わ(wa)
+- **ー (long vowel)**: Typed with shift plus む(mu) 
 - **Direct Input Method**: No IME conversion required
-- **Learning Optimized**: Character frequency-based mapping for efficient learning
 
-### **Target Hardware**
-Designed for custom mechanical keyboards with Hiragana legends, specifically the DROP x MiTo Laser R2 GMK 'Kobe' Hiragana legends keycaps or compatible sets.
+## **Target Hardware**
+Designed for custom mechanical keyboards with Hiragana legends, specifically the DROP x MiTo Laser R2 GMK 'Kobe' Hiragana legends keycaps or compatible sets that are a popular option at the moment.
 
 ![DROP x MiTo Laser R2 Kobe Hiragana set](DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png)
 
-## **Installation**
-
-### **Method 1: Direct Installation (Recommended)**
+# **Installation**
+Choose from the following methods of installation
+## **Method 1: Direct Installation (Recommended)**
 
 1. **Download the layout file:**
    - Copy `HiraganaLaser.keylayout` to `~/Library/Keyboard Layouts/`
@@ -36,7 +44,7 @@ Designed for custom mechanical keyboards with Hiragana legends, specifically the
 4. **Select the layout:**
    - Use the input source menu in your menu bar to switch to HiraganaLaser
 
-### **Method 2: Ukelele Installation**
+## **Method 2: Ukelele Installation**
 
 For the easiest installation using Ukelele's built-in installer:
 
@@ -48,7 +56,7 @@ For the easiest installation using Ukelele's built-in installer:
 
 ![Ukelele Install Menu](Ukelele_Install_Menu.png)
 
-## **How to Use**
+# **How to Use**
 
 ### **Basic Characters**
 Type normally for basic Hiragana characters. All 46 basic Hiragana characters are mapped to QWERTY keys.
@@ -244,9 +252,16 @@ Use the combining characters to create voiced and semi-voiced sounds:
 
 - `HiraganaLaser.keylayout` - Main keyboard layout file
 - `README.md` - This documentation
+- `DEVELOPMENT_README.md` - Comprehensive development documentation
 - `LICENSE` - CC0-1.0 license
 - `DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png` - Visual layout reference
 - `Ukelele_Install_Menu.png` - Installation guide screenshot
+
+## **Development Files**
+
+- `karabiner/` - Karabiner Elements configuration files
+- `documentation/` - Technical analysis and solution documentation
+- `test-layouts/` - Test layout versions for development
 
 ## **License**
 
@@ -255,3 +270,13 @@ This project is released under the CC0-1.0 license (Public Domain). See `LICENSE
 ---
 
 **Status**: ✅ **Production Ready** - Complete Hiragana character coverage with intuitive Shift key mappings
+
+## **Development Status**
+
+- ✅ **Core Functionality**: Complete Hiragana character set with long vowel sound (ー)
+- ✅ **Command/Option Swap**: Working solution for Windows keyboards on macOS
+- 🔄 **Symbol Mapping**: F1-F12 and navigation cluster symbol mapping in development
+- ❌ **Karabiner Integration**: Input source conditional rules not working
+- ❌ **USB Hub Issues**: Copy/paste functionality affected by USB hub setup
+
+For detailed development information, see `DEVELOPMENT_README.md`.

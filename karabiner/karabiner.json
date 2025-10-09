@@ -9,7 +9,7 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Navigation cluster shifted character mappings",
+                        "description": "Navigation cluster shifted character mappings (HiraganaLaser only)",
                         "manipulators": [
                             {
                                 "from": {
@@ -22,7 +22,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -35,7 +45,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -48,7 +68,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -61,7 +91,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -74,7 +114,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -87,7 +137,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -100,7 +160,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -113,7 +183,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -126,62 +206,162 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "description": "Navigation cluster keycap mappings",
+                        "description": "Navigation cluster keycap mappings (HiraganaLaser only)",
                         "manipulators": [
                             {
                                 "from": { "key_code": "print_screen" },
                                 "to": [{ "key_code": "hyphen" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "scroll_lock" },
                                 "to": [{ "key_code": "equal_sign" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "pause" },
                                 "to": [{ "key_code": "open_bracket" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "insert" },
                                 "to": [{ "key_code": "semicolon" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "home" },
                                 "to": [{ "key_code": "quote" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "page_up" },
                                 "to": [{ "key_code": "close_bracket" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "delete_forward" },
                                 "to": [{ "key_code": "comma" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "end" },
                                 "to": [{ "key_code": "period" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "page_down" },
                                 "to": [{ "key_code": "slash" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "description": "F1-F12 shifted character mappings",
+                        "description": "F1-F12 shifted character mappings (HiraganaLaser only)",
                         "manipulators": [
                             {
                                 "from": {
@@ -194,7 +374,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -207,7 +397,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -220,7 +420,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -233,7 +443,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -246,7 +466,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -259,7 +489,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -272,7 +512,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -285,7 +535,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -298,7 +558,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -311,7 +581,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -324,7 +604,17 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": {
@@ -337,72 +627,202 @@
                                         "modifiers": ["left_shift"]
                                     }
                                 ],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     },
                     {
-                        "description": "F1-F12 keycap character mappings",
+                        "description": "F1-F12 keycap character mappings (HiraganaLaser only)",
                         "manipulators": [
                             {
                                 "from": { "key_code": "f1" },
                                 "to": [{ "key_code": "grave_accent_and_tilde" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f2" },
                                 "to": [{ "key_code": "1" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f3" },
                                 "to": [{ "key_code": "2" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f4" },
                                 "to": [{ "key_code": "3" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f5" },
                                 "to": [{ "key_code": "4" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f6" },
                                 "to": [{ "key_code": "5" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f7" },
                                 "to": [{ "key_code": "6" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f8" },
                                 "to": [{ "key_code": "7" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f9" },
                                 "to": [{ "key_code": "8" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f10" },
                                 "to": [{ "key_code": "9" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f11" },
                                 "to": [{ "key_code": "0" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             },
                             {
                                 "from": { "key_code": "f12" },
                                 "to": [{ "key_code": "backslash" }],
-                                "type": "basic"
+                                "type": "basic",
+                                "conditions": [
+                                    {
+                                        "type": "input_source_if",
+                                        "input_sources": [
+                                            {
+                                                "input_source_id": "com.apple.keylayout.HiraganaLaser666"
+                                            }
+                                        ]
+                                    }
+                                ]
                             }
                         ]
                     }
