@@ -2,7 +2,7 @@
 <!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
 <!--
     =============================================================================
-    HiraganaLaser Keyboard Layout - Enterprise-Grade Custom Hiragana Input Source
+    ひらがな Keyboard Layout - Enterprise-Grade Custom Hiragana Input Source
     =============================================================================
     
     PROJECT OVERVIEW:
@@ -56,7 +56,7 @@
     =============================================================================
 -->
 <!--Last edited by Ukelele version 452 on 2025-10-08 at 18:47 (JST)-->
-<keyboard group="1" id="16396" name="HiraganaLaser666" maxout="2">
+<keyboard group="1" id="16396" name="ひらがな" maxout="2">
     <!-- Layout configuration for ANSI keyboards -->
     <layouts>
         <!-- Modifier map: Enhanced implementation with Shift key support -->

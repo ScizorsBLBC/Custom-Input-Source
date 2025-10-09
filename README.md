@@ -1,8 +1,8 @@
-# HiraganaLaser - Custom Japanese Input Source for macOS
+# ひらがな - Custom Japanese Hiragana Learning Direct Input Source for macOS
 
 ## **Project Overview**
 
-HiraganaLaser is an open source keyboard layout for Hiragana characters on QWERTY keyboards, designed for Japanese language learning.
+ひらがな is an open source keyboard layout for Hiragana characters on QWERTY keyboards, designed for Japanese language learning.
 
 
 # **Important Note** 
@@ -30,7 +30,7 @@ Choose from the following methods of installation
 ## **Method 1: Direct Installation (Recommended)**
 
 1. **Download the layout file:**
-   - Copy `HiraganaLaser.keylayout` to `~/Library/Keyboard Layouts/`
+   - Copy `Hiragana.keylayout` to `~/Library/Keyboard Layouts/`
 
 2. **Restart your Mac:**
    - Log out and back in, or restart completely
@@ -39,20 +39,20 @@ Choose from the following methods of installation
    - Go to **System Settings** > **Keyboard** > **Input Sources** (macOS 13+)
    - Or **System Preferences** > **Keyboard** > **Input Sources** (macOS 12 and earlier)
    - Click the "+" button
-   - Find "HiraganaLaser" in the list and add it
+   - Find "ひらがな" in the list and add it
 
 4. **Select the layout:**
-   - Use the input source menu in your menu bar to switch to HiraganaLaser
+   - Use the input source menu in your menu bar to switch to ひらがな
 
 ## **Method 2: Ukelele Installation**
 
 For the easiest installation using Ukelele's built-in installer:
 
 1. **Download Ukelele** from [software.sil.org/ukelele](https://software.sil.org/ukelele/)
-2. **Open the layout:** File → Open → Select `HiraganaLaser.keylayout`
+2. **Open the layout:** File → Open → Select `Hiragana.keylayout`
 3. **Install directly:** File → Install (see screenshot below)
 4. **Restart your Mac** to activate the input source
-5. **Add to Input Sources:** Go to System Settings/Preferences > Keyboard > Input Sources and add "HiraganaLaser"
+5. **Add to Input Sources:** Go to System Settings/Preferences > Keyboard > Input Sources and add "ひらがな"
 
 ![Ukelele Install Menu](Ukelele_Install_Menu.png)
 
@@ -183,7 +183,7 @@ Use the combining characters to create voiced and semi-voiced sounds:
 ## **Troubleshooting**
 
 ### **Input Source Not Appearing**
-1. **Check file location:** Ensure `HiraganaLaser.keylayout` is in `~/Library/Keyboard Layouts/`
+1. **Check file location:** Ensure `Hiragana.keylayout` is in `~/Library/Keyboard Layouts/`
 2. **Restart required:** Log out and back in, or restart your Mac
 3. **Check permissions:** File should be readable (644 permissions)
 4. **Manual activation:** Go to System Settings/Preferences > Keyboard > Input Sources to add manually
@@ -250,18 +250,11 @@ Use the combining characters to create voiced and semi-voiced sounds:
 
 ## **Files**
 
-- `HiraganaLaser.keylayout` - Main keyboard layout file
+- `Hiragana.keylayout` - Main keyboard layout file
 - `README.md` - This documentation
-- `DEVELOPMENT_README.md` - Comprehensive development documentation
 - `LICENSE` - CC0-1.0 license
 - `DROP_x_MiTo_Laser_R2_Kobe_Hiragana_set.png` - Visual layout reference
 - `Ukelele_Install_Menu.png` - Installation guide screenshot
-
-## **Development Files**
-
-- `karabiner/` - Karabiner Elements configuration files
-- `documentation/` - Technical analysis and solution documentation
-- `test-layouts/` - Test layout versions for development
 
 ## **License**
 
@@ -270,13 +263,3 @@ This project is released under the CC0-1.0 license (Public Domain). See `LICENSE
 ---
 
 **Status**: ✅ **Production Ready** - Complete Hiragana character coverage with intuitive Shift key mappings
-
-## **Development Status**
-
-- ✅ **Core Functionality**: Complete Hiragana character set with long vowel sound (ー)
-- ✅ **Command/Option Swap**: Working solution for Windows keyboards on macOS
-- 🔄 **Symbol Mapping**: F1-F12 and navigation cluster symbol mapping in development
-- ❌ **Karabiner Integration**: Input source conditional rules not working
-- ❌ **USB Hub Issues**: Copy/paste functionality affected by USB hub setup
-
-For detailed development information, see `DEVELOPMENT_README.md`.

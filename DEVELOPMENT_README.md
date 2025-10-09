@@ -2,412 +2,326 @@
 
 ## **Project Overview**
 
-This document provides comprehensive development documentation for the HiraganaLaser keyboard layout project, including failed approaches, edge cases discovered, testing methodologies, and best practices for future development.
+This document provides comprehensive development documentation for the HiraganaLaser keyboard layout project, including failed approaches, edge cases discovered, and best practices for testing and development.
 
-## **Development History & Approaches**
+## **Project Evolution**
 
-### **Phase 1: Initial Development (Working Branch)**
-- **Date**: 2025-01-27
-- **Branch**: `working-branch`
-- **Goal**: Add long vowel sound (ー) mapping to existing HiraganaLaser layout
-- **Status**: ✅ **SUCCESSFUL**
+### **Original Goal**
+Create a custom macOS keyboard layout that enables direct Hiragana character input while maintaining access to symbol mappings on F1-F12 and navigation cluster keys through Karabiner Elements integration.
 
-#### **What Was Accomplished**
-- Added Shift+む (mu) mapping for long vowel sound (ー)
-- Updated XML documentation with comprehensive inline comments
-- Updated README.md with new mapping and usage examples
-- Fixed XML validation issues with backspace character references
-- Committed changes with detailed commit messages
+### **Final Implementation**
+- **Input Source Name**: ひらがな (Hiragana)
+- **Layout File**: `Hiragana.keylayout`
+- **Layout ID**: 16396
+- **Group**: 1
 
-#### **Key Learnings**
-- **XML Character References**: Backspace character `&#x0008;` caused XML validation errors
-- **Solution**: Used empty output `""` for backspace to maintain functionality
-- **Shift Key Pattern**: Established intuitive pattern of small characters on same keys as large counterparts
+## **Development Approaches Attempted**
 
-### **Phase 2: Karabiner Elements Integration (FAILED)**
-- **Date**: 2025-01-27
-- **Goal**: Make Karabiner Elements remappings work with HiraganaLaser input source
-- **Status**: ❌ **FAILED**
+### **Approach 1: Karabiner Elements Input Source Conditional Rules**
 
-#### **Problem Statement**
-User needed F1-F12 and navigation cluster keys to output symbols when using HiraganaLaser input source, while maintaining normal function key behavior on other input sources.
+**Goal**: Use Karabiner Elements to remap F1-F12 and navigation cluster keys only when using the HiraganaLaser input source.
 
-#### **Approach 1: Input Source Conditional Rules**
-```json
-{
-  "description": "F1 mapping for HiraganaLaser only",
-  "manipulators": [
-    {
-      "from": { "key_code": "f1" },
-      "to": [{ "key_code": "grave_accent_and_tilde" }],
-      "type": "basic",
-      "conditions": [
-        {
-          "type": "input_source_if",
-          "input_sources": [
-            {
-              "input_source_id": "com.apple.keylayout.HiraganaLaser666"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+**Implementation**:
+- Created conditional rules using `input_source_if` conditions
+- Attempted to use `com.apple.keylayout.HiraganaLaser666` as input source ID
+- Tried multiple input source ID formats
 
-**Why It Failed:**
-- Input source ID `com.apple.keylayout.HiraganaLaser666` was incorrect
-- Karabiner Elements couldn't detect the HiraganaLaser input source properly
-- Input source conditions didn't activate when switching to HiraganaLaser
+**Why It Failed**:
+1. **Input Source ID Mismatch**: The actual input source ID didn't match our assumptions
+2. **Key Code Interception**: HiraganaLaser layout intercepted Karabiner-remapped key codes before they could reach applications
+3. **Processing Order**: macOS processes keyboard input as: Hardware → Karabiner → Keyboard Layout → Application, causing conflicts
 
-#### **Approach 2: Device-Specific Rules**
-```json
-{
-  "conditions": [
-    {
-      "type": "device_if",
-      "identifiers": [
-        {
-          "is_keyboard": true,
-          "product_id": 65278,
-          "vendor_id": 3141
-        }
-      ]
-    }
-  ]
-}
-```
+**Key Learning**: Custom keyboard layouts intercept and override Karabiner Elements remappings, making conditional remapping impossible.
 
-**Why It Failed:**
-- Device-specific rules would apply to all input sources
-- Didn't solve the core problem of input source-specific behavior
+### **Approach 2: Modified Keyboard Layout with Symbol Mappings**
 
-#### **Approach 3: Direct Character Output**
-Attempted to have Karabiner output characters directly instead of key codes.
+**Goal**: Embed symbol mappings directly into the keyboard layout file, eliminating the need for Karabiner Elements.
 
-**Why It Failed:**
-- HiraganaLaser layout still intercepted the remapped key codes
-- Same fundamental issue: keyboard layout processes keys before applications
+**Implementation**:
+- Created `HiraganaLaser_with_symbols.keylayout` with F1-F12 and navigation cluster symbol mappings
+- Used numeric key codes (122, 120, 99, etc.) for F-keys
+- Mapped navigation cluster keys to symbols
 
-### **Phase 3: Modified Keyboard Layout (FAILED)**
-- **Date**: 2025-01-27
-- **Goal**: Embed symbol mappings directly into HiraganaLaser layout
-- **Status**: ❌ **FAILED**
+**Why It Failed**:
+1. **Incorrect Key Codes**: Used wrong key codes for DAS Keyboard 4 Pro
+2. **F-Key System Override**: macOS "Use F1, F2, etc. keys as standard function keys" setting was disabled
+3. **Key Code Mismatch**: EventViewer showed different key codes than expected
 
-#### **Approach: HiraganaLaser_with_symbols.keylayout**
-Created a modified layout that included F1-F12 and navigation cluster symbol mappings.
+**Key Learning**: Must verify actual key codes from EventViewer for specific keyboard models.
 
-**Key Code Mappings Attempted:**
-```xml
-<!-- F1-F12 Symbol Mappings -->
-<key code="122" output="`"/>  <!-- F1 -> ` -->
-<key code="120" output="1"/>  <!-- F2 -> 1 -->
-<key code="99" output="2"/>   <!-- F3 -> 2 -->
-<!-- ... etc ... -->
-```
+### **Approach 3: EventViewer-Based Key Code Correction**
 
-**Why It Failed:**
-- Used incorrect key codes for DAS Keyboard 4 Pro
-- F-keys were still being intercepted by macOS system functions
-- Key code mapping didn't match actual keyboard output
+**Goal**: Use Karabiner Elements EventViewer to identify correct key codes and create accurate mappings.
 
-#### **Key Discovery: Standard Function Keys Setting**
-**Critical Finding**: The macOS setting "Use F1, F2, etc. keys as standard function keys" was **OFF**, causing F-keys to be intercepted by system functions (brightness, volume, etc.) instead of being treated as standard keys.
+**Implementation**:
+- Analyzed EventViewer logs for DAS Keyboard 4 Pro
+- Identified correct key codes: `f6`, `f7`, `f8`, etc. (string format)
+- Created `HiraganaLaser_fixed.keylayout` with corrected mappings
 
-**Impact:**
-- F-keys couldn't be remapped by Karabiner Elements
-- Macro pad functionality was disabled
-- Keyboard layout couldn't access F-key codes
+**Why It Failed**:
+1. **Incomplete Key Code Data**: Missing F1-F5 key codes from EventViewer logs
+2. **Layout File Corruption**: Multiple layout file versions caused conflicts
+3. **System Integration Issues**: Layout changes required system restart to take effect
 
-### **Phase 4: EventViewer Analysis (PARTIAL SUCCESS)**
-- **Date**: 2025-01-27
-- **Goal**: Identify correct key codes for DAS Keyboard 4 Pro
-- **Status**: 🔄 **PARTIAL SUCCESS**
-
-#### **What Was Discovered**
-Using Karabiner Elements EventViewer, we identified the actual key codes sent by the DAS Keyboard 4 Pro:
-
-**F6-F12 Key Codes:**
-- F6: `f6` (usage: 63)
-- F7: `f7` (usage: 64)
-- F8: `f8` (usage: 65)
-- F9: `f9` (usage: 66)
-- F10: `f10` (usage: 67)
-- F11: `f11` (usage: 68)
-- F12: `f12` (usage: 69)
-
-**Navigation Cluster Key Codes:**
-- Print Screen: `print_screen` (usage: 70)
-- Scroll Lock: `scroll_lock` (usage: 71)
-- Pause: `pause` (usage: 72)
-- Insert: `insert` (usage: 73)
-- Home: `home` (usage: 74)
-- Page Up: `page_up` (usage: 75)
-- Delete Forward: `delete_forward` (usage: 76)
-- End: `end` (usage: 77)
-- Page Down: `page_down` (usage: 78)
-
-**Missing Data:**
-- F1-F5 key codes were not captured in EventViewer logs
-- Need to complete F1-F5 mapping for full functionality
+**Key Learning**: Complete key code mapping is essential; partial mappings cause unpredictable behavior.
 
 ## **Edge Cases Discovered**
 
-### **1. USB Hub and Wireless Dongle Issues**
-**Setup**: DAS Keyboard 4 Pro → USB Hub → Thunderbolt 4 → MacBook
-**Issues**:
-- Inconsistent copy/paste functionality (Ctrl+C, Ctrl+V)
-- Macro pad functionality disabled
-- Input source switching problems
+### **Edge Case 1: USB Hub and Wireless Dongle Interference**
 
-**Root Cause**: USB hub latency and power delivery issues affecting keyboard input processing
+**Description**: Macro pad connected via 2.4GHz wireless dongle through USB-C hub to Thunderbolt 4 connection caused intermittent input issues.
 
-### **2. Windows Keyboard on macOS**
-**Setup**: DAS Keyboard 4 Pro (Windows keyboard) on macOS
-**Issues**:
-- Command/Option key positions reversed
-- F-key behavior different from Mac keyboards
-- System function key interception
-
-**Solutions Implemented**:
-- Karabiner Elements Command/Option swap rules
-- Enable "Use F1, F2, etc. keys as standard function keys" setting
-
-### **3. Input Source Detection Problems**
-**Issue**: Karabiner Elements couldn't properly detect HiraganaLaser input source
 **Symptoms**:
-- Input source conditional rules didn't activate
-- Rules worked on ABC input source but not HiraganaLaser
-- EventViewer showed correct key codes but rules didn't apply
+- Copy/paste functionality inconsistent across applications
+- Some applications only accepted input from laptop keyboard
+- Macro pad hotkeys (Ctrl+C, Ctrl+V) stopped working
 
-**Investigation**: Input source ID format and detection mechanism issues
+**Root Cause**: USB hub power delivery and timing issues with wireless dongle input processing.
 
-### **4. Keyboard Layout vs. Karabiner Elements Conflict**
-**Core Problem**: Keyboard layouts process keys before Karabiner Elements
-**Processing Order**: Hardware → Karabiner Elements → Keyboard Layout → Application
-**Result**: HiraganaLaser layout intercepted Karabiner-remapped keys and output Hiragana characters instead of intended symbols
+**Resolution**: Direct connection testing isolated the issue to USB hub configuration.
 
-## **Testing Methodology & Best Practices**
+### **Edge Case 2: macOS F-Key System Override**
 
-### **Test Environment Setup**
+**Description**: "Use F1, F2, etc. keys as standard function keys" setting in System Settings affected both Karabiner Elements and keyboard layout functionality.
+
+**Symptoms**:
+- F-keys performed system functions (brightness, volume) instead of character output
+- Karabiner Elements remappings didn't work
+- Macro pad screenshot hotkey disabled
+
+**Root Cause**: macOS intercepts F-keys for system functions when standard function keys setting is disabled.
+
+**Resolution**: Enable "Use F1, F2, etc. keys as standard function keys" in System Settings.
+
+### **Edge Case 3: Input Source ID Format Variations**
+
+**Description**: Different input source ID formats required for different macOS versions and input source types.
+
+**Attempted Formats**:
+- `com.apple.keylayout.HiraganaLaser666`
+- `HiraganaLaser666`
+- `com.apple.inputmethod.Kotoeri.Hiragana`
+
+**Root Cause**: Input source IDs vary by macOS version and input source type (keyboard layout vs. input method).
+
+**Resolution**: Use EventViewer to identify correct input source ID format.
+
+### **Edge Case 4: Command/Option Key Swap for Windows Keyboards**
+
+**Description**: DAS Keyboard 4 Pro (Windows keyboard) on macOS required Command/Option key swapping.
+
+**Symptoms**:
+- Command key (Windows key) didn't work as expected
+- Option key behavior was inverted
+
+**Resolution**: Implemented Karabiner Elements rules to swap Command and Option keys:
+```json
+{
+  "from": { "key_code": "left_command" },
+  "to": [{ "key_code": "left_option" }],
+  "type": "basic"
+}
+```
+
+## **Testing Best Practices**
+
+### **File Organization**
+
+**Test Directory Structure**:
 ```
 /Users/scizors/Library/Keyboard Layouts/
-├── HiraganaLaser.keylayout              # Production layout
-├── test-layouts/                        # Test layout versions
-│   ├── HiraganaLaser_with_symbols.keylayout
-│   ├── HiraganaLaser_fixed.keylayout
-│   └── HiraganaLaser_conditional.keylayout
+├── Hiragana.keylayout                    # Production layout
+├── test-layouts/                         # Test versions
+│   ├── Hiragana_test1.keylayout
+│   ├── Hiragana_test2.keylayout
+│   └── Hiragana_backup.keylayout
 ├── karabiner/                           # Karabiner Elements configs
-│   ├── karabiner.json                   # Production config
-│   ├── karabiner.json.backup            # Backup
-│   ├── command_option_swap.json         # Command/Option swap
-│   ├── f1_f12_hiragana_only.json        # F-key mappings
-│   └── test_rules/                      # Test rule variations
-└── documentation/                       # Development docs
-    ├── DEVELOPMENT_README.md            # This file
-    ├── KARABINER_CONFLICT_ANALYSIS.md   # Conflict analysis
-    └── KARABINER_SOLUTION.md            # Solution attempts
+│   ├── karabiner.json
+│   └── karabiner.json.backup
+└── DEVELOPMENT_README.md                # This file
 ```
 
-### **Testing Protocol**
+**Best Practices**:
+1. **Always backup** production files before testing
+2. **Use test directory** for experimental layouts
+3. **Version control** all configuration files
+4. **Document changes** in commit messages
 
-#### **1. Layout Testing**
+### **Testing Workflow**
+
+**Step 1: Environment Setup**
+1. Enable "Use F1, F2, etc. keys as standard function keys"
+2. Verify input source is properly installed
+3. Check Karabiner Elements is running
+
+**Step 2: Key Code Verification**
+1. Use EventViewer to identify actual key codes
+2. Test both ABC and target input sources
+3. Verify key codes are consistent
+
+**Step 3: Layout Testing**
+1. Install test layout in test directory
+2. Copy to production location
+3. Restart system or log out/in
+4. Test all mapped keys
+
+**Step 4: Integration Testing**
+1. Test with Karabiner Elements active
+2. Test with different applications
+3. Test with USB hub and external devices
+
+### **Debugging Tools**
+
+**Karabiner Elements EventViewer**:
+- **Purpose**: Identify actual key codes and input source IDs
+- **Usage**: Monitor key presses and input source changes
+- **Location**: Karabiner Elements → EventViewer tab
+
+**System Console**:
+- **Purpose**: Monitor system-level keyboard input processing
+- **Usage**: Filter for keyboard-related messages
+- **Location**: Applications → Utilities → Console
+
+**Input Source Verification**:
 ```bash
-# Backup current layout
-cp ~/Library/Keyboard\ Layouts/HiraganaLaser.keylayout ~/Library/Keyboard\ Layouts/HiraganaLaser.keylayout.backup
-
-# Test new layout
-cp test-layouts/HiraganaLaser_test.keylayout ~/Library/Keyboard\ Layouts/HiraganaLaser.keylayout
-
-# Restart system
-sudo reboot
-# OR
-# Log out and back in
+defaults read com.apple.HIToolbox AppleEnabledInputSources
+defaults read com.apple.HIToolbox AppleSelectedInputSources
 ```
-
-#### **2. Karabiner Elements Testing**
-```bash
-# Backup current config
-cp ~/.config/karabiner/karabiner.json ~/.config/karabiner/karabiner.json.backup
-
-# Test new config
-cp karabiner/test_config.json ~/.config/karabiner/karabiner.json
-
-# Reload Karabiner Elements
-# (Auto-reloads, or restart Karabiner Elements)
-```
-
-#### **3. Input Source Testing**
-1. **Switch to ABC input source**
-2. **Test all F-keys and navigation cluster**
-3. **Switch to HiraganaLaser input source**
-4. **Test all F-keys and navigation cluster**
-5. **Test Hiragana character typing**
-6. **Test Shift combinations**
-
-#### **4. EventViewer Analysis**
-1. **Open Karabiner Elements EventViewer**
-2. **Switch to target input source**
-3. **Press each key systematically**
-4. **Record key codes and usage values**
-5. **Compare with expected mappings**
-
-### **Test Data Collection**
-
-#### **Key Code Mapping Table**
-| Physical Key | Expected Output | Actual Key Code | Usage Value | Status |
-|--------------|----------------|-----------------|-------------|---------|
-| F1 | ` | ? | ? | ❌ Missing |
-| F2 | 1 | ? | ? | ❌ Missing |
-| F3 | 2 | ? | ? | ❌ Missing |
-| F4 | 3 | ? | ? | ❌ Missing |
-| F5 | 4 | ? | ? | ❌ Missing |
-| F6 | 5 | f6 | 63 | ✅ Captured |
-| F7 | 6 | f7 | 64 | ✅ Captured |
-| F8 | 7 | f8 | 65 | ✅ Captured |
-| F9 | 8 | f9 | 66 | ✅ Captured |
-| F10 | 9 | f10 | 67 | ✅ Captured |
-| F11 | 0 | f11 | 68 | ✅ Captured |
-| F12 | \ | f12 | 69 | ✅ Captured |
-
-#### **Navigation Cluster Mapping Table**
-| Physical Key | Expected Output | Actual Key Code | Usage Value | Status |
-|--------------|----------------|-----------------|-------------|---------|
-| Print Screen | - | print_screen | 70 | ✅ Captured |
-| Scroll Lock | = | scroll_lock | 71 | ✅ Captured |
-| Pause | [ | pause | 72 | ✅ Captured |
-| Insert | ; | insert | 73 | ✅ Captured |
-| Home | ' | home | 74 | ✅ Captured |
-| Page Up | ] | page_up | 75 | ✅ Captured |
-| Delete Forward | , | delete_forward | 76 | ✅ Captured |
-| End | . | end | 77 | ✅ Captured |
-| Page Down | / | page_down | 78 | ✅ Captured |
-
-## **Failed Approaches Analysis**
-
-### **1. Input Source Conditional Rules**
-**Why It Failed:**
-- Incorrect input source ID format
-- Karabiner Elements couldn't detect custom keyboard layouts properly
-- Input source switching mechanism issues
-
-**Lessons Learned:**
-- Always verify input source IDs using EventViewer
-- Test input source detection before implementing conditional rules
-- Consider alternative approaches when input source detection fails
-
-### **2. Modified Keyboard Layout**
-**Why It Failed:**
-- Incorrect key code mappings for specific keyboard model
-- F-key system function interception
-- Key code format mismatch (string vs. numeric)
-
-**Lessons Learned:**
-- Always use EventViewer to identify actual key codes
-- Test with "Use F1, F2, etc. keys as standard function keys" enabled
-- Verify key code format compatibility
-
-### **3. Device-Specific Rules**
-**Why It Failed:**
-- Would apply to all input sources, not just HiraganaLaser
-- Didn't solve the core input source-specific requirement
-
-**Lessons Learned:**
-- Device-specific rules are too broad for input source-specific needs
-- Consider the scope of rule application before implementation
-
-## **Current Status & Next Steps**
-
-### **What Works**
-- ✅ HiraganaLaser layout with long vowel sound (ー) mapping
-- ✅ Command/Option key swap for Windows keyboard
-- ✅ Basic F-key functionality with standard function keys enabled
-- ✅ EventViewer key code identification for F6-F12 and navigation cluster
-
-### **What Doesn't Work**
-- ❌ F1-F5 symbol mapping (key codes not identified)
-- ❌ Input source conditional rules
-- ❌ Karabiner Elements integration with HiraganaLaser
-- ❌ Copy/paste functionality with USB hub setup
-
-### **Immediate Next Steps**
-1. **Complete F1-F5 key code identification** using EventViewer
-2. **Test modified layout approach** with correct key codes
-3. **Investigate USB hub copy/paste issues** separately
-4. **Consider alternative approaches** for input source-specific behavior
-
-### **Long-term Solutions**
-1. **Hybrid approach**: Use different input sources for different purposes
-2. **Layout modification**: Embed all symbol mappings directly in layout
-3. **Hardware solution**: Use different keyboard or connection method
-4. **Software solution**: Develop custom input method bundle
-
-## **Development Best Practices**
-
-### **1. Version Control**
-- Always work on feature branches, never on main
-- Use descriptive commit messages with scope and impact
-- Keep test layouts in separate directory
-- Document all changes in development README
-
-### **2. Testing Protocol**
-- Test on clean system state (restart after layout changes)
-- Use EventViewer for key code identification
-- Test both input sources systematically
-- Document all test results and failures
-
-### **3. Documentation Standards**
-- Enterprise-grade inline comments in all files
-- Comprehensive README updates for user-facing changes
-- Detailed development documentation for technical changes
-- Clear troubleshooting guides for common issues
-
-### **4. File Organization**
-```
-project/
-├── production/           # Production-ready files
-├── test-layouts/         # Test layout versions
-├── karabiner/           # Karabiner Elements configs
-├── documentation/       # Development documentation
-└── backups/            # Backup files
-```
-
-### **5. Error Handling**
-- Always backup before making changes
-- Test incrementally, not all at once
-- Document error messages and solutions
-- Keep rollback procedures ready
 
 ## **Technical Specifications**
 
-### **System Requirements**
-- **macOS**: 15.7.1 (tested)
-- **Keyboard**: DAS Keyboard 4 Pro (Windows)
-- **Connection**: USB Hub → Thunderbolt 4 → MacBook
-- **Software**: Karabiner Elements, Ukelele
+### **Keyboard Layout File Format**
 
-### **Key Dependencies**
-- Apple KeyboardLayout.dtd v1.0
-- Karabiner Elements for key remapping
-- macOS Input Sources system
-- UTF-8 encoding for Japanese characters
+**File Structure**:
+```xml
+<?xml version="1.1" encoding="UTF-8"?>
+<!DOCTYPE keyboard SYSTEM "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
+<keyboard group="1" id="16396" name="ひらがな" maxout="2">
+    <layouts>
+        <layout first="0" last="1" mapSet="ANSI" modifiers="modifierMap0"/>
+    </layouts>
+    <modifierMap id="modifierMap0" defaultIndex="0">
+        <keyMapSelect mapIndex="0">
+            <modifier keys=""/>
+        </keyMapSelect>
+        <keyMapSelect mapIndex="1">
+            <modifier keys="shift"/>
+        </keyMapSelect>
+    </modifierMap>
+    <keyMapSet id="ANSI">
+        <keyMap index="0">
+            <!-- Base key mappings -->
+        </keyMap>
+        <keyMap index="1">
+            <!-- Shift key mappings -->
+        </keyMap>
+    </keyMapSet>
+</keyboard>
+```
 
-### **Known Limitations**
-- F1-F5 key codes not identified
-- Input source conditional rules don't work
-- USB hub causes copy/paste issues
-- Windows keyboard requires Command/Option swap
+**Key Requirements**:
+- **XML Version**: 1.1 for Ukelele compatibility
+- **Encoding**: UTF-8 for Japanese characters
+- **DTD**: Apple KeyboardLayout.dtd v1.0
+- **Layout ID**: Must be unique (16396)
+- **Group**: 1 for keyboard group identifier
 
-## **Conclusion**
+### **Key Code Mapping**
 
-The HiraganaLaser project successfully implemented the core functionality (Hiragana typing with long vowel sound) but encountered significant challenges with Karabiner Elements integration and symbol mapping. The development process revealed important insights about macOS keyboard input processing, USB hub limitations, and the complexity of input source-specific behavior.
+**DAS Keyboard 4 Pro Key Codes**:
+- **F6-F12**: `f6`, `f7`, `f8`, `f9`, `f10`, `f11`, `f12`
+- **Navigation Cluster**: `print_screen`, `scroll_lock`, `pause`, `insert`, `home`, `page_up`, `delete_forward`, `end`, `page_down`
+- **Standard Keys**: 0-53 range for QWERTY keys
 
-Future development should focus on completing the F1-F5 key code identification and testing the modified layout approach with correct key codes. The hybrid approach of using different input sources for different purposes may be the most practical solution given the current limitations.
+**Key Code Format**:
+- **String Format**: `f1`, `f2`, etc. (preferred for F-keys)
+- **Numeric Format**: 122, 120, etc. (for standard keys)
+- **Usage**: String format for Karabiner Elements, numeric format for keyboard layouts
+
+## **Current Status**
+
+### **Working Components**
+- ✅ Command/Option key swap via Karabiner Elements
+- ✅ Hiragana character input on standard keys
+- ✅ Input source switching between ABC and ひらがな
+- ✅ System integration and installation
+
+### **Outstanding Issues**
+- ❌ F1-F12 symbol mappings (incomplete key code data)
+- ❌ Navigation cluster symbol mappings (key code mismatch)
+- ❌ Copy/paste functionality with USB hub setup
+- ❌ Macro pad integration with custom layout
+
+### **Next Steps**
+1. **Complete F1-F5 key code identification** using EventViewer
+2. **Create comprehensive key code mapping** for all target keys
+3. **Implement symbol mappings** in keyboard layout file
+4. **Test with complete USB hub setup** including macro pad
+5. **Document final working configuration**
+
+## **Lessons Learned**
+
+### **Technical Lessons**
+1. **Keyboard layouts override Karabiner Elements** - cannot use conditional remapping
+2. **Key codes vary by keyboard model** - always verify with EventViewer
+3. **System settings affect F-key behavior** - check "Use F1, F2, etc. keys as standard function keys"
+4. **Input source IDs are version-specific** - use EventViewer to identify correct format
+
+### **Process Lessons**
+1. **Test incrementally** - verify each component before integration
+2. **Document everything** - edge cases and failures are valuable
+3. **Use version control** - track all configuration changes
+4. **Backup before testing** - prevent configuration loss
+
+### **Hardware Lessons**
+1. **USB hub compatibility** - test with direct connection first
+2. **Wireless dongle timing** - power delivery affects input processing
+3. **Keyboard model differences** - key codes vary by manufacturer
+4. **macOS version compatibility** - input source handling changes
+
+## **File Inventory**
+
+### **Production Files**
+- `Hiragana.keylayout` - Main keyboard layout file
+- `README.md` - User documentation
+- `LICENSE` - CC0-1.0 license
+
+### **Development Files**
+- `DEVELOPMENT_README.md` - This development documentation
+- `KARABINER_CONFLICT_ANALYSIS.md` - Karabiner Elements conflict analysis
+- `KARABINER_SOLUTION.md` - Proposed Karabiner Elements solution
+- `COMBINING_CHARACTERS_SUMMARY.md` - Combining characters implementation
+
+### **Configuration Files**
+- `karabiner/karabiner.json` - Karabiner Elements configuration
+- `karabiner/karabiner.json.backup` - Backup configuration
+
+### **Test Files**
+- `test-layouts/` - Directory for experimental layouts
+- Various test layout files (deleted after testing)
+
+## **Contributing Guidelines**
+
+### **Code Standards**
+- **Enterprise-grade documentation** for all files
+- **Comprehensive inline comments** explaining technical decisions
+- **Version control** with descriptive commit messages
+- **Testing documentation** for all changes
+
+### **Testing Requirements**
+- **Test on clean system** before committing changes
+- **Verify with EventViewer** for key code accuracy
+- **Test with multiple input sources** and applications
+- **Document test results** and any issues found
+
+### **Documentation Standards**
+- **Update README.md** for user-facing changes
+- **Update DEVELOPMENT_README.md** for technical changes
+- **Include troubleshooting** for common issues
+- **Document edge cases** and workarounds
 
 ---
 
 **Last Updated**: 2025-01-27  
-**Branch**: working-branch  
-**Status**: Development ongoing  
-**Next Review**: After F1-F5 key code identification
+**Version**: 1.0  
+**Status**: In Development
