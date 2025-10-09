@@ -55,29 +55,74 @@
     
     =============================================================================
 -->
-<!--Last edited by Ukelele version 452 on 2025-10-10 at 02:53 (JST)-->
+<!--Last edited by Ukelele version 452 on 2025-10-10 at 03:38 (JST)-->
 <keyboard group="1" id="16396" name="ひらがな-カタカナ" maxout="1">
     <!-- Layout configuration for ANSI keyboards -->
     <layouts>
         <!-- Modifier map: Enhanced implementation with Shift key support -->
         <layout first="0" last="1" mapSet="ANSI" modifiers="modifierMap0"/>
     </layouts>
+    <!-- =============================================================================
+         MODIFIER MAP CONFIGURATION - Four-Layer Keyboard Architecture
+         =============================================================================
+         Defines the four-layer keyboard architecture using Caps Lock and Shift modifiers.
+         This enables seamless switching between Hiragana and Katakana input modes.
+         
+         LAYER ARCHITECTURE:
+         - mapIndex="0": Hiragana Base Layer (Caps Lock OFF, No Modifiers)
+         - mapIndex="1": Hiragana Shift Layer (Caps Lock OFF + Shift) - Small characters
+         - mapIndex="2": Katakana Base Layer (Caps Lock ON, No Modifiers)
+         - mapIndex="3": Katakana Shift Layer (Caps Lock ON + Shift) - Small characters
+         
+         MODIFIER BEHAVIOR:
+         - Caps Lock: Primary mode switch (Hiragana ↔ Katakana)
+         - Shift: Secondary character access (Base ↔ Small characters)
+         - anyShift: Responds to both left and right Shift keys
+         - defaultIndex="0": Hiragana Base as default input mode
+         
+         TECHNICAL IMPLEMENTATION:
+         - Uses Apple's standard modifier key system
+         - Supports both left and right Shift keys via "anyShift"
+         - Caps Lock state detection for script switching
+         - Parallel mapping ensures consistent QWERTY positions across scripts
+         ============================================================================= -->
     <modifierMap id="modifierMap0" defaultIndex="0">
         <keyMapSelect mapIndex="0">
             <modifier keys=""/>
+            <!-- No modifiers: Hiragana Base Layer (default input mode) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="1">
             <modifier keys="anyShift"/>
+            <!-- Shift pressed: Hiragana Shift Layer (small characters & symbols) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="2">
             <modifier keys="caps"/>
+            <!-- Caps Lock ON: Katakana Base Layer (parallel to Hiragana Base) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="3">
             <modifier keys="anyShift caps"/>
+            <!-- Caps Lock ON + Shift: Katakana Shift Layer (small Katakana & symbols) -->
         </keyMapSelect>
     </modifierMap>
     <keyMapSet id="ANSI">
         <keyMap index="0">
+            <!-- =============================================================================
+                 LAYER 0: HIRAGANA BASE LAYER (Caps Lock OFF, No Modifiers)
+                 =============================================================================
+                 This is the primary Hiragana input layer, active when Caps Lock is OFF.
+                 All 46 basic Hiragana characters are mapped to QWERTY key positions.
+                 
+                 LAYER RELATIONSHIPS:
+                 - Layer 0: Hiragana Base (this layer)
+                 - Layer 1: Hiragana Shift (Caps Lock OFF + Shift)
+                 - Layer 2: Katakana Base (Caps Lock ON) - Parallel mapping
+                 - Layer 3: Katakana Shift (Caps Lock ON + Shift) - Parallel mapping
+                 
+                 USAGE:
+                 - Default layer when input source is active and Caps Lock is OFF
+                 - Direct character input without IME conversion
+                 - Intuitive QWERTY-to-Hiragana mapping for learning
+                 ============================================================================= -->
             <!-- =============================================================================
                  NUMBER ROW MAPPING (Key Codes 0-9)
                  =============================================================================
@@ -278,58 +323,197 @@
             <!-- QWERTY: Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="&#x001B;"/>
             <!-- QWERTY: Escape -> Control: Escape character (preserved functionality) -->
+            <!-- =============================================================================
+                 FUNCTION KEYS AND MODIFIER KEYS (Key Codes 55-59, 96-113)
+                 =============================================================================
+                 Maps function keys and modifier keys that are not used in this layout.
+                 These keys maintain their standard system behavior for compatibility.
+                 
+                 TECHNICAL NOTES:
+                 - Function keys (F1-F12): Preserved for system shortcuts
+                 - Modifier keys: Left/Right Cmd, Option, Control preserved
+                 - Empty outputs: Allow system default behavior
+                 ============================================================================= -->
             <key code="55" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="56" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="57" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="58" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="59" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
+            <!-- =============================================================================
+                 NUMPAD MAPPINGS (Key Codes 65-92)
+                 =============================================================================
+                 Maps numpad keys to standard numeric and mathematical symbols.
+                 This preserves standard numpad functionality for data entry and calculations.
+                 
+                 MAPPING STRATEGY:
+                 - Numpad numbers: 0-9 for standard numeric input
+                 - Mathematical symbols: =, -, \ for calculations
+                 - Accessibility: Maintains standard numpad behavior
+                 
+                 TECHNICAL NOTES:
+                 - Numpad 0-9: Standard numeric input (codes 65, 83-92)
+                 - Mathematical symbols: = (codes 67, 86), - (code 75), \ (code 81)
+                 - Special characters: ] (code 71) for bracket input
+                 - Control character: ETX (code 76) for text termination
+                 ============================================================================= -->
             <key code="65" output="0"/>
+            <!-- Numpad 0 -> 0 - Standard numeric input -->
             <key code="67" output="="/>
+            <!-- Numpad = -> = - Mathematical equals sign -->
             <key code="69" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="71" output="]"/>
+            <!-- Numpad ] -> ] - Right bracket for mathematical expressions -->
             <key code="75" output="-"/>
+            <!-- Numpad - -> - - Mathematical minus sign -->
             <key code="76" output="&#x0003;"/>
+            <!-- Numpad Enter -> ETX (End of Text) - Text termination control character -->
             <key code="78" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="81" output="\"/>
+            <!-- Numpad \ -> \ - Backslash for mathematical expressions -->
             <key code="82" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="83" output="1"/>
+            <!-- Numpad 1 -> 1 - Standard numeric input -->
             <key code="84" output="2"/>
+            <!-- Numpad 2 -> 2 - Standard numeric input -->
             <key code="85" output="3"/>
+            <!-- Numpad 3 -> 3 - Standard numeric input -->
             <key code="86" output="="/>
-            <!-- Numpad 4 -> Equals sign (=) - Matches standard equals key for accessibility -->
+            <!-- Numpad 4 -> = - Equals sign (matches standard equals key for accessibility) -->
             <key code="87" output="5"/>
+            <!-- Numpad 5 -> 5 - Standard numeric input -->
             <key code="88" output="6"/>
+            <!-- Numpad 6 -> 6 - Standard numeric input -->
             <key code="89" output="7"/>
+            <!-- Numpad 7 -> 7 - Standard numeric input -->
             <key code="91" output="8"/>
-            <!-- QWERTY: [ -> Dakuten: ゙ (combining dakuten) - No spacing, combines with previous character -->
+            <!-- Numpad 8 -> 8 - Standard numeric input -->
             <key code="92" output="9"/>
+            <!-- Numpad 9 -> 9 - Standard numeric input -->
+            <!-- =============================================================================
+                 UNUSED FUNCTION KEYS (Key Codes 96-113)
+                 =============================================================================
+                 Maps unused function keys and system keys that maintain default behavior.
+                 These keys are preserved for system functionality and third-party applications.
+                 
+                 TECHNICAL NOTES:
+                 - Function keys: F1-F12 range preserved for system shortcuts
+                 - Modifier keys: Cmd, Option, Control keys preserved
+                 - Empty outputs: Allow system default behavior
+                 ============================================================================= -->
             <key code="96" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="97" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="98" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="99" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="100" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="101" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="103" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="105" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="107" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="109" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="111" output=""/>
+            <!-- Function key - System default behavior -->
             <key code="113" output=""/>
+            <!-- Function key - System default behavior -->
+            <!-- =============================================================================
+                 SPECIAL PUNCTUATION AND SYMBOLS (Key Codes 114-121)
+                 =============================================================================
+                 Maps special punctuation keys and symbols for Japanese text input.
+                 These keys provide essential punctuation for proper Japanese text formatting.
+                 
+                 MAPPING STRATEGY:
+                 - Japanese punctuation: 。 (period) for sentence endings
+                 - Standard punctuation: ; ' [ , / for mixed text
+                 - Character frequency: Essential punctuation for Japanese text
+                 
+                 TECHNICAL NOTES:
+                 - Semicolon: ; (code 114) for mixed text input
+                 - Apostrophe: ' (code 115) for contractions and possessives
+                 - Brackets: [ (code 116) for text formatting
+                 - Comma: , (code 117) for sentence pauses
+                 - Japanese period: 。 (code 119) for proper Japanese sentence endings
+                 - Forward slash: / (code 121) for mixed text and URLs
+                 ============================================================================= -->
             <key code="114" output=";"/>
+            <!-- QWERTY: ; -> ; - Semicolon for mixed text input -->
             <key code="115" output="&#x0027;"/>
+            <!-- QWERTY: ' -> ' - Apostrophe for contractions and possessives -->
             <key code="116" output="["/>
+            <!-- QWERTY: [ -> [ - Left bracket for text formatting -->
             <key code="117" output=","/>
+            <!-- QWERTY: , -> , - Comma for sentence pauses -->
             <key code="118" output=""/>
+            <!-- Unused key - System default behavior -->
             <key code="119" output="。"/>
+            <!-- QWERTY: . -> 。 - Japanese period (maru) for proper sentence endings -->
             <key code="120" output=""/>
+            <!-- Unused key - System default behavior -->
             <key code="121" output="/"/>
+            <!-- QWERTY: / -> / - Forward slash for mixed text and URLs -->
             <key code="122" output=""/>
+            <!-- Unused key - System default behavior -->
+            <!-- =============================================================================
+                 ARROW KEYS AND NAVIGATION (Key Codes 123-126)
+                 =============================================================================
+                 Maps arrow keys to their standard control character outputs.
+                 These keys maintain standard navigation functionality across all applications.
+                 
+                 MAPPING STRATEGY:
+                 - Arrow keys: Preserve standard navigation behavior
+                 - Control characters: Use standard Unicode escape sequences
+                 - Navigation: Maintain consistent behavior across all layers
+                 
+                 TECHNICAL NOTES:
+                 - Left Arrow: &#x001C; (U+001C) - File Separator control character
+                 - Right Arrow: &#x001D; (U+001D) - Group Separator control character
+                 - Down Arrow: &#x001F; (U+001F) - Unit Separator control character
+                 - Up Arrow: &#x001E; (U+001E) - Record Separator control character
+                 ============================================================================= -->
             <key code="123" output="&#x001C;"/>
+            <!-- Left Arrow -> File Separator (U+001C) - Standard left navigation -->
             <key code="124" output="&#x001D;"/>
+            <!-- Right Arrow -> Group Separator (U+001D) - Standard right navigation -->
             <key code="125" output="&#x001F;"/>
+            <!-- Down Arrow -> Unit Separator (U+001F) - Standard down navigation -->
             <key code="126" output="&#x001E;"/>
+            <!-- Up Arrow -> Record Separator (U+001E) - Standard up navigation -->
         </keyMap>
         <keyMap index="1">
+            <!-- =============================================================================
+                 LAYER 1: HIRAGANA SHIFT LAYER (Caps Lock OFF + Shift)
+                 =============================================================================
+                 This is the Hiragana Shift layer, active when Caps Lock is OFF and Shift is pressed.
+                 Provides access to small Hiragana characters and special symbols.
+                 
+                 LAYER RELATIONSHIPS:
+                 - Layer 0: Hiragana Base (Caps Lock OFF) - Base characters
+                 - Layer 1: Hiragana Shift (this layer) - Small characters & symbols
+                 - Layer 2: Katakana Base (Caps Lock ON) - Parallel base characters
+                 - Layer 3: Katakana Shift (Caps Lock ON + Shift) - Parallel small characters
+                 
+                 USAGE:
+                 - Press Shift while in Hiragana mode (Caps Lock OFF)
+                 - Access small characters (ぁぃぅぇぉゃゅょっ)
+                 - Access special symbols (を, ー)
+                 - Intuitive mapping: Small characters on same keys as large counterparts
+                 ============================================================================= -->
             <!-- =============================================================================
                  SHIFT KEY MAPPING - SMALL CHARACTERS & SPECIAL SYMBOLS
                  =============================================================================
@@ -449,215 +633,609 @@
             <!-- Shift+Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output=""/>
             <!-- Shift+Escape -> Control: Escape character (preserved functionality) -->
+            <!-- =============================================================================
+                 SHIFT+NUMPAD MAPPINGS (Key Codes 65-92)
+                 =============================================================================
+                 Maps Shift+numpad keys to standard mathematical and symbolic outputs.
+                 This preserves standard QWERTY symbol behavior for mixed text input.
+                 
+                 MAPPING STRATEGY:
+                 - Mathematical symbols: +, -, *, / for calculations
+                 - Special characters: ), }, | for text formatting
+                 - Standard QWERTY: Maintains familiar symbol placement
+                 
+                 TECHNICAL NOTES:
+                 - Numpad symbols: Standard mathematical and formatting symbols
+                 - Consistency: Matches Shift+main keyboard symbol behavior
+                 - Accessibility: Preserves standard numpad functionality
+                 ============================================================================= -->
             <key code="65" output=")"/>
+            <!-- Shift+Numpad 0 -> ) - Right parenthesis for mathematical expressions -->
             <key code="67" output="+"/>
+            <!-- Shift+Numpad = -> + - Plus sign for mathematical operations -->
             <key code="69" output=""/>
+            <!-- Shift+Numpad key - System default behavior -->
             <key code="71" output="}"/>
+            <!-- Shift+Numpad ] -> } - Right brace for text formatting -->
             <key code="75" output="_"/>
+            <!-- Shift+Numpad - -> _ - Underscore for text formatting -->
             <key code="76" output=""/>
+            <!-- Shift+Numpad Enter - System default behavior -->
             <key code="78" output=""/>
+            <!-- Shift+Numpad key - System default behavior -->
             <key code="81" output="|"/>
+            <!-- Shift+Numpad \ -> | - Vertical bar for text formatting -->
             <key code="82" output=""/>
+            <!-- Shift+Numpad key - System default behavior -->
+            <!-- =============================================================================
+                 SHIFT+NUMBER ROW SYMBOLS (Key Codes 83-92)
+                 =============================================================================
+                 Maps Shift+number row to standard QWERTY symbols.
+                 This preserves familiar symbol placement for mixed text input.
+                 
+                 MAPPING STRATEGY:
+                 - Standard QWERTY symbols: ! @ # $ % ^ & * ( )
+                 - Mathematical symbols: + for calculations
+                 - Text formatting: Standard punctuation and symbols
+                 
+                 TECHNICAL NOTES:
+                 - Symbol placement: Matches standard US QWERTY layout
+                 - Character frequency: Common symbols for mixed text input
+                 - Consistency: Maintains familiar keyboard behavior
+                 ============================================================================= -->
             <key code="83" output="!"/>
+            <!-- Shift+1 -> ! - Exclamation mark for emphasis -->
             <key code="84" output="@"/>
+            <!-- Shift+2 -> @ - At symbol for email addresses -->
             <key code="85" output="#"/>
+            <!-- Shift+3 -> # - Hash symbol for hashtags and numbers -->
             <key code="86" output="+"/>
-            <!-- Shift+Numpad 4 -> Plus sign (+) - Matches Shift+Equals behavior -->
+            <!-- Shift+Numpad 4 -> + - Plus sign (matches Shift+Equals behavior) -->
             <key code="87" output="%"/>
+            <!-- Shift+5 -> % - Percent symbol for calculations -->
             <key code="88" output="^"/>
+            <!-- Shift+6 -> ^ - Caret for mathematical operations -->
             <key code="89" output="&#x0026;"/>
+            <!-- Shift+7 -> & - Ampersand for text formatting -->
             <key code="91" output="*"/>
-            <!-- Shift+[ -> Small つ (tsu) - Small tsu for double consonants -->
+            <!-- Shift+8 -> * - Asterisk for emphasis and multiplication -->
             <key code="92" output="("/>
+            <!-- Shift+9 -> ( - Left parenthesis for mathematical expressions -->
+            <!-- =============================================================================
+                 UNUSED SHIFT+KEYS (Key Codes 96-113)
+                 =============================================================================
+                 Maps unused Shift+function keys that maintain default behavior.
+                 These keys preserve system functionality for third-party applications.
+                 
+                 TECHNICAL NOTES:
+                 - Function keys: F1-F12 range preserved for system shortcuts
+                 - Modifier keys: Cmd, Option, Control keys preserved
+                 - Empty outputs: Allow system default behavior
+                 ============================================================================= -->
             <key code="96" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="97" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="98" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="99" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="100" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="101" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="103" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="105" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="107" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="109" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="111" output=""/>
+            <!-- Shift+Function key - System default behavior -->
             <key code="113" output=""/>
+            <!-- Shift+Function key - System default behavior -->
+            <!-- =============================================================================
+                 SHIFT+PUNCTUATION AND SYMBOLS (Key Codes 114-121)
+                 =============================================================================
+                 Maps Shift+punctuation keys to standard QWERTY symbols.
+                 This preserves familiar symbol placement for mixed text input.
+                 
+                 MAPPING STRATEGY:
+                 - Standard QWERTY symbols: : " { < > ? for text formatting
+                 - Japanese text: Maintains standard punctuation behavior
+                 - Mixed text: Supports both Japanese and English input
+                 
+                 TECHNICAL NOTES:
+                 - Colon: : (code 114) for time and ratios
+                 - Quote marks: " (code 115) for dialogue and emphasis
+                 - Brackets: { (code 116) for text formatting
+                 - Angle brackets: < > (codes 117, 119) for HTML and markup
+                 - Question mark: ? (code 121) for questions
+                 ============================================================================= -->
             <key code="114" output=":"/>
+            <!-- Shift+; -> : - Colon for time and ratios -->
             <key code="115" output="&#x0022;"/>
+            <!-- Shift+' -> " - Double quote for dialogue and emphasis -->
             <key code="116" output="{"/>
+            <!-- Shift+[ -> { - Left brace for text formatting -->
             <key code="117" output="&#x003C;"/>
+            <!-- Shift+, -> < - Less than symbol for HTML and markup -->
             <key code="118" output=""/>
+            <!-- Unused key - System default behavior -->
             <key code="119" output="&#x003E;"/>
+            <!-- Shift+. -> > - Greater than symbol for HTML and markup -->
             <key code="120" output=""/>
+            <!-- Unused key - System default behavior -->
             <key code="121" output="?"/>
+            <!-- Shift+/ -> ? - Question mark for questions -->
             <key code="122" output=""/>
+            <!-- Unused key - System default behavior -->
+            <!-- =============================================================================
+                 SHIFT+ARROW KEYS (Key Codes 123-126)
+                 =============================================================================
+                 Maps Shift+arrow keys to empty outputs for system default behavior.
+                 These keys maintain standard navigation functionality across applications.
+                 
+                 MAPPING STRATEGY:
+                 - Arrow keys: Preserve standard navigation behavior
+                 - Empty outputs: Allow system default behavior
+                 - Navigation: Maintain consistent behavior across all layers
+                 
+                 TECHNICAL NOTES:
+                 - Left Arrow: System default behavior (text selection)
+                 - Right Arrow: System default behavior (text selection)
+                 - Down Arrow: System default behavior (text selection)
+                 - Up Arrow: System default behavior (text selection)
+                 ============================================================================= -->
             <key code="123" output=""/>
+            <!-- Shift+Left Arrow - System default behavior (text selection) -->
             <key code="124" output=""/>
+            <!-- Shift+Right Arrow - System default behavior (text selection) -->
             <key code="125" output=""/>
+            <!-- Shift+Down Arrow - System default behavior (text selection) -->
             <key code="126" output=""/>
+            <!-- Shift+Up Arrow - System default behavior (text selection) -->
         </keyMap>
         <keyMap index="2">
+            <!-- =============================================================================
+                 LAYER 2: KATAKANA BASE LAYER (Caps Lock ON, No Modifiers)
+                 =============================================================================
+                 This is the primary Katakana input layer, active when Caps Lock is ON.
+                 All 46 basic Katakana characters are mapped to QWERTY key positions.
+                 
+                 LAYER RELATIONSHIPS:
+                 - Layer 0: Hiragana Base (Caps Lock OFF) - Parallel base characters
+                 - Layer 1: Hiragana Shift (Caps Lock OFF + Shift) - Parallel small characters
+                 - Layer 2: Katakana Base (this layer) - Base Katakana characters
+                 - Layer 3: Katakana Shift (Caps Lock ON + Shift) - Small Katakana characters
+                 
+                 USAGE:
+                 - Default layer when input source is active and Caps Lock is ON
+                 - Direct character input without IME conversion
+                 - Intuitive QWERTY-to-Katakana mapping for learning
+                 - Parallel mapping to Hiragana for consistent learning experience
+                 
+                 CHARACTER MAPPING STRATEGY:
+                 - Parallel mapping: Same QWERTY key produces corresponding Hiragana/Katakana
+                 - Example: Q key → た (Hiragana mode) / タ (Katakana mode)
+                 - Intuitive learning: Visual correspondence between scripts
+                 - Complete 46-character Katakana set coverage
+                 ============================================================================= -->
+            <!-- =============================================================================
+                 BOTTOM ROW MAPPING (Key Codes 0-11: A-B)
+                 =============================================================================
+                 Maps QWERTY bottom row letters (A-B) to Katakana characters.
+                 This section covers the most frequently used Katakana characters.
+                 
+                 MAPPING STRATEGY:
+                 - QWERTY A-B -> Katakana: チトシハキクコ
+                 - Character selection: High-frequency Katakana characters
+                 - Learning progression: Common characters for beginners
+                 
+                 TECHNICAL NOTES:
+                 - Key codes: A=0, S=1, D=2, F=3, G=5, H=4, B=11
+                 - Character frequency: Optimized for common Japanese text
+                 - Input method: Direct character output (no conversion)
+                 ============================================================================= -->
             <key code="0" output="チ"/>
+            <!-- QWERTY: A -> Katakana: チ (chi) - Character frequency: High -->
             <key code="1" output="ト"/>
+            <!-- QWERTY: S -> Katakana: ト (to) - Character frequency: High -->
             <key code="2" output="シ"/>
+            <!-- QWERTY: D -> Katakana: シ (shi) - Character frequency: High -->
             <key code="3" output="ハ"/>
+            <!-- QWERTY: F -> Katakana: ハ (ha) - Character frequency: High -->
             <key code="4" output="ク"/>
+            <!-- QWERTY: H -> Katakana: ク (ku) - Character frequency: Medium -->
             <key code="5" output="キ"/>
+            <!-- QWERTY: G -> Katakana: キ (ki) - Character frequency: High -->
             <key code="6" output="ツ"/>
+            <!-- QWERTY: Z -> Katakana: ツ (tsu) - Character frequency: High -->
             <key code="7" output="サ"/>
+            <!-- QWERTY: X -> Katakana: サ (sa) - Character frequency: High -->
             <key code="8" output="ソ"/>
+            <!-- QWERTY: C -> Katakana: ソ (so) - Character frequency: High -->
             <key code="9" output="ヒ"/>
+            <!-- QWERTY: V -> Katakana: ヒ (hi) - Character frequency: High -->
             <key code="11" output="コ"/>
+            <!-- QWERTY: B -> Katakana: コ (ko) - Character frequency: High -->
+            <!-- =============================================================================
+                 TOP ROW MAPPING (Key Codes 12-35: Q-P)
+                 =============================================================================
+                 Maps QWERTY top row letters (Q-P) to Katakana characters.
+                 This section covers the most frequently used Katakana characters.
+                 
+                 MAPPING STRATEGY:
+                 - QWERTY Q-P -> Katakana: タチイスカンナニラセ
+                 - Character selection: High-frequency Katakana characters
+                 - Learning progression: Common characters for beginners
+                 
+                 TECHNICAL NOTES:
+                 - Key codes: Q=12, W=13, E=14, R=15, T=17, Y=16, U=32, I=34, O=31, P=35
+                 - Character frequency: Optimized for common Japanese text
+                 - Input method: Direct character output (no conversion)
+                 ============================================================================= -->
             <key code="12" output="タ"/>
-            <key code="13" output="チ"/>
+            <!-- QWERTY: Q -> Katakana: タ (ta) - Character frequency: High -->
+            <key code="13" output="テ"/>
+            <!-- QWERTY: W -> Katakana: テ (te) - Character frequency: High -->
             <key code="14" output="イ"/>
+            <!-- QWERTY: E -> Katakana: イ (i) - Character frequency: Very High (vowel) -->
             <key code="15" output="ス"/>
+            <!-- QWERTY: R -> Katakana: ス (su) - Character frequency: High -->
             <key code="16" output="ン"/>
+            <!-- QWERTY: Y -> Katakana: ン (n) - Character frequency: Very High -->
             <key code="17" output="カ"/>
+            <!-- QWERTY: T -> Katakana: カ (ka) - Character frequency: High -->
             <key code="18" output="ヌ"/>
+            <!-- QWERTY: 1 -> Katakana: ヌ (nu) - Character frequency: High -->
             <key code="19" output="フ"/>
+            <!-- QWERTY: 2 -> Katakana: フ (fu) - Character frequency: Medium -->
             <key code="20" output="ア"/>
+            <!-- QWERTY: 3 -> Katakana: ア (a) - Character frequency: Very High (vowel) -->
             <key code="21" output="ウ"/>
+            <!-- QWERTY: 4 -> Katakana: ウ (u) - Character frequency: Very High (vowel) -->
             <key code="22" output="オ"/>
+            <!-- QWERTY: 6 -> Katakana: オ (o) - Character frequency: Very High (vowel) -->
             <key code="23" output="エ"/>
+            <!-- QWERTY: 5 -> Katakana: エ (e) - Character frequency: Very High (vowel) -->
             <key code="24" output="ヘ"/>
+            <!-- QWERTY: = -> Katakana: ヘ (he) - Character frequency: High -->
             <key code="25" output="ヨ"/>
+            <!-- QWERTY: 9 -> Katakana: ヨ (yo) - Character frequency: High -->
             <key code="26" output="ヤ"/>
+            <!-- QWERTY: 7 -> Katakana: ヤ (ya) - Character frequency: High -->
             <key code="27" output="ホ"/>
+            <!-- QWERTY: - -> Katakana: ホ (ho) - Character frequency: High -->
             <key code="28" output="ユ"/>
+            <!-- QWERTY: 8 -> Katakana: ユ (yu) - Character frequency: High -->
             <key code="29" output="ワ"/>
+            <!-- QWERTY: 0 -> Katakana: ワ (wa) - Character frequency: High -->
             <key code="30" output="゚"/>
+            <!-- QWERTY: ] -> Handakuten: ゚ (combining handakuten) - No spacing, combines with previous character -->
             <key code="31" output="ラ"/>
+            <!-- QWERTY: O -> Katakana: ラ (ra) - Character frequency: High -->
             <key code="32" output="ナ"/>
+            <!-- QWERTY: U -> Katakana: ナ (na) - Character frequency: High -->
             <key code="33" output="゙"/>
+            <!-- QWERTY: [ -> Dakuten: ゙ (combining dakuten) - No spacing, combines with previous character -->
             <key code="34" output="ニ"/>
+            <!-- QWERTY: I -> Katakana: ニ (ni) - Character frequency: High -->
             <key code="35" output="セ"/>
+            <!-- QWERTY: P -> Katakana: セ (se) - Character frequency: High -->
             <key code="36" output="&#x000D;"/>
+            <!-- QWERTY: Enter -> Control: Carriage Return (preserved functionality) -->
             <key code="37" output="リ"/>
+            <!-- QWERTY: L -> Katakana: リ (ri) - Character frequency: High -->
             <key code="38" output="マ"/>
+            <!-- QWERTY: J -> Katakana: マ (ma) - Character frequency: High -->
             <key code="39" output="ケ"/>
+            <!-- QWERTY: \' -> Katakana: ケ (ke) - Character frequency: High -->
             <key code="40" output="ノ"/>
+            <!-- QWERTY: K -> Katakana: ノ (no) - Character frequency: High -->
             <key code="41" output="レ"/>
+            <!-- QWERTY: ; -> Katakana: レ (re) - Character frequency: High -->
             <key code="42" output="ム"/>
+            <!-- QWERTY: \ -> Katakana: ム (mu) - Character frequency: Medium -->
             <key code="43" output=""/>
+            <!-- QWERTY: , -> (no Katakana mapping - empty for system default) -->
             <key code="44" output=""/>
+            <!-- QWERTY: / -> (no Katakana mapping - empty for system default) -->
             <key code="45" output="ミ"/>
+            <!-- QWERTY: N -> Katakana: ミ (mi) - Character frequency: High -->
             <key code="46" output="モ"/>
+            <!-- QWERTY: M -> Katakana: モ (mo) - Character frequency: High -->
             <key code="47" output=""/>
+            <!-- QWERTY: . -> (no Katakana mapping - empty for system default) -->
             <key code="48" output="&#x0009;"/>
+            <!-- QWERTY: Tab -> Control: Tab character (preserved functionality) -->
             <key code="49" output=""/>
+            <!-- QWERTY: Space -> (no Katakana mapping - empty for system default) -->
             <key code="50" output="ロ"/>
+            <!-- QWERTY: ` -> Katakana: ロ (ro) - Character frequency: High (final Katakana) -->
             <key code="51" output="&#x0008;"/>
+            <!-- QWERTY: Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="&#x001B;"/>
+            <!-- QWERTY: Escape -> Control: Escape character (preserved functionality) -->
+            <!-- =============================================================================
+                 KATAKANA LAYER SPECIAL KEYS AND NUMPAD (Key Codes 55-126)
+                 =============================================================================
+                 Maps special keys, numpad, and control characters for Katakana mode.
+                 This section maintains parallel functionality to Hiragana layer while
+                 preserving essential system controls and numpad functionality.
+                 
+                 MAPPING STRATEGY:
+                 - Parallel to Hiragana: Same key codes produce equivalent functionality
+                 - Numpad preservation: Standard numeric and mathematical symbols
+                 - Control characters: Essential navigation and text editing
+                 - System keys: Preserved for third-party application compatibility
+                 
+                 TECHNICAL NOTES:
+                 - Function keys: F1-F12 range preserved for system shortcuts
+                 - Numpad: Standard 0-9, mathematical symbols, and control characters
+                 - Arrow keys: Standard navigation control characters
+                 - Special punctuation: Japanese period (。) and standard symbols
+                 ============================================================================= -->
             <key code="55" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="56" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="57" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="58" output=""/>
+            <!-- Function key (F1-F12 range) - System default behavior -->
             <key code="64" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="65" output="0"/>
+            <!-- Numpad 0 -> 0 - Standard numeric input -->
             <key code="66" output="&#x001D;"/>
+            <!-- Function key - Group Separator control character -->
             <key code="67" output="="/>
+            <!-- Numpad = -> = - Mathematical equals sign -->
             <key code="69" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="70" output="&#x001C;"/>
+            <!-- Function key - File Separator control character -->
             <key code="71" output="]"/>
+            <!-- Numpad ] -> ] - Right bracket for mathematical expressions -->
             <key code="72" output="&#x001F;"/>
+            <!-- Function key - Unit Separator control character -->
             <key code="75" output="-"/>
+            <!-- Numpad - -> - - Mathematical minus sign -->
             <key code="76" output="&#x0003;"/>
+            <!-- Numpad Enter -> ETX (End of Text) - Text termination control character -->
             <key code="77" output="&#x001E;"/>
+            <!-- Function key - Record Separator control character -->
             <key code="78" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="79" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="80" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="81" output="\"/>
+            <!-- Numpad \ -> \ - Backslash for mathematical expressions -->
             <key code="82" output=""/>
+            <!-- Numpad key - System default behavior -->
             <key code="83" output="1"/>
+            <!-- Numpad 1 -> 1 - Standard numeric input -->
             <key code="84" output="2"/>
+            <!-- Numpad 2 -> 2 - Standard numeric input -->
             <key code="85" output="3"/>
+            <!-- Numpad 3 -> 3 - Standard numeric input -->
             <key code="86" output="="/>
-            <!-- Caps Lock+Numpad 4 -> Equals sign (=) - Katakana mode, same as Hiragana -->
+            <!-- Caps Lock+Numpad 4 -> = - Equals sign (Katakana mode, same as Hiragana) -->
             <key code="87" output="5"/>
+            <!-- Numpad 5 -> 5 - Standard numeric input -->
             <key code="88" output="6"/>
+            <!-- Numpad 6 -> 6 - Standard numeric input -->
             <key code="89" output="7"/>
+            <!-- Numpad 7 -> 7 - Standard numeric input -->
             <key code="91" output="8"/>
+            <!-- Numpad 8 -> 8 - Standard numeric input -->
             <key code="92" output="9"/>
+            <!-- Numpad 9 -> 9 - Standard numeric input -->
             <key code="96" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="97" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="98" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="99" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="100" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="101" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="103" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="105" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="106" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="107" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="109" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="111" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="113" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="114" output=";"/>
+            <!-- QWERTY: ; -> ; - Semicolon for mixed text input -->
             <key code="115" output="&#x0027;"/>
+            <!-- QWERTY: ' -> ' - Apostrophe for contractions and possessives -->
             <key code="116" output="["/>
+            <!-- QWERTY: [ -> [ - Left bracket for text formatting -->
             <key code="117" output=","/>
+            <!-- QWERTY: , -> , - Comma for sentence pauses -->
             <key code="118" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="119" output="。"/>
+            <!-- QWERTY: . -> 。 - Japanese period (maru) for proper sentence endings -->
             <key code="120" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="121" output="/"/>
+            <!-- QWERTY: / -> / - Forward slash for mixed text and URLs -->
             <key code="122" output="&#x0010;"/>
+            <!-- Function key - Data Link Escape control character -->
             <key code="123" output="&#x001C;"/>
+            <!-- Left Arrow -> File Separator (U+001C) - Standard left navigation -->
             <key code="124" output="&#x001D;"/>
+            <!-- Right Arrow -> Group Separator (U+001D) - Standard right navigation -->
             <key code="125" output="&#x001F;"/>
+            <!-- Down Arrow -> Unit Separator (U+001F) - Standard down navigation -->
             <key code="126" output="&#x001E;"/>
+            <!-- Up Arrow -> Record Separator (U+001E) - Standard up navigation -->
         </keyMap>
         <keyMap index="3">
+            <!-- =============================================================================
+                 LAYER 3: KATAKANA SHIFT LAYER (Caps Lock ON + Shift)
+                 =============================================================================
+                 This is the Katakana Shift layer, active when Caps Lock is ON and Shift is pressed.
+                 Provides access to small Katakana characters and special symbols.
+                 
+                 LAYER RELATIONSHIPS:
+                 - Layer 0: Hiragana Base (Caps Lock OFF) - Parallel base characters
+                 - Layer 1: Hiragana Shift (Caps Lock OFF + Shift) - Parallel small characters
+                 - Layer 2: Katakana Base (Caps Lock ON) - Base Katakana characters
+                 - Layer 3: Katakana Shift (this layer) - Small Katakana characters & symbols
+                 
+                 USAGE:
+                 - Press Shift while in Katakana mode (Caps Lock ON)
+                 - Access small Katakana characters (ァィゥェォャュョッ)
+                 - Access special symbols (ヲ, ー)
+                 - Intuitive mapping: Small characters on same keys as large counterparts
+                 
+                 CHARACTER MAPPING STRATEGY:
+                 - Small Katakana: ァィゥェォャュョッ (complete essential set)
+                 - Intuitive placement: Small characters on same keys as large counterparts
+                 - Special placement: ヲ (wo) on Shift+0 (same key as ワ)
+                 - Small ツ (ッ): Only on Shift+Z (same key as ツ) for double consonants
+                 - Long vowel sound: ー on Shift+ム (mu) for vowel extension
+                 - Clean mapping: No duplicate characters, logical key relationships
+                 ============================================================================= -->
+            <!-- =============================================================================
+                 BOTTOM ROW MAPPING (Key Codes 0-11: A-B)
+                 =============================================================================
+                 Maps QWERTY bottom row letters (A-B) to small Katakana characters.
+                 This section provides access to small Katakana characters for proper text input.
+                 
+                 MAPPING STRATEGY:
+                 - Small characters: ッ (small tsu) for double consonants
+                 - Intuitive placement: Small characters on same keys as large counterparts
+                 - Essential for proper Japanese text input
+                 
+                 TECHNICAL NOTES:
+                 - Key codes: A=0, S=1, D=2, F=3, G=5, H=4, B=11
+                 - Small characters: Essential for proper Japanese text input
+                 - Character frequency: Optimized for common Japanese text patterns
+                 ============================================================================= -->
             <key code="0" output=""/>
+            <!-- QWERTY: A -> (no small variant for チ) -->
             <key code="1" output=""/>
+            <!-- QWERTY: S -> (no small variant for ト) -->
             <key code="2" output=""/>
+            <!-- QWERTY: D -> (no small variant for シ) -->
             <key code="3" output=""/>
+            <!-- QWERTY: F -> (no small variant for ハ) -->
             <key code="4" output=""/>
+            <!-- QWERTY: H -> (no small variant for ク) -->
             <key code="5" output=""/>
+            <!-- QWERTY: G -> (no small variant for キ) -->
             <key code="6" output="ッ"/>
+            <!-- QWERTY: Z -> Small ツ (tsu) - Small tsu for double consonants (on same key as ツ) -->
             <key code="7" output=""/>
+            <!-- QWERTY: X -> (no small variant for サ) -->
             <key code="8" output=""/>
+            <!-- QWERTY: C -> (no small variant for ソ) -->
             <key code="9" output=""/>
+            <!-- QWERTY: V -> (no small variant for ヒ) -->
             <key code="11" output=""/>
+            <!-- QWERTY: B -> (no small variant for コ) -->
             <key code="12" output=""/>
+            <!-- QWERTY: Q -> (no small variant for タ) -->
             <key code="13" output=""/>
+            <!-- QWERTY: W -> (no small variant for テ) -->
             <key code="14" output="ィ"/>
+            <!-- QWERTY: E -> Small イ (i) - Small vowel character -->
             <key code="15" output=""/>
+            <!-- QWERTY: R -> (no small variant for ス) -->
             <key code="16" output=""/>
+            <!-- QWERTY: Y -> (no small variant for ン) -->
             <key code="17" output=""/>
+            <!-- QWERTY: T -> (no small variant for カ) -->
             <key code="18" output=""/>
+            <!-- QWERTY: 1 -> (no small variant for ヌ) -->
             <key code="19" output=""/>
+            <!-- QWERTY: 2 -> (no small variant for フ) -->
             <key code="20" output="ァ"/>
+            <!-- QWERTY: 3 -> Small ア (a) - Small vowel character -->
             <key code="21" output="ゥ"/>
+            <!-- QWERTY: 4 -> Small ウ (u) - Small vowel character -->
             <key code="22" output="ォ"/>
+            <!-- QWERTY: 6 -> Small オ (o) - Small vowel character -->
             <key code="23" output="ェ"/>
+            <!-- QWERTY: 5 -> Small エ (e) - Small vowel character -->
             <key code="24" output=""/>
+            <!-- QWERTY: = -> (no small variant for ヘ) -->
             <key code="25" output="ョ"/>
+            <!-- QWERTY: 9 -> Small ヨ (yo) - Small yo character -->
             <key code="26" output="ャ"/>
+            <!-- QWERTY: 7 -> Small ヤ (ya) - Small ya character -->
             <key code="27" output=""/>
+            <!-- QWERTY: - -> (no small variant for ホ) -->
             <key code="28" output="ュ"/>
+            <!-- QWERTY: 8 -> Small ユ (yu) - Small yu character -->
             <key code="29" output="ヲ"/>
+            <!-- QWERTY: 0 -> ヲ (wo) - Object particle (on same key as ワ) -->
             <key code="30" output=""/>
+            <!-- QWERTY: ] -> (no small variant for handakuten) -->
             <key code="31" output=""/>
+            <!-- QWERTY: O -> (no small variant for ラ) -->
             <key code="32" output=""/>
+            <!-- QWERTY: U -> (no small variant for ナ) -->
             <key code="33" output=""/>
+            <!-- QWERTY: [ -> (no small variant for dakuten) -->
             <key code="34" output=""/>
+            <!-- QWERTY: I -> (no small variant for ニ) -->
             <key code="35" output=""/>
+            <!-- QWERTY: P -> (no small variant for セ) -->
             <key code="36" output="&#x000D;"/>
+            <!-- QWERTY: Enter -> Control: Carriage Return (preserved functionality) -->
             <key code="37" output=""/>
+            <!-- QWERTY: L -> (no small variant for リ) -->
             <key code="38" output=""/>
+            <!-- QWERTY: J -> (no small variant for マ) -->
             <key code="39" output=""/>
+            <!-- QWERTY: \' -> (no small variant for ケ) -->
             <key code="40" output=""/>
+            <!-- QWERTY: K -> (no small variant for ノ) -->
             <key code="41" output=""/>
+            <!-- QWERTY: ; -> (no small variant for レ) -->
             <key code="42" output="ー"/>
+            <!-- QWERTY: \ -> Long vowel sound (ー) - Long dash for vowel extension -->
             <key code="43" output=""/>
+            <!-- QWERTY: , -> (no small variant - empty for system default) -->
             <key code="44" output=""/>
+            <!-- QWERTY: / -> (no small variant - empty for system default) -->
             <key code="45" output=""/>
+            <!-- QWERTY: N -> (no small variant for ミ) -->
             <key code="46" output=""/>
+            <!-- QWERTY: M -> (no small variant for モ) -->
             <key code="47" output=""/>
+            <!-- QWERTY: . -> (no small variant - empty for system default) -->
             <key code="48" output="&#x0009;"/>
+            <!-- QWERTY: Tab -> Control: Tab character (preserved functionality) -->
             <key code="49" output=""/>
+            <!-- QWERTY: Space -> (no small variant - empty for system default) -->
             <key code="50" output=""/>
+            <!-- QWERTY: ` -> (no small variant for ロ) -->
             <key code="51" output=""/>
+            <!-- QWERTY: Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="&#x001B;"/>
+            <!-- QWERTY: Escape -> Control: Escape character (preserved functionality) -->
             <key code="64" output="&#x0010;"/>
             <key code="65" output=")"/>
             <key code="66" output="&#x001D;"/>

@@ -1,4 +1,6 @@
-# HiraganaLaser Development Documentation
+# ひらがな-カタカナ Development Documentation
+
+# **note: カタカナ has not been fully tested and compared to the keymapping of the DROP WOB Katakana GMK keycap set**
 
 ## **Project Overview**
 
@@ -10,10 +12,12 @@ This document provides comprehensive development documentation for the HiraganaL
 Create a custom macOS keyboard layout that enables direct Hiragana character input while maintaining access to symbol mappings on F1-F12 and navigation cluster keys through Karabiner Elements integration.
 
 ### **Final Implementation**
-- **Input Source Name**: ひらがな (Hiragana)
-- **Layout File**: `Hiragana.keylayout`
+- **Input Source Name**: ひらがな-カタカナ (Hiragana-Katakana)
+- **Layout File**: `Hiragana_Katakana.keylayout`
 - **Layout ID**: 16396
 - **Group**: 1
+- **Dual-Mode Layout**: Caps Lock toggle between Hiragana (OFF) and Katakana (ON) modes
+- **Four-Layer System**: Each mode has its own Shift layer for small characters and special symbols
 
 ## **Development Approaches Attempted**
 
@@ -354,24 +358,51 @@ echo "Testing numpad 4 with Caps Lock ON"
 
 ### **Working Components**
 - ✅ Command/Option key swap via Karabiner Elements
-- ✅ Hiragana character input on standard keys
-- ✅ Input source switching between ABC and ひらがな
+- ✅ Hiragana character input on standard keys (Caps Lock OFF)
+- ✅ Katakana character input on standard keys (Caps Lock ON)
+- ✅ Caps Lock toggle between Hiragana and Katakana modes
+- ✅ Four-layer system with independent Shift layers for each mode
+- ✅ Small character support in both Hiragana and Katakana modes
+- ✅ Combining characters (dakuten/handakuten) work in both modes
+- ✅ Input source switching between ABC and ひらがな-カタカナ
 - ✅ System integration and installation
 
 ### **Outstanding Issues**
-- ❌ **CRITICAL**: Numpad 4 key crash in Caps Lock mode
+- ❌ **CRITICAL**: Numpad 4 key crash in BOTH Hiragana and Katakana modes
 - ❌ F1-F12 symbol mappings (incomplete key code data)
 - ❌ Navigation cluster symbol mappings (key code mismatch)
 - ❌ Copy/paste functionality with USB hub setup
 - ❌ Macro pad integration with custom layout
 
+### **Caps Lock Layer Implementation**
+
+The dual-mode layout uses Caps Lock as a persistent toggle between Hiragana and Katakana modes:
+
+#### **Technical Implementation**
+- **Modifier Map**: Uses `caps` and `anyShift caps` modifiers for Katakana layers
+- **Layer Structure**: Four distinct keyMap indices (0-3) for complete functionality
+- **Toggle Behavior**: Caps Lock acts as a locking modifier (persistent until pressed again)
+- **LED Indication**: Caps Lock LED shows which mode is active
+
+#### **Layer Mapping**
+- **Layer 0**: Hiragana Base (Caps Lock OFF, no modifiers)
+- **Layer 1**: Hiragana Shift (Caps Lock OFF + Shift)
+- **Layer 2**: Katakana Base (Caps Lock ON, no modifiers)
+- **Layer 3**: Katakana Shift (Caps Lock ON + Shift)
+
+#### **Character Mapping Strategy**
+- **Parallel Mapping**: Same QWERTY key produces corresponding Hiragana/Katakana
+- **Intuitive Learning**: Visual correspondence between scripts aids learning
+- **Consistent Behavior**: Shift layers work identically in both modes
+- **Complete Coverage**: All 46 basic characters plus small characters and symbols
+
 ### **Next Steps**
-1. **URGENT**: Resolve numpad 4 crash issue
+1. **URGENT**: Resolve numpad 4 crash issue affecting both modes
 2. **Complete F1-F5 key code identification** using EventViewer
-2. **Create comprehensive key code mapping** for all target keys
-3. **Implement symbol mappings** in keyboard layout file
-4. **Test with complete USB hub setup** including macro pad
-5. **Document final working configuration**
+3. **Create comprehensive key code mapping** for all target keys
+4. **Implement symbol mappings** in keyboard layout file
+5. **Test with complete USB hub setup** including macro pad
+6. **Document final working configuration**
 
 ## **Lessons Learned**
 
@@ -396,7 +427,7 @@ echo "Testing numpad 4 with Caps Lock ON"
 ## **File Inventory**
 
 ### **Production Files**
-- `Hiragana.keylayout` - Main keyboard layout file
+- `Hiragana_Katakana.keylayout` - Main dual-mode keyboard layout file
 - `README.md` - User documentation
 - `LICENSE` - CC0-1.0 license
 

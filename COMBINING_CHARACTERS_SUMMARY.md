@@ -1,4 +1,4 @@
-# ひらがな - Combining Characters Implementation
+# ひらがな-カタカナ - Combining Characters Implementation
 
 ## **Branch: `refine-keyboard-layout`**
 
@@ -9,6 +9,14 @@
 **Solution Implemented**: Replaced standalone characters with combining characters:
 - **Combining Dakuten**: ゙ (U+3099) - No spacing, combines with previous character
 - **Combining Handakuten**: ゚ (U+309A) - No spacing, combines with previous character
+
+### **✅ Dual-Mode Support**
+
+**Combining characters work in BOTH Hiragana and Katakana modes**:
+- **Hiragana Mode (Caps Lock OFF)**: か + ゙ = が (ga)
+- **Katakana Mode (Caps Lock ON)**: カ + ゙ = ガ (ga)
+- **Consistent behavior**: Same key positions and functionality in both modes
+- **No mode switching required**: Combining characters work regardless of current mode
 
 ### **✅ New System Overview**
 
@@ -49,19 +57,37 @@
 
 ### **✅ Usage Examples**
 
-#### **Typing "ひらがな" (Hiragana)**
+#### **Hiragana Mode (Caps Lock OFF)**
+
+**Typing "ひらがな" (Hiragana)**
 1. Type: ひ (hi)
 2. Type: ら (ra)
 3. Type: が (ga) - Type か (ka) then press dakuten key ([)
 4. Type: な (na)
 
-#### **Typing "ぱん" (Pan)**
+**Typing "ぱん" (Pan)**
 1. Type: ぱ (pa) - Type は (ha) then press handakuten key (])
 2. Type: ん (n)
 
-#### **Typing "っちゃ" (Tcha)**
-1. Type: っ (small tsu) - Press Shift+0
+**Typing "っちゃ" (Tcha)**
+1. Type: っ (small tsu) - Press Shift+Z
 2. Type: ちゃ (cha) - Type ち (chi) then press dakuten key ([), then や (ya)
+
+#### **Katakana Mode (Caps Lock ON)**
+
+**Typing "ヒラガナ" (HIRAGANA)**
+1. Type: ヒ (hi)
+2. Type: ラ (ra)
+3. Type: ガ (ga) - Type カ (ka) then press dakuten key ([)
+4. Type: ナ (na)
+
+**Typing "パン" (PAN)**
+1. Type: パ (pa) - Type ハ (ha) then press handakuten key (])
+2. Type: ン (n)
+
+**Typing "ッチャ" (TCHA)**
+1. Type: ッ (small tsu) - Press Shift+Z
+2. Type: チャ (cha) - Type チ (chi) then press dakuten key ([), then ヤ (ya)
 
 ### **✅ Technical Implementation**
 
