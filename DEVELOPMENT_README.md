@@ -1,4 +1,6 @@
-# HiraganaLaser Development Documentation
+# ひらがな-カタカナ Development Documentation
+
+# **note: カタカナ has not been fully tested and compared to the keymapping of the DROP WOB Katakana GMK keycap set**
 
 ## **Project Overview**
 
@@ -10,10 +12,12 @@ This document provides comprehensive development documentation for the HiraganaL
 Create a custom macOS keyboard layout that enables direct Hiragana character input while maintaining access to symbol mappings on F1-F12 and navigation cluster keys through Karabiner Elements integration.
 
 ### **Final Implementation**
-- **Input Source Name**: ひらがな (Hiragana)
-- **Layout File**: `Hiragana.keylayout`
+- **Input Source Name**: ひらがな-カタカナ (Hiragana-Katakana)
+- **Layout File**: `Hiragana_Katakana.keylayout`
 - **Layout ID**: 16396
 - **Group**: 1
+- **Dual-Mode Layout**: Caps Lock toggle between Hiragana (OFF) and Katakana (ON) modes
+- **Four-Layer System**: Each mode has its own Shift layer for small characters and special symbols
 
 ## **Development Approaches Attempted**
 
@@ -238,26 +242,167 @@ defaults read com.apple.HIToolbox AppleSelectedInputSources
 - **Numeric Format**: 122, 120, etc. (for standard keys)
 - **Usage**: String format for Karabiner Elements, numeric format for keyboard layouts
 
+## **Critical Bug: Numpad Key 86 Crash Issue**
+
+### **Problem Description**
+
+**Severity**: CRITICAL - Causes application crashes
+**Affected Key**: Numpad 4 (key code 86, usage 0x0056)
+**Affected Applications**: Chrome, and potentially other applications
+**Crash Type**: `EXC_BREAKPOINT (SIGTRAP)` in `-[NSMenu performKeyEquivalent:]`
+
+### **Crash Analysis**
+
+**Crash Location**:
+```
+Thread 0 Crashed:: CrBrowserMain Dispatch queue: com.apple.main-thread
+0   AppKit                        0x1951fc628 -[NSApplication _crashOnException:] + 256
+1   AppKit                        0x1951fc3e8 -[NSApplication reportException:] + 460
+2   AppKit                        0x1954c441c NSApplicationUncaughtExceptionHandler + 152
+3   CoreFoundation                0x191127078 __handleUncaughtException + 820
+4   libobjc.A.dylib               0x190b44dc8 _objc_terminate() + 144
+5   libc++abi.dylib               0x190ed0698 std::__terminate(void (*)()) + 16
+6   libc++abi.dylib               0x190ed3c30 __cxxabiv1::failed_throw(__cxxabiv1::__cxa_exception*) + 88
+7   libc++abi.dylib               0x190ed3bd8 __cxa_throw + 92
+8   libobjc.A.dylib               0x190b3acf8 objc_exception_throw + 448
+9   CoreFoundation                0x191172084 _CFThrowFormattedException + 124
+10  CoreFoundation                0x1911720bc -[__NSCFString characterAtIndex:].cold.1 + 56
+11  CoreFoundation                0x190fe1aa8 -[__NSCFString characterAtIndex:] + 124
+12  AppKit                        0x1951901d0 -[NSMenu performKeyEquivalent:] + 80
+```
+
+**Root Cause**: macOS's menu keyboard shortcut matching system encounters a string bounds exception when processing key code 86. The issue occurs in `-[__NSCFString characterAtIndex:]` when trying to read characters from the key output string.
+
+### **Attempted Solutions**
+
+#### **Solution 1: Remap to = and + Symbols (FAILED)**
+
+**Implementation**: 
+- Changed key code 86 from outputting "4" and "$" to "=" and "+"
+- Applied across all modifier states (base, shift, caps lock, caps+shift)
+- Added comprehensive documentation
+
+**Result**: **STILL CRASHES** - The issue persists even with proper character outputs
+
+**Analysis**: The problem is not with the specific characters being output, but rather with how macOS processes numpad keys in custom keyboard layouts when Caps Lock is active.
+
+#### **Solution 2: Investigation Findings**
+
+**Key Discovery**: The crash occurs specifically when:
+1. Using the Hiragana-Katakana input source
+2. Caps Lock is active (Katakana mode)
+3. Pressing numpad 4 key (key code 86)
+4. macOS tries to match the key against menu shortcuts
+
+**Technical Details**:
+- **Key Code**: 86 (0x0056) - Numpad 4
+- **Usage Page**: 7 (0x0007) - Keyboard/Keypad
+- **Usage**: 86 (0x0056) - Keypad 4
+- **Crash Location**: NSMenu keyboard shortcut matching code
+
+### **Current Status**
+
+**Status**: UNRESOLVED - Critical bug still present
+**Impact**: Prevents safe use of numpad 4 key in any application
+**Workaround**: Avoid using numpad 4 key when Caps Lock is active
+
+### **Investigation Notes**
+
+1. **Not a Character Issue**: The crash occurs regardless of what characters are mapped to key code 86
+2. **Caps Lock Specific**: Only happens when Caps Lock is active (Katakana mode)
+3. **System-Level Issue**: The problem is in macOS's menu shortcut matching, not our layout
+4. **Numpad Key Specific**: Only affects numpad keys, not main keyboard keys
+
+### **Potential Solutions to Investigate**
+
+1. **Empty Output Mapping**: Try mapping key code 86 to empty string `""` in all layers
+2. **Control Character Mapping**: Map to a control character instead of printable characters
+3. **System Key Mapping**: Map to a system key that doesn't trigger menu matching
+4. **Layout Structure Issue**: Investigate if the issue is with our layout's modifier map structure
+5. **macOS Version Specific**: Test on different macOS versions to see if it's version-specific
+
+### **Testing Protocol**
+
+**Required Tests**:
+1. Test numpad 4 key in Chrome with Caps Lock OFF (should work)
+2. Test numpad 4 key in Chrome with Caps Lock ON (currently crashes)
+3. Test other numpad keys (82-85, 87-92) with Caps Lock ON
+4. Test in multiple applications (TextEdit, Terminal, Safari)
+5. Test with different keyboard layouts to isolate the issue
+
+**Test Commands**:
+```bash
+# Test in Terminal
+echo "Testing numpad 4 with Caps Lock ON"
+# Press numpad 4 key here
+
+# Test in TextEdit
+# Open TextEdit, enable Caps Lock, press numpad 4
+```
+
+### **Documentation Updates Needed**
+
+1. **README.md**: Add warning about numpad 4 key crash
+2. **Installation Guide**: Include workaround instructions
+3. **Known Issues**: Document this as a critical known issue
+4. **Troubleshooting**: Add crash resolution steps
+
+### **Next Steps**
+
+1. **Immediate**: Document this as a critical known issue
+2. **Short-term**: Implement workaround (empty output mapping)
+3. **Medium-term**: Investigate alternative layout structures
+4. **Long-term**: Report to Apple as a potential macOS bug
+
 ## **Current Status**
 
 ### **Working Components**
 - ✅ Command/Option key swap via Karabiner Elements
-- ✅ Hiragana character input on standard keys
-- ✅ Input source switching between ABC and ひらがな
+- ✅ Hiragana character input on standard keys (Caps Lock OFF)
+- ✅ Katakana character input on standard keys (Caps Lock ON)
+- ✅ Caps Lock toggle between Hiragana and Katakana modes
+- ✅ Four-layer system with independent Shift layers for each mode
+- ✅ Small character support in both Hiragana and Katakana modes
+- ✅ Combining characters (dakuten/handakuten) work in both modes
+- ✅ Input source switching between ABC and ひらがな-カタカナ
 - ✅ System integration and installation
 
 ### **Outstanding Issues**
+- ❌ **CRITICAL**: Numpad 4 key crash in BOTH Hiragana and Katakana modes
 - ❌ F1-F12 symbol mappings (incomplete key code data)
 - ❌ Navigation cluster symbol mappings (key code mismatch)
 - ❌ Copy/paste functionality with USB hub setup
 - ❌ Macro pad integration with custom layout
 
+### **Caps Lock Layer Implementation**
+
+The dual-mode layout uses Caps Lock as a persistent toggle between Hiragana and Katakana modes:
+
+#### **Technical Implementation**
+- **Modifier Map**: Uses `caps` and `anyShift caps` modifiers for Katakana layers
+- **Layer Structure**: Four distinct keyMap indices (0-3) for complete functionality
+- **Toggle Behavior**: Caps Lock acts as a locking modifier (persistent until pressed again)
+- **LED Indication**: Caps Lock LED shows which mode is active
+
+#### **Layer Mapping**
+- **Layer 0**: Hiragana Base (Caps Lock OFF, no modifiers)
+- **Layer 1**: Hiragana Shift (Caps Lock OFF + Shift)
+- **Layer 2**: Katakana Base (Caps Lock ON, no modifiers)
+- **Layer 3**: Katakana Shift (Caps Lock ON + Shift)
+
+#### **Character Mapping Strategy**
+- **Parallel Mapping**: Same QWERTY key produces corresponding Hiragana/Katakana
+- **Intuitive Learning**: Visual correspondence between scripts aids learning
+- **Consistent Behavior**: Shift layers work identically in both modes
+- **Complete Coverage**: All 46 basic characters plus small characters and symbols
+
 ### **Next Steps**
-1. **Complete F1-F5 key code identification** using EventViewer
-2. **Create comprehensive key code mapping** for all target keys
-3. **Implement symbol mappings** in keyboard layout file
-4. **Test with complete USB hub setup** including macro pad
-5. **Document final working configuration**
+1. **URGENT**: Resolve numpad 4 crash issue affecting both modes
+2. **Complete F1-F5 key code identification** using EventViewer
+3. **Create comprehensive key code mapping** for all target keys
+4. **Implement symbol mappings** in keyboard layout file
+5. **Test with complete USB hub setup** including macro pad
+6. **Document final working configuration**
 
 ## **Lessons Learned**
 
@@ -282,7 +427,7 @@ defaults read com.apple.HIToolbox AppleSelectedInputSources
 ## **File Inventory**
 
 ### **Production Files**
-- `Hiragana.keylayout` - Main keyboard layout file
+- `Hiragana_Katakana.keylayout` - Main dual-mode keyboard layout file
 - `README.md` - User documentation
 - `LICENSE` - CC0-1.0 license
 
