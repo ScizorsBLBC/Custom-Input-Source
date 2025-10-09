@@ -269,7 +269,7 @@
             <!-- QWERTY: Space -> Control: Space character (preserved functionality) -->
             <key code="50" output="ろ"/>
             <!-- QWERTY: ` -> Hiragana: ろ (ro) - Character frequency: High (final Hiragana) -->
-            <key code="51" output="&#x0008;"/>
+            <key code="51" output=""/>
             <!-- QWERTY: Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="\e"/>
             <!-- QWERTY: Escape -> Control: Escape character (preserved functionality) -->
@@ -320,21 +320,23 @@
         </keyMap>
         <keyMap index="1">
             <!-- =============================================================================
-                 SHIFT KEY MAPPING - SMALL CHARACTERS
+                 SHIFT KEY MAPPING - SMALL CHARACTERS & SPECIAL SYMBOLS
                  =============================================================================
-                 Maps Shift+QWERTY keys to small Hiragana characters (っ, ゃ, ゅ, ょ, etc.).
-                 This provides access to small characters commonly used in Japanese text.
+                 Maps Shift+QWERTY keys to small Hiragana characters (っ, ゃ, ゅ, ょ, etc.) and special symbols.
+                 This provides access to small characters and the long vowel sound commonly used in Japanese text.
                  
                  MAPPING STRATEGY:
                  - Small characters: ぁぃぅぇぉゃゅょっ (complete essential set)
                  - Intuitive placement: Small characters on same keys as large counterparts
                  - Special placement: を (wo) on Shift+0 (same key as わ)
                  - Small つ (っ): Only on Shift+Z (same key as つ) for double consonants
+                 - Long vowel sound: ー on Shift+む (mu) for vowel extension
                  - Clean mapping: No duplicate characters, logical key relationships
                  
                  TECHNICAL NOTES:
                  - Shift modifier: Provides access to secondary character set
                  - Small characters: Essential for proper Japanese text input
+                 - Long vowel sound: ー (U+30FC) for vowel extension in katakana and hiragana
                  - Precomposed characters: Avoids combining character spacing issues
                  ============================================================================= -->
             <!-- NUMBER ROW - Small characters (intuitive mapping) -->
@@ -424,12 +426,14 @@
             <!-- Shift+Space -> Control: Space character (preserved functionality) -->
             <key code="50" output="ろ"/>
             <!-- Shift+` -> ろ (ro) - Keep as is (no small variant needed) -->
-            <key code="51" output="&#x0008;"/>
+            <key code="51" output=""/>
             <!-- Shift+Backspace -> Control: Backspace character (preserved functionality) -->
             <key code="53" output="\e"/>
             <!-- Shift+Escape -> Control: Escape character (preserved functionality) -->
             <key code="91" output="っ"/>
             <!-- Shift+[ -> Small つ (tsu) - Small tsu for double consonants -->
+            <key code="42" output="ー"/>
+            <!-- Shift+む -> Long vowel sound (ー) - Long dash for vowel extension -->
         </keyMap>
     </keyMapSet>
 </keyboard>

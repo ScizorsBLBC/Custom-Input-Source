@@ -53,8 +53,8 @@ For the easiest installation using Ukelele's built-in installer:
 ### **Basic Characters**
 Type normally for basic Hiragana characters. All 46 basic Hiragana characters are mapped to QWERTY keys.
 
-### **Small Characters**
-Use Shift+key combinations for small characters:
+### **Small Characters & Special Symbols**
+Use Shift+key combinations for small characters and special symbols:
 - **Shift+0**: を (wo) - Object particle
 - **Shift+3**: ぁ (small あ)
 - **Shift+4**: ぅ (small う) 
@@ -65,6 +65,7 @@ Use Shift+key combinations for small characters:
 - **Shift+9**: ょ (small よ)
 - **Shift+E**: ぃ (small い)
 - **Shift+Z**: っ (small つ) - Essential for double consonants
+- **Shift+む**: ー (long vowel sound) - Long dash for vowel extension
 
 ### **Combining Characters**
 Use the combining characters to create voiced and semi-voiced sounds:
@@ -75,6 +76,7 @@ Use the combining characters to create voiced and semi-voiced sounds:
 - ひらがな (hiragana): Type ひ + ら + が + な
 - こんにちは (konnichiwa): Type こ + ん + に + ち + は
 - がっこう (gakkou): Type が + っ + こ + う
+- コーヒー (koohii): Type こ + ー + ひ + ー (using Shift+む for ー)
 
 ## **Key Mapping Reference**
 
@@ -144,7 +146,7 @@ Use the combining characters to create voiced and semi-voiced sounds:
 | Enter | 36 | Carriage Return | Preserved functionality |
 | Escape | 53 | Escape character | Preserved functionality |
 
-#### **Shift Key Mappings (Small Characters)**
+#### **Shift Key Mappings (Small Characters & Special Symbols)**
 
 | Physical Key | Key Code | Shift+Output | Notes |
 |--------------|----------|--------------|-------|
@@ -161,6 +163,8 @@ Use the combining characters to create voiced and semi-voiced sounds:
 | E | 14 | ぃ (small い) | Small vowel character |
 | **Bottom Row** | | | |
 | Z | 6 | っ (small つ) | Small tsu for double consonants |
+| **Special Symbols** | | | |
+| む | 42 | ー (long vowel) | Long dash for vowel extension |
 
 **Note**: Small characters are placed on the same keys as their large counterparts for intuitive access.
 
@@ -227,8 +231,8 @@ Use the combining characters to create voiced and semi-voiced sounds:
 - **Basic Characters**: All 46 basic Hiragana characters
 - **Small Characters**: ぁぃぅぇぉゃゅょっ (8 essential small characters)
 - **Combining Characters**: ゙ (dakuten), ゚ (handakuten) for voiced/semi-voiced sounds
-- **Special Characters**: を (wo) for object particle
-- **Total Coverage**: 100% of essential Hiragana characters for modern Japanese
+- **Special Characters**: を (wo) for object particle, ー (long vowel sound) for vowel extension
+- **Total Coverage**: 100% of essential Hiragana characters plus long vowel sound for modern Japanese
 
 ### **Input Method**
 - **Direct Input**: No IME conversion required
