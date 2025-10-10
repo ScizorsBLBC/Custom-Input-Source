@@ -55,14 +55,12 @@
     
     =============================================================================
 -->
-<!--Last edited by Ukelele version 452 on 2025-10-10 at 03:38 (JST)-->
+<!--Last edited by Ukelele version 452 on 2025-10-11 at 00:57 (JST)-->
 <keyboard group="1" id="16396" name="ひらがな-カタカナ" maxout="1">
     <!-- Layout configuration for ANSI keyboards -->
     <layouts>
         <!-- Modifier map: Enhanced implementation with Shift key support -->
-        <layout first="0" last="1" mapSet="ANSI" modifiers="modifierMap0"/>
-    </layouts>
-    <!-- =============================================================================
+        <!-- =============================================================================
          MODIFIER MAP CONFIGURATION - Four-Layer Keyboard Architecture
          =============================================================================
          Defines the four-layer keyboard architecture using Caps Lock and Shift modifiers.
@@ -86,22 +84,20 @@
          - Caps Lock state detection for script switching
          - Parallel mapping ensures consistent QWERTY positions across scripts
          ============================================================================= -->
+        <layout first="0" last="1" mapSet="ANSI" modifiers="modifierMap0"/>
+    </layouts>
     <modifierMap id="modifierMap0" defaultIndex="0">
         <keyMapSelect mapIndex="0">
             <modifier keys=""/>
-            <!-- No modifiers: Hiragana Base Layer (default input mode) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="1">
             <modifier keys="anyShift"/>
-            <!-- Shift pressed: Hiragana Shift Layer (small characters & symbols) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="2">
             <modifier keys="caps"/>
-            <!-- Caps Lock ON: Katakana Base Layer (parallel to Hiragana Base) -->
         </keyMapSelect>
         <keyMapSelect mapIndex="3">
             <modifier keys="anyShift caps"/>
-            <!-- Caps Lock ON + Shift: Katakana Shift Layer (small Katakana & symbols) -->
         </keyMapSelect>
     </modifierMap>
     <keyMapSet id="ANSI">
@@ -939,16 +935,16 @@
             <!-- QWERTY: ; -> Katakana: レ (re) - Character frequency: High -->
             <key code="42" output="ム"/>
             <!-- QWERTY: \ -> Katakana: ム (mu) - Character frequency: Medium -->
-            <key code="43" output=""/>
-            <!-- QWERTY: , -> (no Katakana mapping - empty for system default) -->
-            <key code="44" output=""/>
-            <!-- QWERTY: / -> (no Katakana mapping - empty for system default) -->
+            <key code="43" output="ネ"/>
+            <!-- QWERTY: \ -> Katakana: ム (mu) - Character frequency: Medium -->
+            <key code="44" output="メ"/>
+            <!-- QWERTY: \ -> Katakana: メ (me) - Character frequency: Medium -->
             <key code="45" output="ミ"/>
             <!-- QWERTY: N -> Katakana: ミ (mi) - Character frequency: High -->
             <key code="46" output="モ"/>
-            <!-- QWERTY: M -> Katakana: モ (mo) - Character frequency: High -->
-            <key code="47" output=""/>
-            <!-- QWERTY: . -> (no Katakana mapping - empty for system default) -->
+            <!-- QWERTY: \ -> Katakana: モ (mo) - Character frequency: Medium -->
+            <key code="47" output="ル"/>
+            <!-- QWERTY: \ -> Katakana: ル (ru) - Character frequency: Medium -->
             <key code="48" output="&#x0009;"/>
             <!-- QWERTY: Tab -> Control: Tab character (preserved functionality) -->
             <key code="49" output=""/>

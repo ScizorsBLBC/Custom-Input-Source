@@ -231,7 +231,7 @@ The layout has four distinct layers accessible through modifier combinations:
 || ↓ | 125 | Down Arrow | Standard down navigation |
 || ↑ | 126 | Up Arrow | Standard up navigation |
 || **Numpad Keys** | | | |
-|| Numpad 0 | 65 | 0 | Standard numeric input |
+|| Numpad . | 65 | 0 | Standard numeric input |
 || Numpad = | 67 | = | Mathematical equals sign |
 || Numpad ] | 71 | ] | Right bracket for mathematical expressions |
 || Numpad - | 75 | - | Mathematical minus sign |
@@ -267,11 +267,7 @@ The layout has four distinct layers accessible through modifier combinations:
 || Shift+, | 117 | < | Less than symbol for HTML and markup |
 || Shift+. | 119 | > | Greater than symbol for HTML and markup |
 || Shift+/ | 121 | ? | Question mark for questions |
-|| **Shift+Arrow Keys** | | | |
-|| Shift+← | 123 | (empty) | System default behavior (text selection) |
-|| Shift+→ | 124 | (empty) | System default behavior (text selection) |
-|| Shift+↓ | 125 | (empty) | System default behavior (text selection) |
-|| Shift+↑ | 126 | (empty) | System default behavior (text selection) |
+
 || **Shift+Numpad Keys** | | | |
 || Shift+Numpad 0 | 65 | ) | Right parenthesis for mathematical expressions |
 || Shift+Numpad = | 67 | + | Plus sign for mathematical operations |
