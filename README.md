@@ -218,7 +218,26 @@ The layout has four distinct layers accessible through modifier combinations:
 | Backspace | 51 | Backspace character | Preserved functionality |
 | Enter | 36 | Carriage Return | Preserved functionality |
 | Escape | 53 | Escape character | Preserved functionality |
-
+|| **Keys Above Arrows** | | | |
+|| ; | 114 | ; | Semicolon for mixed text input |
+|| ' | 115 | ' | Apostrophe for contractions and possessives |
+|| [ | 116 | [ | Left bracket for text formatting |
+|| , | 117 | , | Comma for sentence pauses |
+|| . | 119 | 。 | Japanese period (maru) for proper sentence endings |
+|| / | 121 | / | Forward slash for mixed text and URLs |
+|| **Arrow Keys** | | | |
+|| ← | 123 | Left Arrow | Standard left navigation |
+|| → | 124 | Right Arrow | Standard right navigation |
+|| ↓ | 125 | Down Arrow | Standard down navigation |
+|| ↑ | 126 | Up Arrow | Standard up navigation |
+|| **Numpad Keys** | | | |
+|| Numpad 0 | 65 | 0 | Standard numeric input |
+|| Numpad = | 67 | = | Mathematical equals sign |
+|| Numpad ] | 71 | ] | Right bracket for mathematical expressions |
+|| Numpad - | 75 | - | Mathematical minus sign |
+|| Numpad Enter | 76 | ETX | Text termination control character |
+|| Numpad \ | 81 | \ | Backslash for mathematical expressions |
+|| Numpad 1-9 | 83-92 | 1-9 | Standard numeric input (1-9) |
 #### **Shift Key Mappings (Small Characters & Special Symbols)**
 
 | Physical Key | Key Code | Shift+Output | Notes |
@@ -241,6 +260,25 @@ The layout has four distinct layers accessible through modifier combinations:
 
 **Note**: Small characters are placed on the same keys as their large counterparts for intuitive access.
 
+|| **Shift+Special Keys** | | | |
+|| Shift+; | 114 | : | Colon for time and ratios |
+|| Shift+' | 115 | " | Double quote for dialogue and emphasis |
+|| Shift+[ | 116 | { | Left brace for text formatting |
+|| Shift+, | 117 | < | Less than symbol for HTML and markup |
+|| Shift+. | 119 | > | Greater than symbol for HTML and markup |
+|| Shift+/ | 121 | ? | Question mark for questions |
+|| **Shift+Arrow Keys** | | | |
+|| Shift+← | 123 | (empty) | System default behavior (text selection) |
+|| Shift+→ | 124 | (empty) | System default behavior (text selection) |
+|| Shift+↓ | 125 | (empty) | System default behavior (text selection) |
+|| Shift+↑ | 126 | (empty) | System default behavior (text selection) |
+|| **Shift+Numpad Keys** | | | |
+|| Shift+Numpad 0 | 65 | ) | Right parenthesis for mathematical expressions |
+|| Shift+Numpad = | 67 | + | Plus sign for mathematical operations |
+|| Shift+Numpad ] | 71 | } | Right brace for text formatting |
+|| Shift+Numpad - | 75 | _ | Underscore for text formatting |
+|| Shift+Numpad \ | 81 | | | Vertical bar for text formatting |
+|| Shift+1-9 | 83-92 | !@#$%^&*() | Standard QWERTY number row symbols |
 #### **Layer 2: Katakana Base (Caps Lock ON)**
 
 | Physical Key | Key Code | Katakana Output | Notes |
@@ -302,7 +340,26 @@ The layout has four distinct layers accessible through modifier combinations:
 | Backspace | 51 | Backspace character | Preserved functionality |
 | Enter | 36 | Carriage Return | Preserved functionality |
 | Escape | 53 | Escape character | Preserved functionality |
-
+|| **Keys Above Arrows** | | | |
+|| ; | 114 | ; | Semicolon for mixed text input |
+|| ' | 115 | ' | Apostrophe for contractions and possessives |
+|| [ | 116 | [ | Left bracket for text formatting |
+|| , | 117 | , | Comma for sentence pauses |
+|| . | 119 | 。 | Japanese period (maru) for proper sentence endings |
+|| / | 121 | / | Forward slash for mixed text and URLs |
+|| **Arrow Keys** | | | |
+|| ← | 123 | Left Arrow | Standard left navigation |
+|| → | 124 | Right Arrow | Standard right navigation |
+|| ↓ | 125 | Down Arrow | Standard down navigation |
+|| ↑ | 126 | Up Arrow | Standard up navigation |
+|| **Numpad Keys** | | | |
+|| Numpad 0 | 65 | 0 | Standard numeric input |
+|| Numpad = | 67 | = | Mathematical equals sign |
+|| Numpad ] | 71 | ] | Right bracket for mathematical expressions |
+|| Numpad - | 75 | - | Mathematical minus sign |
+|| Numpad Enter | 76 | ETX | Text termination control character |
+|| Numpad \ | 81 | \ | Backslash for mathematical expressions |
+|| Numpad 1-9 | 83-92 | 1-9 | Standard numeric input (1-9) |
 #### **Layer 3: Katakana Shift (Caps Lock ON + Shift)**
 
 | Physical Key | Key Code | Shift+Output | Notes |
@@ -325,6 +382,25 @@ The layout has four distinct layers accessible through modifier combinations:
 
 **Note**: Katakana characters follow the same key positions as their Hiragana counterparts for intuitive learning.
 
+|| **Shift+Special Keys** | | | |
+|| Shift+; | 114 | : | Colon for time and ratios |
+|| Shift+' | 115 | " | Double quote for dialogue and emphasis |
+|| Shift+[ | 116 | { | Left brace for text formatting |
+|| Shift+, | 117 | < | Less than symbol for HTML and markup |
+|| Shift+. | 119 | > | Greater than symbol for HTML and markup |
+|| Shift+/ | 121 | ? | Question mark for questions |
+|| **Shift+Arrow Keys** | | | |
+|| Shift+← | 123 | (empty) | System default behavior (text selection) |
+|| Shift+→ | 124 | (empty) | System default behavior (text selection) |
+|| Shift+↓ | 125 | (empty) | System default behavior (text selection) |
+|| Shift+↑ | 126 | (empty) | System default behavior (text selection) |
+|| **Shift+Numpad Keys** | | | |
+|| Shift+Numpad 0 | 65 | ) | Right parenthesis for mathematical expressions |
+|| Shift+Numpad = | 67 | + | Plus sign for mathematical operations |
+|| Shift+Numpad ] | 71 | } | Right brace for text formatting |
+|| Shift+Numpad - | 75 | _ | Underscore for text formatting |
+|| Shift+Numpad \ | 81 | | | Vertical bar for text formatting |
+|| Shift+1-9 | 83-92 | !@#$%^&*() | Standard QWERTY number row symbols |
 ## **Using Ukelele to Edit This Layout**
 
 Ukelele is the recommended tool for editing and customizing this keyboard layout. This section provides comprehensive instructions for using Ukelele with the dual-mode Hiragana-Katakana layout.
