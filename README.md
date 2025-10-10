@@ -356,7 +356,7 @@ The layout has four distinct layers accessible through modifier combinations:
 || Numpad Enter | 76 | ETX | Text termination control character |
 || Numpad \ | 81 | \ | Backslash for mathematical expressions |
 || Numpad 1-9 | 83-92 | 1-9 | Standard numeric input (1-9) |
-#### **Layer 3: Katakana Shift (Caps Lock ON + Shift)**
+#### **Layer 3: Katakana Shift (Caps Lock ON + Shift)** 
 
 | Physical Key | Key Code | Shift+Output | Notes |
 |--------------|----------|--------------|-------|
